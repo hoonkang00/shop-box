@@ -1,6 +1,6 @@
-# empty-project
+# Greenfield-project
 
-Empty project.
+Shoe Box App
 
 ## Building and running on localhost
 

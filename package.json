@@ -1,19 +1,26 @@
 {
-  "name": "empty-project",
+  "name": "greenfield-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "Shoe Box App",
   "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
+    "start": "nodemon server/index.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production"
   },
   "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "webpack": "^4.41.1",
