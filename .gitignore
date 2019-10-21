@@ -4,5 +4,6 @@
 ## NPM ##
 node_modules
 
-## Bundle ##
+## Environment ##
 dist/bundle.js
+package-lock.json

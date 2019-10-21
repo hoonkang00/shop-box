@@ -1,6 +1,6 @@
 # Greenfield-project
 
-Shoe Box App
+ShopBox App
 
 ## Building and running on localhost
 
