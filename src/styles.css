@@ -47,7 +47,3 @@
   grid-column-start: start-main;
   grid-column-end: end-main;
 }
-
-.item {
-  background-color: blue;
-}
