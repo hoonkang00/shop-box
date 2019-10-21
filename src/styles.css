@@ -1,7 +1,15 @@
 #app {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
-  grid-template-rows: [nav-row-start] 40px [details-row-start] auto [related-row-start] auto [outfit-row-start] auto [q-and-a-row-start] auto [ratings-reviews-row-start] auto [ratings-reviews-row-end];
+  grid-template-rows:
+    [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
+    [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
+      100px,
+      max-content
+    )
+    [q-and-a-row-start] minmax(100px, max-content)
+    [ratings-reviews-row-start] minmax(100px, max-content)
+    [ratings-reviews-row-end];
   grid-row-gap: 20px;
   justify-content: center;
 }
