@@ -22,6 +22,12 @@ To create a development build:
 npm run build-dev
 ```
 
+To run Jest unit tests:
+
+```sh
+npm run test
+```
+
 ## Running
 
 Open the file `dist/index.html` in your browser

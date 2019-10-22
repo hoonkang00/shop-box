@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+<<<<<<< HEAD
 import "./styles.css";
 import "./styles.scss";
 import App from "./components/app.jsx";
@@ -13,3 +14,11 @@ ReactDOM.render(
   </Provider>,
   mountNode
 );
+=======
+import App from "./components/app.jsx";
+import "./styles.css";
+import "./styles.scss";
+
+var mountNode = document.getElementById("app");
+ReactDOM.render(<App/>, mountNode);
+>>>>>>> master
