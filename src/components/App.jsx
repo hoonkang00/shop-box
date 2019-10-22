@@ -1,6 +1,6 @@
 import React from "react";
 import ProductDetails from "./ProductDetails.jsx";
-import QuestionAnswer from "./questionComponents/QuestionAnswer.jsx";
+import QAContainer from "../containers/QAContainer.js";
 import RelatedItemsContainer from "../containers/RelatedContainer.js";
 
 class App extends React.Component {
@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div>
         <ProductDetails />
-        <QuestionAnswer/>
+        <QAContainer className="q-and-a" />
         <RelatedItemsContainer />
       </div>
     );
