@@ -1,6 +1,7 @@
 import React from "react";
 import ProductDetails from "./ProductDetails.jsx";
 import QuestionAnswer from "./questionComponents/QuestionAnswer.jsx";
+import RelatedItemsContainer from "../containers/RelatedContainer.js";
 
 class App extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class App extends React.Component {
       <div>
         <ProductDetails />
         <QuestionAnswer/>
+        <RelatedItemsContainer />
       </div>
     );
   }
