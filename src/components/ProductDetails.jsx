@@ -5,14 +5,10 @@ import Axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    height: "800px"
+    flexGrow: 1
   },
-  paper: {
-    height: "100px",
-    padding: theme.spacing(`2`),
-    textAlign: "center",
-    color: theme.palette.text.secondary
+  containers: {
+    height: "600px"
   }
 }));
 
@@ -21,8 +17,8 @@ const ProductDetailsNested = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
-        <Grid item xs={9}></Grid>
-        <Grid item xs={3}></Grid>
+        <Grid item xs={8} className={classes.containers}></Grid>
+        <Grid item xs={4} className={classes.containers}></Grid>
       </Grid>
     </div>
   );
@@ -43,7 +39,11 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    <ProductDetailsNested />;
+    return (
+      <div className="product-details">
+        <ProductDetailsNested />
+      </div>
+    );
   }
 }
 
