@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import ProductDetails from "./ProductDetails.jsx";
 import RelatedItemsContainer from "../containers/RelatedContainer.js";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ProductDetails />
+
+
+export default function App(props) {
+
+
+  return (
+    <div>
+      <ProductDetails />
         <RelatedItemsContainer />
-      </div>
-    );
-  }
+    </div>
+  )
 }
 
-export default App;
+
