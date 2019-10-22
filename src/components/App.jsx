@@ -8,6 +8,7 @@ export default function App(props) {
     <div>
       <ProductDetails />
       <RelatedItemsContainer />
+      <QAContainer />
     </div>
   );
 }

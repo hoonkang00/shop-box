@@ -3,7 +3,7 @@ import QuestionAnswer from "../components/questionComponents/QuestionAnswer.jsx"
 
 const mapStateToProps = store => {
   return {
-    questions: state.questions
+    questions: store.questions
   };
 };
 

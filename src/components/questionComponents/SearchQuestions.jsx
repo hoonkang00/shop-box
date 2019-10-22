@@ -6,6 +6,6 @@ export default class SearchQuestions extends Component {
     this.state = { searchTerm: "" };
   }
   render() {
-    return <div>heres my search bar</div>;
+    return <div>search bar</div>;
   }
 }
