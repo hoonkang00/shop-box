@@ -23,9 +23,11 @@ export default class QuestionAnswer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      counter: 2
     };
     this.getQuestions = this.getQuestions.bind(this);
+    this.showMoreQuestions = this.showMoreQuestions.bind(this);
   }
   componentDidMount() {
     //need to update product id from store
@@ -40,11 +42,15 @@ export default class QuestionAnswer extends Component {
       .get(`http://18.223.1.30/qa/${id}`)
       .then(({ data }) => {
         console.log("results", data.results);
-        this.setState({ questions: data.results.slice(0, 2) });
+        this.setState({ questions: data.results });
       })
       .catch(err => {
         console.log(err);
       });
+  }
+  showMoreQuestions() {
+    console.log("checking");
+    this.setState({ counter: this.state.counter + 2 });
   }
   render() {
     return (
@@ -52,10 +58,10 @@ export default class QuestionAnswer extends Component {
         <div className="q-and-a">
           QUESTIONS & ANSWERS
           <SearchQuestions />
-          {this.state.questions.map(question => {
+          {this.state.questions.slice(0, this.state.counter).map(question => {
             return <QASet key={question.question_id} question={question} />;
           })}
-          <MoreQuestions />
+          <MoreQuestions showMoreQuestions={this.showMoreQuestions} />
           <AddQuestion />
         </div>
       </div>
