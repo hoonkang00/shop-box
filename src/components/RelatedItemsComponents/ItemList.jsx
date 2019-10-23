@@ -16,9 +16,8 @@ export default function ItemList(props) {
 
   return (
     <div>
-      {props.productInfo.id}
       {relatedProducts.map(item => {
-        return <ItemCard key={item.id} relatedProduct={item} />;
+        return <ItemCard key={item.id} relatedProduct={item} currentProduct={props.productInfo} />;
       })}
     </div>
   );
