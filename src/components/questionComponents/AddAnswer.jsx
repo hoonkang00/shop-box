@@ -8,7 +8,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
 
-export default function FormDialog() {
+export default function FormDialog({ qbody }) {
   const [open, setOpen] = React.useState(false);
   const [values, setValues] = React.useState({
     name: "",
@@ -60,7 +60,9 @@ export default function FormDialog() {
       >
         <DialogTitle id="form-dialog-title">Submit your Answer</DialogTitle>
         <DialogContent>
-          <DialogContentText>Productname: questionbody</DialogContentText>
+          <DialogContentText>
+            Productname...get from store: {qbody}
+          </DialogContentText>
           Answer
           <TextField
             required
