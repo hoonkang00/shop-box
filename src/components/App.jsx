@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
 import ProductDetails from "./ProductDetails.jsx";
 import RelatedItemsContainer from "../containers/RelatedItemsContainers/RelatedContainer.js";
 
+const App = () => (
+  <div className="app-container">
+    <div className="nav"></div>
+    <ProductDetails />
+    <RelatedItemsContainer />
+  </div>
+);
 
-
-export default function App(props) {
-
-
-  return (
-    <div>
-      <ProductDetails />
-        <RelatedItemsContainer />
-    </div>
-  )
-}
-
-
+export default App;
