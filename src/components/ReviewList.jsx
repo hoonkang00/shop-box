@@ -32,8 +32,8 @@ const ReviewList = ({ props }) => {
   return (
     <div className="Review-Rows">
       <FixedSizeList
-        height={100}
-        width={360}
+        height={400}
+        width={500}
         itemSize={46}
         itemCount={arr.length}
         itemData={arr}
