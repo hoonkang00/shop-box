@@ -2,11 +2,10 @@ import axios from 'axios'
 
 
 
-let getProductInfo = ()=>{
+let getProductInfo = (productID)=>{
 
     //assuming that the url has products/:productID
-    let productID = parseInt(window.location.href.split('products/')[1].substring(0,1))
-    console.log(productID)
+
 
 
 
