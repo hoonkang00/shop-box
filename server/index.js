@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-  res.send("Please navigate to /products/:productid");
+  res.redirect("/products/1");
 });
 
 app.use("/products/:productid", express.static("dist"));
