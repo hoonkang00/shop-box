@@ -6,7 +6,9 @@ import "../../styles.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    minWidth: "500px",
+    maxWidth: "1100px"
   },
   defaultLeft: {
     height: "600px",
@@ -60,9 +62,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    let id = parseInt(
-      window.location.href.split("products/")[1].substring(0, 1)
-    );
+    let id = window.location.pathname.split("/")[2];
     this.props.handleLoadProduct(id);
     this.props.handleLoadStyles(id);
     this.props.handleLoadMetadata(id);

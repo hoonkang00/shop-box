@@ -11,7 +11,7 @@ const App = props => {
   return (
     <div className="components">
       <Grid container spacing={4}>
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <ProductDetailsContainer />
         </Grid>
         <Grid item xs={8}>
