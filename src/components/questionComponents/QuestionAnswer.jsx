@@ -28,7 +28,7 @@ export default class QuestionAnswer extends Component {
   componentDidMount() {
     //need to update product id from store
     this.getQuestions(1);
-    // console.log(props.setStoreProductInfo);
+    console.log(this.props.getQuestions);
   }
 
   getQuestions(id) {
