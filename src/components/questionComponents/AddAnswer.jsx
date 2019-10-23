@@ -96,6 +96,7 @@ export default function FormDialog({ qbody }) {
             id="name"
             label="Example: jack@email.com"
             type="email"
+            maxLength="60"
             helperText="For authentication reasons, you will not be emailed"
             fullWidth
           />

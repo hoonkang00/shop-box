@@ -2,6 +2,7 @@
 import SearchQuestions from "./SearchQuestions.jsx";
 import QASet from "./QASet.jsx";
 import MoreQuestions from "./MoreQuestions.jsx";
+import AddQuestion from "./AddQuestion.jsx";
 
 // export default function QuestionAnswer() {
 //   return (
@@ -54,6 +55,7 @@ export default class QuestionAnswer extends Component {
             return <QASet key={question.question_id} question={question} />;
           })}
           <MoreQuestions />
+          <AddQuestion />
           add question button
         </div>
       </div>
