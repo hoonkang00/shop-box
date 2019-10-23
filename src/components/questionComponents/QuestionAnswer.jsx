@@ -56,7 +56,6 @@ export default class QuestionAnswer extends Component {
           })}
           <MoreQuestions />
           <AddQuestion />
-          add question button
         </div>
       </div>
     );
