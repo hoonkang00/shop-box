@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import QuestionAnswer from "../components/questionComponents/QuestionAnswer.jsx";
+import getQuestions from "../actions/getQuestions.js";
 
 const mapStateToProps = store => {
   return {
@@ -9,16 +10,15 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // storeProductInfo: id => {
-    //   return dispatch(getProductInfo(id));
-    // }
+    getQuestions: id => {
+      return dispatch(getQuestions(id));
+    }
   };
 };
 
 const QAContainer = connect(
-  mapStateToProps
-  //   ,
-  //   mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(QuestionAnswer);
 
 export default QAContainer;
