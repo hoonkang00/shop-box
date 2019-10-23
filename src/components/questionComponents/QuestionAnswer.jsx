@@ -28,6 +28,7 @@ export default class QuestionAnswer extends Component {
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
+    this.collapseQuestions = this.collapseQuestions.bind(this);
   }
   componentDidMount() {
     //need to update product id from store
@@ -35,7 +36,10 @@ export default class QuestionAnswer extends Component {
     //need to sort questions
     // console.log(this.props.getQuestions);
   }
-
+  collapseQuestions() {
+    console.log("checking collapse");
+    this.setState({ counter: 2 });
+  }
   getQuestions(id) {
     //need to update productid
     axios
@@ -49,6 +53,7 @@ export default class QuestionAnswer extends Component {
       });
   }
   showMoreQuestions() {
+    console.log("show more qs check");
     this.setState({ counter: this.state.counter + 2 });
   }
   render() {
@@ -63,6 +68,7 @@ export default class QuestionAnswer extends Component {
           <MoreQuestions
             showCollapse={this.state.counter >= this.state.questions.length}
             showMoreQuestions={this.showMoreQuestions}
+            collapseQuestions={this.collapseQuestions}
           />
           <AddQuestion />
         </div>
