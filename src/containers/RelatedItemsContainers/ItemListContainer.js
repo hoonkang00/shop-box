@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import store from "../../store/store.js";
-import itemList from "../../components/RelatedItemsComponents/ItemList.jsx";
+import ItemList from "../../components/RelatedItemsComponents/ItemList.jsx";
 
 const mapStateToProps = (store, oldProps) => {
   return {
@@ -21,6 +21,6 @@ const mapStateToProps = (store, oldProps) => {
 //   };
 // };
 
-const ItemListContainer = connect(mapStateToProps)(itemList);
+const ItemListContainer = connect(mapStateToProps)(ItemList);
 
 export default ItemListContainer;
