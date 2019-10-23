@@ -19,7 +19,9 @@ export default class SearchQuestions extends Component {
       <SearchBar
         onChange={e => this.handleChange(e)}
         onRequestSearch={() => console.log("onRequestSearch")}
-        onCancelSearch={() => this.cancelSearch}
+        onCancelSearch={() => {
+          this.cancelSearch();
+        }}
         style={{
           margin: "0 auto",
           maxWidth: 800
