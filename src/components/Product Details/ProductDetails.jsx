@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import ShoppingForm from "./ShoppingForm.jsx";
+import "../../styles.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
-  containers: {
+  defaultLeft: {
     height: "600px",
     overflow: "hidden"
+  },
+  defaultRight: {
+    height: "600px",
+    display: "flex",
+    flexDirection: "column"
   }
 }));
 
@@ -17,10 +24,20 @@ const ProductDetailsNested = ({ imgUrl }) => {
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
-        <Grid item xs={8} className={classes.containers}>
+        <Grid item xs={8} className={classes.defaultLeft}>
           <img className="main-img" src={imgUrl}></img>
         </Grid>
-        <Grid item xs={4} className={classes.containers}></Grid>
+        <Grid item xs={4} className={classes.defaultRight}>
+          <div className="stars-mockup">stars and reviews link</div>
+          <p className="mockup">CATEGORY</p>
+          <h2>Expanded Product Name</h2>
+          <p className="mockup">$369</p>
+          <p className="mockup">
+            <b>STYLE ></b> SELECTED STYLE
+          </p>
+          <img className="style-bubbles" src="./images/styles.png"></img>
+          <ShoppingForm />
+        </Grid>
       </Grid>
     </div>
   );
@@ -43,8 +60,12 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    this.props.handleLoadProduct();
-    this.props.handleLoadStyles();
+    let id = parseInt(
+      window.location.href.split("products/")[1].substring(0, 1)
+    );
+    this.props.handleLoadProduct(id);
+    this.props.handleLoadStyles(id);
+    this.props.handleLoadMetadata(id);
   }
 
   render() {
