@@ -26,6 +26,7 @@ export default class QuestionAnswer extends Component {
     this.getQuestions = this.getQuestions.bind(this);
   }
   componentDidMount() {
+    //need to update product id from store
     this.getQuestions(1);
     // console.log(props.setStoreProductInfo);
   }
@@ -49,7 +50,7 @@ export default class QuestionAnswer extends Component {
           QUESTIONS & ANSWERS
           <SearchQuestions />
           {this.state.questions.map(question => {
-            return <QASet question={question} />;
+            return <QASet key={question.question_id} question={question} />;
           })}
           more question button add question button
         </div>
