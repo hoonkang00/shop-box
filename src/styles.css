@@ -1,57 +1,12 @@
-#app {
-  display: grid;
-  grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
-  grid-template-rows:
-    [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
-    [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
-      100px,
-      max-content
-    )
-    [q-and-a-row-start] minmax(100px, max-content)
-    [ratings-reviews-row-start] minmax(100px, max-content)
-    [ratings-reviews-row-end];
-  grid-row-gap: 20px;
+.components > .MuiGrid-container {
+  text-align: center;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
-
-.nav {
-  grid-row-start: nav-row-start;
-  grid-row-end: details-row-start;
-  grid-column-start: col-start;
-  grid-column-end: col-end;
-}
-
-.product-details {
-  grid-row-start: details-row-start;
-  grid-row-end: related-row-start;
-  grid-column-start: start-main;
-  grid-column-end: end-main;
-}
-
-.related-products {
-  grid-row-start: related-row-start;
-  grid-row-end: outfit-row-start;
-  grid-column-start: start-main;
-  grid-column-end: end-main;
-}
-
-.your-outfit {
-  grid-row-start: outfit-row-start;
-  grid-row-end: q-and-a-row-start;
-  grid-column-start: start-main;
-  grid-column-end: end-main;
-}
-
-.q-and-a {
-  grid-row-start: q-and-a-row-start;
-  grid-row-end: ratings-reviews-row-start;
-  grid-column-start: start-main;
-  grid-column-end: end-main;
-}
-
-.ratings-and-reviews {
-  grid-row-start: ratings-reviews-row-start;
-  grid-row-end: ratings-reviews-row-end;
-  grid-column-start: start-main;
-  grid-column-end: end-main;
+.hello {
+  width: 50%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
 }
