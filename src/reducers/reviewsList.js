@@ -1,7 +1,7 @@
 const reviewsListReducer = (state = {}, action) => {
   switch (action.type) {
     case "REVIEWS":
-      return action.data;
+      return action.payload;
     default:
       return state;
   }

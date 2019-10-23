@@ -1,9 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import { FixedSizeList } from "react-window";
+import ReviewListEntry from "./ReviewListEntry.jsx";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,12 +14,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Row(props) {
-  const { index, style } = props;
-
+  const { index, data } = props;
   return (
-    <ListItem button style={style} key={index}>
-      <ListItemText primary={`Item ${index + 1}`} />
-    </ListItem>
+    <div>
+      <ReviewListEntry review={data[index]} />
+    </div>
   );
 }
 
@@ -29,14 +27,21 @@ Row.propTypes = {
   style: PropTypes.object.isRequired
 };
 
-export default function ReviewList() {
-  const classes = useStyles();
-
+const ReviewList = ({ props }) => {
+  const arr = props === undefined ? [] : props;
   return (
-    <div className={classes.root}>
-      <FixedSizeList height={400} width={360} itemSize={46} itemCount={200}>
+    <div className="Review-Rows">
+      <FixedSizeList
+        height={100}
+        width={360}
+        itemSize={46}
+        itemCount={arr.length}
+        itemData={arr}
+      >
         {Row}
       </FixedSizeList>
     </div>
   );
-}
+};
+
+export default ReviewList;

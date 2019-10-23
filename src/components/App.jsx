@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductDetails from "./ProductDetails.jsx";
 import RelatedItemsContainer from "../containers/RelatedContainer.js";
-import ReviewsContainer from "../components/Reviews.jsx";
+import ReviewsContainer from "../containers/ReviewsContainer.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";

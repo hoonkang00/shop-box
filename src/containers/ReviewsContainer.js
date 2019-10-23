@@ -1,14 +1,20 @@
 import { connect } from "react-redux";
 import ReviewButtons from "../components/ReviewButtons.jsx";
-import ReviewList from "../components/ReviewList.jsx";
+import ReviewList from "../components/Reviews.jsx";
+import getReviewList from "../actions/getReviewList.js";
 
 const mapStateToProps = store => ({ reviews: store.reviews });
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         listOfReviews: (reviews) => {dispatch()}
-//     }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    listOfReviews: page => {
+      dispatch(getReviewList(page));
+    }
+  };
+};
 
-const ReviewsContainer = connect(mapStateToProps)(ReviewList);
+const ReviewsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ReviewList);
 
 export default ReviewsContainer;
