@@ -33,7 +33,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       # checking if the bulding builds correctly
-      - run: npm run build-test
+      - run: 
+          name: webpack Build Test
+          command: npm run build-test
 
       # run tests!
-      - run: npm run test
+      - run: 
+          name: Jest Test
+          command: npm run test
