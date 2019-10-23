@@ -56,3 +56,7 @@
   grid-column-start: start-main;
   grid-column-end: end-main;
 }
+
+.main-img {
+  height: 100%;
+}
