@@ -25,14 +25,25 @@ const getRelatedItems = async productID => {
     return axios.get(`http://18.223.1.30/reviews/${id}/meta`);
   });
 
+  let productStyles = relatedReviews.map(id => {
+    return axios.get(`http://18.223.1.30/products/${id}/styles`);
+  });
+
   let doItAllAtOnce = [
     PromiseAllWrapper(productInfos),
-    PromiseAllWrapper(productReviews)
+    PromiseAllWrapper(productReviews),
+    PromiseAllWrapper(productStyles)
   ];
   myData = await Promise.all(doItAllAtOnce);
   let combinedData = [];
   for (let i = 0; i < myData[0].length; i++) {
-    let combined = { ...myData[0][i].data, ...myData[1][i].data };
+    let combined = {
+      ...myData[0][i].data,
+      ...myData[1][i].data,
+      ...myData[2][i].data
+    };
+
+    //styles comes in results
     combinedData.push(combined);
   }
 
