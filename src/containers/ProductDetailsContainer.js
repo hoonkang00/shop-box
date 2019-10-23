@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import getProductInfo from "../actions/getProductInfo.js";
 import ProductDetails from "../components/Product Details/ProductDetails.jsx";
 import getProductStyles from "../actions/getProductStyles.js";
+import getReviewMetaData from "../actions/getReviewMetaData.js";
 
 export default connect(
   state => ({
@@ -9,7 +10,8 @@ export default connect(
     styles: state.productStyles
   }),
   dispatch => ({
-    handleLoadProduct: () => dispatch(getProductInfo()),
-    handleLoadStyles: id => dispatch(getProductStyles(id))
+    handleLoadProduct: id => dispatch(getProductInfo(id)),
+    handleLoadStyles: id => dispatch(getProductStyles(id)),
+    handleLoadMetadata: id => dispatch(getReviewMetaData(id))
   })
 )(ProductDetails);

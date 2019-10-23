@@ -69,6 +69,29 @@
   grid-column-end: end-main;
 }
 
+p {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 15px 0;
+  font-size: 30px;
+}
+
 .main-img {
   height: 100%;
+}
+
+.stars-mockup {
+  padding: 15px 0;
+}
+
+p.mockup {
+  padding: 10px 0;
+}
+
+.style-bubbles {
+  height: 180px;
+  width: 430px;
 }
