@@ -33,6 +33,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       # checking if the bulding builds correctly
+      - run: npm run clean
       - run: npm run build-test
 
       # run tests!
