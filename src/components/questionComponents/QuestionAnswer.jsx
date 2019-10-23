@@ -1,6 +1,7 @@
 // import React from "react";
 import SearchQuestions from "./SearchQuestions.jsx";
 import QASet from "./QASet.jsx";
+import MoreQuestions from "./MoreQuestions.jsx";
 
 // export default function QuestionAnswer() {
 //   return (
@@ -52,7 +53,8 @@ export default class QuestionAnswer extends Component {
           {this.state.questions.map(question => {
             return <QASet key={question.question_id} question={question} />;
           })}
-          more question button add question button
+          <MoreQuestions />
+          add question button
         </div>
       </div>
     );
