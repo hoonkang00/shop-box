@@ -1,4 +1,4 @@
-.app-container {
+/* .app-container {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
   grid-template-rows:
@@ -12,7 +12,7 @@
     [ratings-reviews-row-end];
   grid-row-gap: 20px;
   justify-content: center;
-}
+} */
 
 .nav {
   grid-row-start: nav-row-start;
