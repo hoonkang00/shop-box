@@ -46,12 +46,9 @@ export default function FormDialog({ qbody }) {
 
   return (
     <div>
-      <a href="#" onClick={handleClickOpen}>
-        Add Question
-      </a>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
-      </Button> */}
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add A Question +
+      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
