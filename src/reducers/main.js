@@ -4,7 +4,8 @@ import productStylesReducer from "./productStylesReducer";
 
 const rootReducer = combineReducers({
   productInfo: productInfoReducer,
-  productStyles: productStylesReducer
+  productStyles: productStylesReducer,
+  reviewMetaData: reviewMetaDataReducer
 });
 
 export default rootReducer;
