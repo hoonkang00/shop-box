@@ -12,7 +12,6 @@ export default function FormDialog({ qbody }) {
   const [open, setOpen] = React.useState(false);
   const [values, setValues] = React.useState({
     name: "",
-
     multiline: ""
   });
 
@@ -47,9 +46,12 @@ export default function FormDialog({ qbody }) {
 
   return (
     <div>
-      <a href="#" onClick={handleClickOpen}>
+      {/* <a href="#" onClick={handleClickOpen}>
         Add Answer
-      </a>
+      </a> */}
+      <Button onClick={handleClickOpen} className={classes.button}>
+        Add Answer
+      </Button>
       {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open form dialog
       </Button> */}
