@@ -1,3 +1,15 @@
+.components > .MuiGrid-container {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: auto;
+}
+.hello {
+  width: 50%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
 /* .app-container {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
@@ -57,6 +69,29 @@
   grid-column-end: end-main;
 }
 
+p {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 15px 0;
+  font-size: 30px;
+}
+
 .main-img {
   height: 100%;
+}
+
+.stars-mockup {
+  padding: 15px 0;
+}
+
+p.mockup {
+  padding: 10px 0;
+}
+
+.style-bubbles {
+  height: 180px;
+  width: 430px;
 }
