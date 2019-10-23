@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import getProductInfo from "../actions/getProductInfo.js";
 import store from "../store/store.js";
-import RelatedItems from "../components/RelatedItems.jsx";
+import RelatedItems from "../components/RelatedItemsComponents/RelatedItems.jsx";
 
 const mapStateToProps = (store, oldProps) => {
   return {

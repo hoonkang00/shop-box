@@ -1,12 +1,9 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const path = require("path");
-
-app.use("/", express.static(path.join(__dirname, "../dist")));
 
 app.get("/", (req, res) => {
-  res.send("Please navigate to /products/:productid");
+  res.redirect("/products/1");
 });
 
 app.use("/products/:productid", express.static("dist"));
