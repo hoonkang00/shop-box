@@ -30,7 +30,8 @@ export default class QuestionAnswer extends Component {
   componentDidMount() {
     //need to update product id from store
     this.getQuestions(1);
-    console.log(this.props.getQuestions);
+    //need to sort questions
+    // console.log(this.props.getQuestions);
   }
 
   getQuestions(id) {
@@ -39,7 +40,7 @@ export default class QuestionAnswer extends Component {
       .get(`http://18.223.1.30/qa/${id}`)
       .then(({ data }) => {
         console.log("results", data.results);
-        this.setState({ questions: data.results });
+        this.setState({ questions: data.results.slice(0, 2) });
       })
       .catch(err => {
         console.log(err);
