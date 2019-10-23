@@ -101,6 +101,22 @@ export default function FormDialog({ qbody }) {
             fullWidth
           />
           Upload Photos:
+          <input
+            accept="image/*"
+            className={classes.input}
+            id="outlined-button-file"
+            multiple
+            type="file"
+          />
+          <label htmlFor="outlined-button-file">
+            <Button
+              variant="outlined"
+              component="span"
+              className={classes.button}
+            >
+              Upload
+            </Button>
+          </label>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
