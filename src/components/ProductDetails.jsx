@@ -30,12 +30,8 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    let productId = 1;
-    const url = `http://18.223.1.30/products/${productId}/styles`;
-
-    Axios.get(url).then(results => {
-      console.log(results);
-    });
+    this.props.handleLoadProduct();
+    this.props.handleLoadStyles();
   }
 
   render() {
