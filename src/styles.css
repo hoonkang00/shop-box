@@ -1,3 +1,15 @@
+.components > .MuiGrid-container {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: auto;
+}
+.hello {
+  width: 50%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
 /* .app-container {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
