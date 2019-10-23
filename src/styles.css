@@ -81,6 +81,9 @@ h2 {
 
 .main-img {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .stars-mockup {
@@ -94,4 +97,26 @@ p.mockup {
 .style-bubbles {
   height: 180px;
   width: 430px;
+}
+
+.selects-container {
+  display: flex;
+  flex-direction: row;
+  min-width: min-content;
+}
+
+.MuiSelect-select:focus {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.MuiInputLabel-shrink {
+  transform: translate(-10px, -8px) scale(0.75) !important;
+}
+
+.MuiInputLabel-formControl {
+  left: 10px !important;
+}
+
+#qty-label {
+  padding-left: 2px !important;
 }
