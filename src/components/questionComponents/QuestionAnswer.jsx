@@ -49,7 +49,6 @@ export default class QuestionAnswer extends Component {
       });
   }
   showMoreQuestions() {
-    console.log("checking");
     this.setState({ counter: this.state.counter + 2 });
   }
   render() {
@@ -61,7 +60,10 @@ export default class QuestionAnswer extends Component {
           {this.state.questions.slice(0, this.state.counter).map(question => {
             return <QASet key={question.question_id} question={question} />;
           })}
-          <MoreQuestions showMoreQuestions={this.showMoreQuestions} />
+          <MoreQuestions
+            showCollapse={this.state.counter >= this.state.questions.length}
+            showMoreQuestions={this.showMoreQuestions}
+          />
           <AddQuestion />
         </div>
       </div>

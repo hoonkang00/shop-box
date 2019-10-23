@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function OutlinedButtons({ showMoreQuestions }) {
+export default function OutlinedButtons({ showCollapse, showMoreQuestions }) {
   const classes = useStyles();
 
   return (
@@ -23,7 +23,7 @@ export default function OutlinedButtons({ showMoreQuestions }) {
           showMoreQuestions();
         }}
       >
-        More Answered Questions
+        {showCollapse ? "Collapse Questions" : "More Answered Questions"}
       </Button>
       {/* <input
         accept="image/*"
