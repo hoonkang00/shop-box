@@ -29,6 +29,7 @@ export default class QuestionAnswer extends Component {
     this.getQuestions(1);
     // console.log(props.setStoreProductInfo);
   }
+
   getQuestions(id) {
     //need to update productid
     axios
@@ -47,7 +48,9 @@ export default class QuestionAnswer extends Component {
         <div className="q-and-a">
           QUESTIONS & ANSWERS
           <SearchQuestions />
-          <QASet />
+          {this.state.questions.map(question => {
+            return <QASet question={question} />;
+          })}
           more question button add question button
         </div>
       </div>
