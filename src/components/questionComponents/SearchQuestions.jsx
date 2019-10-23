@@ -5,16 +5,21 @@ export default class SearchQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = { searchTerm: "" };
-    this.onChange = this.onChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.cancelSearch = this.cancelSearch.bind(this);
   }
-  onChange(e) {
-    console.log(e);
+  handleChange(e) {
+    this.setState({ searchTerm: e });
+  }
+  cancelSearch() {
+    this.setState({ searchTerm: "" });
   }
   render() {
     return (
       <SearchBar
-        onChange={e => this.onChange(e)}
+        onChange={e => this.handleChange(e)}
         onRequestSearch={() => console.log("onRequestSearch")}
+        onCancelSearch={() => this.cancelSearch}
         style={{
           margin: "0 auto",
           maxWidth: 800
