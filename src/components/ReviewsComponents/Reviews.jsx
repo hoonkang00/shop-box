@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReviewList from "./ReviewList.jsx";
 import AddReview from "./ReviewButtons.jsx";
 import Grid from "@material-ui/core/Grid";
+import Ratings from "../../components/ReviewsComponents/Ratings.jsx";
 
 export default class Reviews extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class Reviews extends Component {
       <div className="Ratings-Reviews">
         <Grid container spacing={4} className="hello testing">
           <Grid item>
-            <div>Hello</div>
+            <Ratings />
           </Grid>
           <Grid item className="Reviews">
             <ReviewList props={this.props.reviews.results} />
