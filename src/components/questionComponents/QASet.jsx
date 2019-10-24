@@ -41,7 +41,10 @@ export default class QASet extends Component {
         <div>
           Helpful? Yes {"("} {this.props.question.question_helpfulness}
           {")"} |
-          <AddAnswer qbody={this.props.question.question_body} />
+          <AddAnswer
+            product={this.props.product}
+            qbody={this.props.question.question_body}
+          />
         </div>
         <div>
           A:{" "}
