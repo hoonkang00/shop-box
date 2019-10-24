@@ -3,7 +3,8 @@ import StyleBubbleArea from "../components/Product Details/StyleBubbleArea.jsx";
 
 export default connect(
   state => ({
-    styles: state.productStyles
+    styles: state.productStyles,
+    selectedStyleIndex: state.selectedStyleIndex
   }),
   null
 )(StyleBubbleArea);
