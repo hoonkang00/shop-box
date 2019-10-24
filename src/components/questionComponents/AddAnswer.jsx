@@ -7,8 +7,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
-export default function FormDialog({ qbody }) {
+export default function FormDialog({ qbody, product }) {
   const [open, setOpen] = React.useState(false);
   const [values, setValues] = React.useState({
     name: "",
@@ -36,7 +37,7 @@ export default function FormDialog({ qbody }) {
     setValues({ ...values, [name]: event.target.value });
     const target = event.target;
     // const name = target.name;
-    this.setState({ [name]: value });
+    // this.setState({ [name]: value });
   };
 
   const handleClickOpen = () => {
@@ -45,7 +46,7 @@ export default function FormDialog({ qbody }) {
 
   const handleClose = () => {
     setOpen(false);
-    axios.post("");
+    // axios.post("");
   };
 
   return (
@@ -61,7 +62,7 @@ export default function FormDialog({ qbody }) {
         <DialogTitle id="form-dialog-title">Submit your Answer</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Productname...get from store: {qbody}
+            {product}: {qbody}
           </DialogContentText>
           Answer
           <TextField
@@ -125,10 +126,157 @@ export default function FormDialog({ qbody }) {
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
-            Subscribe
+            Submit
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
+
+// import React, { Component } from "react";
+
+// export default class AddAnswer extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       answer: "",
+//       email: "",
+//       nickname: ""
+//     };
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleClickOpen = this.handleClickOpen.bind(this);
+//     this.handleClose = this.handleClose.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+//   handleChange = e => {
+//     const target = event.target;
+//     const name = target.name;
+
+//     this.setState({ [name]: value });
+//   };
+
+//   handleClickOpen = () => {
+//     setOpen(true);
+//   };
+
+//   handleClose = () => {
+//     setOpen(false);
+//     let answerObj = {};
+//   };
+
+//   handleSubmit = e => {
+//     e.preventDefault();
+
+//     console.log("value", this.state.answer);
+//     setOpen(false);
+//   };
+
+//   render() {
+//     const useStyles = makeStyles(theme => ({
+//       container: {
+//         display: "flex",
+//         flexWrap: "wrap"
+//       },
+//       textField: {
+//         marginLeft: theme.spacing(1),
+//         marginRight: theme.spacing(1)
+//       },
+//       dense: {
+//         marginTop: theme.spacing(2)
+//       },
+//       menu: {
+//         width: 200
+//       }
+//     }));
+//     const classes = useStyles();
+//     return (
+//       <div>
+//         <Button onClick={this.handleClickOpen} className={classes.button}>
+//           Add Answer
+//         </Button>
+//         <Dialog
+//           open={open}
+//           onClose={handleClose}
+//           aria-labelledby="form-dialog-title"
+//         >
+//           <DialogTitle id="form-dialog-title">Submit your Answer</DialogTitle>
+//           <DialogContent>
+//             <DialogContentText>
+//               {product}: {qbody}
+//             </DialogContentText>
+//             Answer
+//             <TextField
+//               // {...bindAnswer}
+//               required
+//               id="outlined-multiline-flexible"
+//               label="Input answer here"
+//               multiline
+//               rowsMax="4"
+//               maxLength="1000"
+//               value={this.state.answer}
+//               onChange={this.handleChange}
+//               className={classes.textField}
+//               margin="normal"
+//               variant="outlined"
+//               fullWidth
+//             />
+//             Nickname
+//             <TextField
+//               // {...bindNickname}
+//               onChange={this.handleChange}
+//               required
+//               autoFocus
+//               margin="dense"
+//               id="nickname"
+//               value={this.state.nickname}
+//               label="Example: jack543!"
+//               helperText="For privacy reasons, do not use your full name or email address"
+//               fullWidth
+//             />
+//             Email
+//             <TextField
+//               // {...bindEmail}
+//               onChange={this.handleChange}
+//               required
+//               autoFocus
+//               margin="dense"
+//               id="email"
+//               value={this.state.email}
+//               label="Example: jack@email.com"
+//               type="email"
+//               maxLength="60"
+//               helperText="For authentication reasons, you will not be emailed"
+//               fullWidth
+//             />
+//             Upload Photos:
+//             <input
+//               accept="image/*"
+//               className={classes.input}
+//               id="outlined-button-file"
+//               multiple
+//               type="file"
+//             />
+//             <label htmlFor="outlined-button-file">
+//               <Button
+//                 variant="outlined"
+//                 component="span"
+//                 className={classes.button}
+//               >
+//                 Upload
+//               </Button>
+//             </label>
+//           </DialogContent>
+//           <DialogActions>
+//             <Button onClick={this.handleClose} color="primary">
+//               Cancel
+//             </Button>
+//             <Button onClick={this.handleSubmit} color="primary">
+//               Submit
+//             </Button>
+//           </DialogActions>
+//         </Dialog>
+//       </div>
+//     );
+//   }
+// }
