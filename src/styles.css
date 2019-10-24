@@ -32,6 +32,16 @@
 .rows:first-child {
   max-height: 500px;
 }
+.star-rating {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+}
+.average-rating {
+  font-size: 55px;
+  margin: 10px;
+}
 .ratings {
   align-items: center;
   justify-content: center;
@@ -49,6 +59,9 @@ span.MuiSlider-thumb {
 }
 span.MuiRating-root {
   color: #2c2c2c;
+}
+.MuiRating-sizeSmall {
+  font-size: 18px;
 }
 span.MuiSlider-root {
   width: 150px;

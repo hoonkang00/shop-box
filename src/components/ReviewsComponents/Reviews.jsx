@@ -25,7 +25,8 @@ export default class Reviews extends Component {
   render() {
     return (
       <div className="Ratings-Reviews">
-        <Grid container spacing={4} className="hello testing">
+        <h5>{"RATINGS & REVIEWS"}</h5>
+        <Grid container spacing={6} className="hello testing">
           <Grid item>
             <Ratings />
           </Grid>
