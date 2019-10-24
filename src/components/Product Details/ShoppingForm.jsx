@@ -31,29 +31,29 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function QuantitySelector() {
+export default function QuantitySelector({ style }) {
+  console.log("inside form", style);
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    quantity: 1,
-    size: ""
-  });
+  const [quantity, setQuantity] = React.useState(1);
+  const [size, setSize] = React.useState("");
 
   const handleChange = event => {
-    setValues(oldValues => ({
-      ...oldValues,
-      [event.target.name]: event.target.value
-    }));
+    if (event.target.name === "size") {
+      setSize(event.target.value);
+    } else if (event.target.name === "quantity") {
+      setQuantity(event.target.value);
+    }
   };
 
   return (
     <div className="selects-container">
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="size-simple" className={classes.labelInput}>
-          {values.size === "" ? "SELECT SIZE" : "SIZE"}
+          {size === "" ? "SELECT SIZE" : "SIZE"}
         </InputLabel>
         <Select
           disableUnderline={true}
-          value={values.size}
+          value={size}
           onChange={handleChange}
           name="size"
           inputProps={{
@@ -74,11 +74,11 @@ export default function QuantitySelector() {
           className={classes.labelInput}
           id={"qty-label"}
         >
-          {values.quantity === "" ? "OUT OF STOCK" : "QUANTITY"}
+          {quantity === "" ? "OUT OF STOCK" : "QUANTITY"}
         </InputLabel>
         <Select
           disableUnderline={true}
-          value={values.quantity}
+          value={quantity}
           onChange={handleChange}
           name="quantity"
           inputProps={{

@@ -7,7 +7,8 @@ import getReviewMetaData from "../actions/getReviewMetaData.js";
 export default connect(
   state => ({
     product: state.productInfo,
-    styles: state.productStyles
+    styles: state.productStyles,
+    selectedStyleIndex: state.selectedStyleIndex
   }),
   dispatch => ({
     handleLoadProduct: id => dispatch(getProductInfo(id)),
