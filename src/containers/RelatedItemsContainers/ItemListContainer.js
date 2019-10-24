@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import store from "../../store/store.js";
 import ItemList from "../../components/RelatedItemsComponents/ItemList.jsx";
 
 const mapStateToProps = (store, oldProps) => {
