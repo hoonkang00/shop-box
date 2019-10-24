@@ -30,8 +30,6 @@ export default class QASet extends Component {
 
   render() {
     let moreAnswersBtn;
-    console.log("counter", this.state.counter);
-    console.log("length", this.state.answers.length);
     if (this.state.counter >= this.state.answers.length) {
       moreAnswersBtn = null;
     } else {
