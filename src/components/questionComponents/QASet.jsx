@@ -12,6 +12,7 @@ export default class QASet extends Component {
       counter: 2
     };
     this.getAnswers = this.getAnswers.bind(this);
+    this.showMoreAnswers = this.showMoreAnswers.bind(this);
   }
   componentDidMount() {
     this.getAnswers(this.props.question.question_id);
@@ -22,6 +23,9 @@ export default class QASet extends Component {
       .then(({ data }) => {
         this.setState({ answers: data.results });
       });
+  }
+  showMoreAnswers() {
+    this.setState({ counter: this.state.counter + 2 });
   }
 
   render() {
@@ -47,7 +51,7 @@ export default class QASet extends Component {
             return <Answers key={answer.answer_id} answer={answer} />;
           })}
           {this.state.counter >= this.state.answers.length ? null : (
-            <MoreAnswers />
+            <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
           )}
         </div>
       </div>

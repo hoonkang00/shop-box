@@ -16,7 +16,12 @@ export default function OutlinedButtons({ showMoreAnswers }) {
 
   return (
     <div>
-      <Button className={classes.button} onClick={showMoreAnswers}>
+      <Button
+        className={classes.button}
+        onClick={() => {
+          showMoreAnswers();
+        }}
+      >
         Load more answers
       </Button>
     </div>
