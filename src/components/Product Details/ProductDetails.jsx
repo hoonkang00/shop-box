@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ShoppingForm from "./ShoppingForm.jsx";
+import ProductHeader from "./ProductHeader.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";
 import "../../styles.css";
 
@@ -22,8 +23,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ProductDetailsNested = ({ imgUrl }) => {
+const ProductDetailsNested = ({ style }) => {
   const classes = useStyles();
+  const imgUrl = style ? style.photos[0].url : "";
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
@@ -32,28 +34,12 @@ const ProductDetailsNested = ({ imgUrl }) => {
         </Grid>
         <Grid item xs={4} className={classes.defaultRight}>
           <div className="stars-mockup">stars and reviews link</div>
-          <p className="mockup">CATEGORY</p>
-          <h2>Expanded Product Name</h2>
-          <p className="mockup">$369</p>
-          <p className="mockup">
-            <b>STYLE ></b> SELECTED STYLE
-          </p>
+          <ProductHeader />
           <StyleBubbleAreaContainer />
-          <ShoppingForm />
+          <ShoppingForm style={style} />
         </Grid>
       </Grid>
     </div>
-  );
-};
-
-const defaultStyle = styles => {
-  if (styles === undefined || styles.length === 0) {
-    return null;
-  }
-
-  return styles.reduce(
-    (memo, item) => (item["default?"] === 1 ? item : memo),
-    styles[0]
   );
 };
 
@@ -70,12 +56,12 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    let style = defaultStyle(this.props.styles);
-    let imgUrl = style ? style.photos[0].url : "";
+    let style = this.props.styles
+      ? this.props.styles[this.props.selectedStyleIndex]
+      : null;
     return (
       <div className="product-details">
-        <ProductDetailsNested imgUrl={imgUrl} />
+        <ProductDetailsNested style={style} />
       </div>
     );
   }

@@ -4,6 +4,9 @@ import getRelatedItems from "../../lib/relatedItemsHelpers/relatedItemsApiCall.j
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import ItemsCarousel from "react-items-carousel";
+import Typography from "@material-ui/core/Typography";
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 export default function ItemList(props) {
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -20,26 +23,27 @@ export default function ItemList(props) {
 
   return (
     <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
+      <Typography>Related Items</Typography>
       <ItemsCarousel
         infiniteLoop={false}
-        gutter={12}
+        gutter={30}
         activePosition={"center"}
-        chevronWidth={60}
+        chevronWidth={70}
         disableSwipe={false}
         alwaysShowChevrons={false}
         numberOfCards={2}
         slidesToScroll={2}
         outsideChevron={true}
-        showSlither={false}
-        firstAndLastGutter={false}
+        showSlither={true}
+        firstAndLastGutter={true}
         activeItemIndex={activeItemIndex}
         requestToChangeActive={(value)=>{setActiveItemIndex(value)}}
-        rightChevron={">"}
-        leftChevron={"<"}
+        rightChevron={<NavigateNextIcon/>}
+        leftChevron={<NavigateBeforeIcon/>}
       >
         {relatedProducts.map((item)=>{
           return (
-            <ItemCard setStoreProductInfo={props.setStoreProductInfo} relatedProduct={item} currentProduct={props.productInfo}/>
+            <ItemCard key={item.id} setStoreProductInfo={props.setStoreProductInfo} relatedProduct={item} currentProduct={props.productInfo}/>
         
           )} 
         )}
