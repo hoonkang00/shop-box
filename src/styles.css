@@ -13,9 +13,7 @@
 }
 .hello {
   width: 100%;
-  flex-direction: row;
   justify-content: center;
-  align-items: stretch;
 }
 
 .Review-Rows {
@@ -34,9 +32,47 @@
 .rows:first-child {
   max-height: 500px;
 }
-
+.ratings {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.list-of-ratings {
+  width: 400px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+span.MuiSlider-thumb {
+  height: 0;
+  width: 0;
+}
 span.MuiRating-root {
   color: #2c2c2c;
+}
+span.MuiSlider-root {
+  width: 150px;
+}
+span.MuiSlider-rail {
+  height: 5px;
+  color: #545454;
+  flex-direction: row;
+}
+.ratings-val-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.ratingsValue {
+  margin: 8px;
+  font-size: 15px;
+  align-items: center;
+  text-decoration: underline;
+}
+span.MuiSlider-track {
+  height: 5px;
+  color: #545454;
+  flex-direction: column;
 }
 /* .app-container {
   display: grid;
@@ -149,21 +185,16 @@ p.mockup {
   padding-left: 2px !important;
 }
 
-
 .item-card-box {
   border: solid 1px;
   position: relative;
 }
 
-.PopOut{
+.PopOut {
   position: absolute;
   top: 0px;
   right: 0%;
 }
-
-
-
-
 
 .style-bubble-area {
   min-width: 370px;
