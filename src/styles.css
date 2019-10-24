@@ -146,6 +146,11 @@ p.mockup {
   padding-left: 2px !important;
 }
 
+
+.item-card {
+  margin-left: 15 px;
+}
+  
 .style-bubble-area {
   min-width: 370px;
   display: flex;
