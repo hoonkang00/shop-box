@@ -150,10 +150,21 @@ p.mockup {
 }
 
 
-.item-card {
-  margin-left: 15 px;
+.item-card-box {
+  border: solid 1px;
+  position: relative;
 }
-  
+
+.PopOut{
+  position: absolute;
+  top: 0px;
+  right: 0%;
+}
+
+
+
+
+
 .style-bubble-area {
   min-width: 370px;
   display: flex;

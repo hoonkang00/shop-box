@@ -5,19 +5,16 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import CardActionArea from '@material-ui/core/CardActionArea';
-import { spacing } from '@material-ui/system';
+import CardActionArea from "@material-ui/core/CardActionArea";
+import PopOut from "./PopOut.jsx"
+import { position } from "@material-ui/system";
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 65,
-    raised:true
+    raised: true
   },
   media: {
     height: 100,
@@ -51,28 +48,38 @@ export default function ItemCard(props) {
   let style = defaultStyle(props.relatedProduct.results);
 
   return (
-    <Card className="item-card">
-      <CardActionArea onClick={() => {
-        console.log(props)
-          props.setStoreProductInfo(props.relatedProduct.id)
-        }}>
-      <CardMedia
-        className={classes.media}
-        image={
-          style.photos[0].thumbnail_url ||
-          "https://webhostingmedia.net/wp-content/uploads/2018/01/http-error-404-not-found.png"
-        }
-        title={style.name}
-       
-      />
-      <CardContent>
-        <h4>{props.relatedProduct.category}</h4>
-        <h3>{props.relatedProduct.name}</h3>
-        <h4>${props.relatedProduct.default_price}</h4>
-      </CardContent>
-      </CardActionArea>
-  
+    // <Box  >
+    <Card className={"item-card-box"}>   
+      <CardActionArea
+        onClick={() => {
+          props.setStoreProductInfo(props.relatedProduct.id);
+        }}
+      >
+     
+        <CardMedia
+          className={classes.media}
+          image={
+            style.photos[0].thumbnail_url ||
+            "https://webhostingmedia.net/wp-content/uploads/2018/01/http-error-404-not-found.png"
+          }
+          title={style.name}
+        />
+        
+
+        <CardContent>
+
+ 
+     
+          <Typography> {props.relatedProduct.category}</Typography>
+          <Typography> {props.relatedProduct.name}</Typography>
+          <Typography> ${props.relatedProduct.default_price}</Typography>
+        </CardContent>
+      </CardActionArea>  
+     
+      <PopOut relatedProduct={props.relatedProduct} currentProduct={props.currentProduct}/>
     </Card>
+   
+    // </Box>
   );
 }
 
