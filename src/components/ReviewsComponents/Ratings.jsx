@@ -5,35 +5,41 @@ import RatingsBreakdown from "./RatingsBreakdown.jsx";
 
 export default function Reviews({ rating }) {
   const [average, setRatings] = useState(0);
+  const [recommend, setRecommend] = useState(0);
 
   useEffect(() => {
     let ratingsValue = rating.ratings;
     let totalRatingsValue = 0;
     let totalRatings = 0;
 
-    for (var p in ratingsValue) {
+    for (let p in ratingsValue) {
       totalRatingsValue += Number(p * ratingsValue[p]);
       totalRatings += Number(ratingsValue[p]);
     }
     let averageRating = totalRatingsValue / totalRatings || 0;
     setRatings(averageRating.toFixed(1));
 
-    if (rating.recommended[1] !== undefined) {
-      let recommneded = rating.recommended;
-      let totalRecommendedValue = 0;
+    if (rating.recommended !== undefined) {
+      if (rating.recommended[1] !== undefined) {
+        let recommended = rating.recommended;
+        let totalRecommendedValue = 0;
+
+        for (let recommendedValue in recommended) {
+          totalRecommendedValue += Number(recommended[recommendedValue]);
+        }
+        let averageRecommneded = (recommended[1] / totalRecommendedValue) * 100;
+        setRecommend(averageRecommneded.toFixed(0));
+      }
     }
   }, [rating]);
 
-  const [recommend, setRecommend] = useState(0);
-
-  console.log(rating);
   return (
     <div>
       <Grid container spacing={4} className={"ratings"}>
         <Grid item>
           <Stars average={average} />
         </Grid>
-        <span>{`100% of reviews recommend this product`}</span>
+        <h5>{`${recommend}% of reviews recommend this product`}</h5>
         <Grid item>
           <RatingsBreakdown ratings={rating} />
         </Grid>
