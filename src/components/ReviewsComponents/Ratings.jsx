@@ -16,8 +16,6 @@ export default class Reviews extends Component {
         <Grid container spacing={4}>
           <Grid item>
             <Stars />
-          </Grid>
-          <Grid item>
             <RatingsBreakdown />
           </Grid>
         </Grid>
