@@ -36,7 +36,13 @@ export default function QuestionAnswer(props) {
         QUESTIONS & ANSWERS
         <SearchQuestions />
         {questions.slice(0, counter).map(question => {
-          return <QASet key={question.question_id} question={question} />;
+          return (
+            <QASet
+              key={question.question_id}
+              question={question}
+              product={props.productInfo}
+            />
+          );
         })}
         <MoreQuestions
           showCollapse={counter >= questions.length}
