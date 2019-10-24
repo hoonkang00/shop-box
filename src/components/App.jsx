@@ -14,13 +14,13 @@ const App = props => {
         <Grid item xs={12}>
           <ProductDetailsContainer />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={11}>
           <RelatedItems />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={11}>
           <QAContainer />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={11}>
           <ReviewsContainer />
         </Grid>
       </Grid>
