@@ -162,6 +162,7 @@ class AddAnswer extends Component {
       answer: "",
       email: "",
       nickname: "",
+      photos: [],
       open: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -188,9 +189,21 @@ class AddAnswer extends Component {
     let answerObj = {
       body: this.state.answer,
       name: this.state.nickname,
-      email: this.state.email
+      email: this.state.email,
+      photos: this.state.photos
     };
-    //make axios post here
+    axios
+      .post(`http://18.223.1.30/qa/${this.props.questionId}/answers`, answerObj)
+      .then(
+        //get all answers again
+        () => {
+          this.props.getAnswers();
+        }
+      )
+      .catch(err => {
+        console.log(err);
+      });
+
     this.setState({ open: false });
   }
 
