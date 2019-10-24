@@ -1,23 +1,23 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Input from "@material-ui/core/Input";
-import VolumeUp from "@material-ui/icons/VolumeUp";
+import { height } from "@material-ui/system";
 
 const useStyles = makeStyles({
   root: {
-    width: 250
+    width: 100,
+    height: 200
   },
   input: {
     width: 42
   }
 });
 
-export default function InputSlider() {
+export default function InputSlider(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(30);
+  const [value, setValue] = React.useState(0);
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
@@ -35,33 +35,43 @@ export default function InputSlider() {
     }
   };
 
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item></Grid>
+  const ratingSliderValues = value => {
+    let ratings = props.ratings.ratings;
+    if (ratings !== undefined && ratings[value]) {
+      let ratingValue = Number(ratings[value]) || 0;
+      let totalRatings = 0;
+
+      for (let ratingNum in ratings) {
+        totalRatings += Number(ratings[ratingNum]);
+      }
+      let averageRating = (ratingValue / totalRatings) * 100 || 0;
+      return averageRating.toFixed(0);
+    }
+    return 0;
+  };
+
+  const GetBars = () => {
+    const sliders = [];
+    for (let slider = 5; slider >= 1; slider--) {
+      let value = ratingSliderValues(slider);
+      sliders.push(
         <Grid item xs>
+          {`${slider} stars`}
           <Slider
-            value={typeof value === "number" ? value : 0}
+            value={value}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
           />
         </Grid>
-        <Grid item>
-          <Input
-            className={classes.input}
-            value={value}
-            margin="dense"
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            inputProps={{
-              step: 10,
-              min: 0,
-              max: 100,
-              type: "number",
-              "aria-labelledby": "input-slider"
-            }}
-          />
-        </Grid>
+      );
+    }
+    return sliders;
+  };
+
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={2} alignItems="center">
+        <GetBars />
       </Grid>
     </div>
   );

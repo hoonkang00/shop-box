@@ -34,9 +34,25 @@
 .rows:first-child {
   max-height: 500px;
 }
-
+span.MuiSlider-thumb {
+  height: 0;
+  width: 0;
+}
 span.MuiRating-root {
   color: #2c2c2c;
+}
+.ratings {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+span.MuiSlider-rail {
+  height: 5px;
+  color: #545454;
+}
+span.MuiSlider-track {
+  height: 5px;
+  color: #545454;
 }
 /* .app-container {
   display: grid;
@@ -149,21 +165,16 @@ p.mockup {
   padding-left: 2px !important;
 }
 
-
 .item-card-box {
   border: solid 1px;
   position: relative;
 }
 
-.PopOut{
+.PopOut {
   position: absolute;
   top: 0px;
   right: 0%;
 }
-
-
-
-
 
 .style-bubble-area {
   min-width: 370px;

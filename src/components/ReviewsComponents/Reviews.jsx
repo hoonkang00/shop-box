@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReviewList from "./ReviewList.jsx";
 import AddReview from "./ReviewButtons.jsx";
 import Grid from "@material-ui/core/Grid";
-import Ratings from "../../components/ReviewsComponents/Ratings.jsx";
+import Ratings from "../../containers/RatingsReviewsContainers/StarsContainer.js";
 
 export default class Reviews extends Component {
   constructor(props) {
