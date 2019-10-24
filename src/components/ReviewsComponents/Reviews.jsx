@@ -14,23 +14,23 @@ export default class Reviews extends Component {
   }
 
   componentDidMount() {
-    let p = this.getData();
+    this.getData();
   }
 
   getData() {
-    this.props.listOfReviews();
+    this.props.listOfReviews([1, "REVIEWS"]);
   }
 
   render() {
     return (
-      <div className="reviews">
+      <div className="Ratings-Reviews">
         <Grid container spacing={4} className="hello testing">
           <Grid item>
             <div>Hello</div>
           </Grid>
-          <Grid item>
+          <Grid item className="Reviews">
             <ReviewList props={this.props.reviews.results} />
-            <AddReview />
+            <AddReview handleClick={this.props} />
           </Grid>
         </Grid>
       </div>
