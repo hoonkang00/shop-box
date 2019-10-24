@@ -42,13 +42,11 @@ export default function FormDialog({ qbody }) {
 
   const handleClose = () => {
     setOpen(false);
+    axios.post('')
   };
 
   return (
     <div>
-      {/* <a href="#" onClick={handleClickOpen}>
-        Add Answer
-      </a> */}
       <Button onClick={handleClickOpen} className={classes.button}>
         Add Answer
       </Button>
