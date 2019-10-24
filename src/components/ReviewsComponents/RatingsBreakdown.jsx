@@ -5,18 +5,7 @@ import Slider from "@material-ui/core/Slider";
 import Input from "@material-ui/core/Input";
 import { height } from "@material-ui/system";
 
-const useStyles = makeStyles({
-  root: {
-    width: 100,
-    height: 200
-  },
-  input: {
-    width: 42
-  }
-});
-
 export default function InputSlider(props) {
-  const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleSliderChange = (event, newValue) => {
@@ -55,22 +44,29 @@ export default function InputSlider(props) {
     for (let slider = 5; slider >= 1; slider--) {
       let value = ratingSliderValues(slider);
       sliders.push(
-        <Grid item xs>
-          {`${slider} stars`}
-          <Slider
-            value={value}
-            onChange={handleSliderChange}
-            aria-labelledby="input-slider"
-          />
-        </Grid>
+        <div className="ratings-val-bar">
+          <div className="ratingsValue">{`${slider} stars`}</div>
+          <Grid item xs className="ratingsBar">
+            <Slider
+              value={value}
+              onChange={handleSliderChange}
+              aria-labelledby="input-slider"
+            />
+          </Grid>
+        </div>
       );
     }
     return sliders;
   };
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={2} alignItems="center">
+    <div>
+      <Grid
+        container
+        spacing={2}
+        alignItems="center"
+        className="list-of-ratings"
+      >
         <GetBars />
       </Grid>
     </div>

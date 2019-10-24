@@ -4,7 +4,7 @@ import Stars from "./Stars.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
 
 export default function Reviews({ rating }) {
-  let [average, setRatings] = useState(0);
+  const [average, setRatings] = useState(0);
 
   useEffect(() => {
     let ratingsValue = rating.ratings;
@@ -17,14 +17,23 @@ export default function Reviews({ rating }) {
     }
     let averageRating = totalRatingsValue / totalRatings || 0;
     setRatings(averageRating.toFixed(1));
+
+    if (rating.recommended[1] !== undefined) {
+      let recommneded = rating.recommended;
+      let totalRecommendedValue = 0;
+    }
   }, [rating]);
 
+  const [recommend, setRecommend] = useState(0);
+
+  console.log(rating);
   return (
     <div>
       <Grid container spacing={4} className={"ratings"}>
         <Grid item>
           <Stars average={average} />
         </Grid>
+        <span>{`100% of reviews recommend this product`}</span>
         <Grid item>
           <RatingsBreakdown ratings={rating} />
         </Grid>
