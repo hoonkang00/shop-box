@@ -11,7 +11,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function OutlinedButtons({ showCollapse, showMoreQuestions }) {
+export default function OutlinedButtons({
+  showCollapse,
+  showMoreQuestions,
+  collapseQuestions
+}) {
   const classes = useStyles();
 
   return (
@@ -19,9 +23,15 @@ export default function OutlinedButtons({ showCollapse, showMoreQuestions }) {
       <Button
         variant="outlined"
         className={classes.button}
-        onClick={() => {
-          showMoreQuestions();
-        }}
+        onClick={
+          showCollapse
+            ? () => {
+                collapseQuestions();
+              }
+            : () => {
+                showMoreQuestions();
+              }
+        }
       >
         {showCollapse ? "Collapse Questions" : "More Answered Questions"}
       </Button>

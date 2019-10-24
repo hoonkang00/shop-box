@@ -5,7 +5,7 @@
   width: 100%;
 }
 .MuiGrid-grid-xs-11 {
-  width: 70%;
+  width: 80%;
 }
 .Reviews {
   flex-direction: column;
@@ -149,6 +149,11 @@ p.mockup {
   padding-left: 2px !important;
 }
 
+
+.item-card {
+  margin-left: 15 px;
+}
+  
 .style-bubble-area {
   min-width: 370px;
   display: flex;
@@ -157,7 +162,7 @@ p.mockup {
   margin-bottom: 5px;
 }
 
-.selected-bubble {
+.selected-bubble-hack {
   height: 0;
 }
 
