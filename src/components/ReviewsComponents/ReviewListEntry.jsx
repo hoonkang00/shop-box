@@ -8,7 +8,7 @@ import { ListSubheader } from "@material-ui/core";
 const ReviewListEntry = ({ review }) => {
   console.log(review);
   return (
-    <div>
+    <div className="rowEntry">
       <Grid container>
         <Grid item>{review.date.substr(0, 10)}</Grid>
         <ListItem button>
