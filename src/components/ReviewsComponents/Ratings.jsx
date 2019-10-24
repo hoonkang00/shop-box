@@ -21,9 +21,11 @@ export default function Reviews({ rating }) {
 
   return (
     <div>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} className={"ratings"}>
         <Grid item>
           <Stars average={average} />
+        </Grid>
+        <Grid item>
           <RatingsBreakdown ratings={rating} />
         </Grid>
       </Grid>

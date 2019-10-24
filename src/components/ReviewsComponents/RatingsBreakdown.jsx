@@ -52,7 +52,7 @@ export default function InputSlider(props) {
 
   const GetBars = () => {
     const sliders = [];
-    for (let slider = 1; slider <= 5; slider++) {
+    for (let slider = 5; slider >= 1; slider--) {
       let value = ratingSliderValues(slider);
       sliders.push(
         <Grid item xs>
@@ -62,7 +62,6 @@ export default function InputSlider(props) {
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
           />
-          <span>{value}</span>
         </Grid>
       );
     }

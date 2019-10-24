@@ -41,17 +41,17 @@ span.MuiSlider-thumb {
 span.MuiRating-root {
   color: #2c2c2c;
 }
-span.MuiSlider-rail {
+.ratings {
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 span.MuiSlider-rail {
-  height: 8px;
+  height: 5px;
   color: #545454;
 }
 span.MuiSlider-track {
-  height: 8px;
+  height: 5px;
   color: #545454;
 }
 /* .app-container {
