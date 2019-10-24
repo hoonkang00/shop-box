@@ -3,34 +3,11 @@ import ItemCard from "./ItemCard.jsx";
 import getRelatedItems from "../../lib/relatedItemsHelpers/relatedItemsApiCall.js";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
-
-
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper
-  },
-  gridList: {
-    flexWrap: "nowrap",
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(0)"
-  },
-  title: {
-    color: theme.palette.primary.light
-  },
-  titleBar: {
-    background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
-  }
-}));
+import ItemsCarousel from "react-items-carousel";
 
 export default function ItemList(props) {
-  const classes = useStyles();
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [activeItemIndex, setActiveItemIndex] = useState(0)
   let getData = async id => {
     let data;
     data = await getRelatedItems(id);
@@ -42,30 +19,31 @@ export default function ItemList(props) {
   }, [props.productInfo.id]);
 
   return (
-    <div>
-      <GridList className={classes.gridList} cols={2.5}>
-        {relatedProducts.map(item => {
-        return (
-          <ItemCard
-            key={item.id}
-            relatedProduct={item}
-            currentProduct={props.productInfo}
-          />
-        )})}
-      </GridList>
+    <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
+      <ItemsCarousel
+        infiniteLoop={false}
+        gutter={12}
+        activePosition={"center"}
+        chevronWidth={60}
+        disableSwipe={false}
+        alwaysShowChevrons={false}
+        numberOfCards={2}
+        slidesToScroll={2}
+        outsideChevron={true}
+        showSlither={false}
+        firstAndLastGutter={false}
+        activeItemIndex={activeItemIndex}
+        requestToChangeActive={(value)=>{setActiveItemIndex(value)}}
+        rightChevron={">"}
+        leftChevron={"<"}
+      >
+        {relatedProducts.map((item)=>{
+          return (
+            <ItemCard setStoreProductInfo={props.setStoreProductInfo} relatedProduct={item} currentProduct={props.productInfo}/>
+        
+          )} 
+        )}
+      </ItemsCarousel>
     </div>
   );
 }
-
-
-
-
-// {relatedProducts.map(item => {
-//     return (
-//       <ItemCard
-//         key={item.id}
-//         relatedProduct={item}
-//         currentProduct={props.productInfo}
-//       />
-//     );
-//   })}

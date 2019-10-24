@@ -12,7 +12,6 @@ export default function FormDialog({ qbody }) {
   const [open, setOpen] = React.useState(false);
   const [values, setValues] = React.useState({
     name: "",
-
     multiline: ""
   });
 
@@ -35,6 +34,9 @@ export default function FormDialog({ qbody }) {
   const classes = useStyles();
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
+    const target = event.target;
+    // const name = target.name;
+    this.setState({ [name]: value });
   };
 
   const handleClickOpen = () => {
@@ -43,16 +45,14 @@ export default function FormDialog({ qbody }) {
 
   const handleClose = () => {
     setOpen(false);
+    axios.post("");
   };
 
   return (
     <div>
-      <a href="#" onClick={handleClickOpen}>
+      <Button onClick={handleClickOpen} className={classes.button}>
         Add Answer
-      </a>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
-      </Button> */}
+      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -80,6 +80,7 @@ export default function FormDialog({ qbody }) {
           />
           Nickname
           <TextField
+            onChange={handleChange("nickname")}
             required
             autoFocus
             margin="dense"
@@ -90,6 +91,7 @@ export default function FormDialog({ qbody }) {
           />
           Email
           <TextField
+            onChange={handleChange("email")}
             required
             autoFocus
             margin="dense"
