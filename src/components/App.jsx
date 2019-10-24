@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductDetailsContainer from "../containers/ProductDetailsContainer.js";
-import RelatedItemsContainer from "../containers/RelatedContainer.js";
+import RelatedItems from "./RelatedItemsComponents/RelatedItems.jsx";
 import ReviewsContainer from "../containers/ReviewsContainer.js";
 import QAContainer from "../containers/QAContainer.js";
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,11 +11,11 @@ const App = props => {
   return (
     <div className="components">
       <Grid container spacing={4}>
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <ProductDetailsContainer />
         </Grid>
         <Grid item xs={8}>
-          <RelatedItemsContainer />
+          <RelatedItems />
         </Grid>
         <Grid item xs={8}>
           <QAContainer />

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Answers from "./Answers.jsx";
+import AddAnswer from "./AddAnswer.jsx";
 
 export default class QASet extends Component {
   constructor(props) {
@@ -24,13 +25,18 @@ export default class QASet extends Component {
   render() {
     return (
       <div>
-        <li>Q: {this.props.question.question_body}</li>
-        <li>
+        <div>Q: {this.props.question.question_body}</div>
+        <div>
+          Helpful? Yes {"("} {this.props.question.question_helpfulness}
+          {")"} |
+          <AddAnswer qbody={this.props.question.question_body} />
+        </div>
+        <div>
           A:{" "}
           {this.state.answers.map(answer => {
             return <Answers key={answer.answer_id} answer={answer} />;
           })}
-        </li>
+        </div>
       </div>
     );
   }

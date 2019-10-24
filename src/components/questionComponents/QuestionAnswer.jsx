@@ -1,6 +1,8 @@
 // import React from "react";
 import SearchQuestions from "./SearchQuestions.jsx";
 import QASet from "./QASet.jsx";
+import MoreQuestions from "./MoreQuestions.jsx";
+import AddQuestion from "./AddQuestion.jsx";
 
 // export default function QuestionAnswer() {
 //   return (
@@ -21,13 +23,17 @@ export default class QuestionAnswer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      counter: 2
     };
     this.getQuestions = this.getQuestions.bind(this);
+    this.showMoreQuestions = this.showMoreQuestions.bind(this);
   }
   componentDidMount() {
+    //need to update product id from store
     this.getQuestions(1);
-    // console.log(props.setStoreProductInfo);
+    //need to sort questions
+    // console.log(this.props.getQuestions);
   }
 
   getQuestions(id) {
@@ -42,16 +48,23 @@ export default class QuestionAnswer extends Component {
         console.log(err);
       });
   }
+  showMoreQuestions() {
+    this.setState({ counter: this.state.counter + 2 });
+  }
   render() {
     return (
       <div>
         <div className="q-and-a">
           QUESTIONS & ANSWERS
           <SearchQuestions />
-          {this.state.questions.map(question => {
-            return <QASet question={question} />;
+          {this.state.questions.slice(0, this.state.counter).map(question => {
+            return <QASet key={question.question_id} question={question} />;
           })}
-          more question button add question button
+          <MoreQuestions
+            showCollapse={this.state.counter >= this.state.questions.length}
+            showMoreQuestions={this.showMoreQuestions}
+          />
+          <AddQuestion />
         </div>
       </div>
     );

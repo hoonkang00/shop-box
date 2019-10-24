@@ -91,6 +91,54 @@
   grid-column-end: end-main;
 }
 
+p {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 15px 0;
+  font-size: 30px;
+}
+
 .main-img {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.stars-mockup {
+  padding: 15px 0;
+}
+
+p.mockup {
+  padding: 10px 0;
+}
+
+.style-bubbles {
+  height: 180px;
+  width: 430px;
+}
+
+.selects-container {
+  display: flex;
+  flex-direction: row;
+  min-width: min-content;
+}
+
+.MuiSelect-select:focus {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.MuiInputLabel-shrink {
+  transform: translate(-10px, -8px) scale(0.75) !important;
+}
+
+.MuiInputLabel-formControl {
+  left: 10px !important;
+}
+
+#qty-label {
+  padding-left: 2px !important;
 }
