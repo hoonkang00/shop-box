@@ -40,7 +40,7 @@ export default function QuestionAnswer(props) {
             <QASet
               key={question.question_id}
               question={question}
-              product={props.productInfo.name}
+              product={props.productInfo}
             />
           );
         })}
