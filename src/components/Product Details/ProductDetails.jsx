@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ShoppingForm from "./ShoppingForm.jsx";
+import ProductHeader from "./ProductHeader.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";
 import "../../styles.css";
 
@@ -33,12 +34,7 @@ const ProductDetailsNested = ({ style }) => {
         </Grid>
         <Grid item xs={4} className={classes.defaultRight}>
           <div className="stars-mockup">stars and reviews link</div>
-          <p className="mockup">CATEGORY</p>
-          <h2>Expanded Product Name</h2>
-          <p className="mockup">$369</p>
-          <p className="mockup">
-            <b>STYLE ></b> SELECTED STYLE
-          </p>
+          <ProductHeader />
           <StyleBubbleAreaContainer />
           <ShoppingForm style={style} />
         </Grid>
