@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import store from "../../store/store.js";
 import ItemList from "../../components/RelatedItemsComponents/ItemList.jsx";
 import getProductInfo from "../../actions/getProductInfo.js";
 import getReviewMetaData from "../../actions/getReviewMetaData.js";

@@ -150,4 +150,37 @@ p.mockup {
 .item-card {
   margin-left: 15 px;
   
+.style-bubble-area {
+  min-width: 370px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.selected-bubble-hack {
+  height: 0;
+}
+
+.style-bubble {
+  height: 61px;
+  width: 61px;
+  border-radius: 50%;
+  background-size: 100% auto;
+  background-position: 50% 50%;
+  background-color: rgb(230, 230, 230);
+  border: 1px solid rgb(119, 119, 119);
+  margin: 12px;
+}
+
+.check-circle {
+  position: relative;
+  top: -72px;
+  left: 58px;
+  padding: 2px;
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid rgb(119, 119, 119);
 }
