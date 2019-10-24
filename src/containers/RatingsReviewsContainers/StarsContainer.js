@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import Stars from "../../components/ReviewsComponents/Stars.jsx";
+import Ratings from "../../components/ReviewsComponents/Ratings.jsx";
 
 const mapStateToProps = store => ({ rating: store.reviewMetaData });
 
-const StarsContainer = connect(mapStateToProps)(Stars);
+const RatingsContainer = connect(mapStateToProps)(Ratings);
 
-export default StarsContainer;
+export default RatingsContainer;

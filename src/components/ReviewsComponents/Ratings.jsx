@@ -1,25 +1,32 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import Stars from "../../containers/RatingsReviewsContainers/StarsContainer.js";
+import Stars from "./Stars.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
 
-export default class Reviews extends Component {
-  constructor(props) {
-    super(props);
+export default function Reviews({ rating }) {
+  let [average, setRatings] = useState(0);
 
-    this.state = {};
-  }
+  useEffect(() => {
+    let ratingsValue = rating.ratings;
+    let totalRatingsValue = 0;
+    let totalRatings = 0;
 
-  render() {
-    return (
-      <div>
-        <Grid container spacing={4}>
-          <Grid item>
-            <Stars />
-            <RatingsBreakdown />
-          </Grid>
+    for (var p in ratingsValue) {
+      totalRatingsValue += Number(p * ratingsValue[p]);
+      totalRatings += Number(ratingsValue[p]);
+    }
+    let averageRating = totalRatingsValue / totalRatings || 0;
+    setRatings(averageRating.toFixed(1));
+  }, [rating]);
+
+  return (
+    <div>
+      <Grid container spacing={4}>
+        <Grid item>
+          <Stars average={average} />
+          <RatingsBreakdown ratings={rating} />
         </Grid>
-      </div>
-    );
-  }
+      </Grid>
+    </div>
+  );
 }

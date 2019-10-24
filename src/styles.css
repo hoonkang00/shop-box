@@ -34,9 +34,25 @@
 .rows:first-child {
   max-height: 500px;
 }
-
+span.MuiSlider-thumb {
+  height: 0;
+  width: 0;
+}
 span.MuiRating-root {
   color: #2c2c2c;
+}
+span.MuiSlider-rail {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+span.MuiSlider-rail {
+  height: 8px;
+  color: #545454;
+}
+span.MuiSlider-track {
+  height: 8px;
+  color: #545454;
 }
 /* .app-container {
   display: grid;
@@ -149,11 +165,10 @@ p.mockup {
   padding-left: 2px !important;
 }
 
-
 .item-card {
   margin-left: 15 px;
 }
-  
+
 .style-bubble-area {
   min-width: 370px;
   display: flex;
