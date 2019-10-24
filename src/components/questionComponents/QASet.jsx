@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import Answers from "./Answers.jsx";
 import AddAnswer from "./AddAnswer.jsx";
+import MoreAnswers from "./MoreAnswers.jsx";
 
 export default class QASet extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: []
+      answers: [],
+      counter: 2
     };
     this.getAnswers = this.getAnswers.bind(this);
+    this.showMoreAnswers = this.showMoreAnswers.bind(this);
   }
   componentDidMount() {
     this.getAnswers(this.props.question.question_id);
@@ -21,8 +24,17 @@ export default class QASet extends Component {
         this.setState({ answers: data.results });
       });
   }
+  showMoreAnswers() {
+    this.setState({ counter: this.state.counter + 2 });
+  }
 
   render() {
+    let moreAnswersBtn;
+    if (this.state.counter >= this.state.answers.length) {
+      moreAnswersBtn = null;
+    } else {
+      moreAnswersBtn = <MoreAnswers />;
+    }
     return (
       <div>
         <div>Q: {this.props.question.question_body}</div>
@@ -33,9 +45,12 @@ export default class QASet extends Component {
         </div>
         <div>
           A:{" "}
-          {this.state.answers.map(answer => {
+          {this.state.answers.slice(0, this.state.counter).map(answer => {
             return <Answers key={answer.answer_id} answer={answer} />;
           })}
+          {this.state.counter >= this.state.answers.length ? null : (
+            <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
+          )}
         </div>
       </div>
     );

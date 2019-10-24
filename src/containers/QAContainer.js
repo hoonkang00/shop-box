@@ -1,24 +1,11 @@
 import { connect } from "react-redux";
 import QuestionAnswer from "../components/questionComponents/QuestionAnswer.jsx";
-import getQuestions from "../actions/getQuestions.js";
+import getProductInfo from "../actions/getProductInfo.js";
 
-const mapStateToProps = store => {
-  return {
-    questions: store.questions
-  };
-};
+const mapStateToProps = store => ({
+  productInfo: store.productInfo
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getQuestions: id => {
-      return dispatch(getQuestions(id));
-    }
-  };
-};
-
-const QAContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuestionAnswer);
+const QAContainer = connect(mapStateToProps)(QuestionAnswer);
 
 export default QAContainer;
