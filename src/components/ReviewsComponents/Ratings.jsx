@@ -36,7 +36,7 @@ export default function Reviews({ rating }) {
   return (
     <div>
       <Grid container spacing={4} className={"ratings"}>
-        <Grid item>
+        <Grid item className="stars">
           <Stars average={average} />
         </Grid>
         <h5>{`${recommend}% of reviews recommend this product`}</h5>
