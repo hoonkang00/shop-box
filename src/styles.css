@@ -169,7 +169,7 @@ span.yes-button {
   text-decoration: underline;
 }
 span.yes-button:hover {
-  color: dark-blue;
+  color: darkblue;
   cursor: pointer;
 }
 .ratings-and-reviews {

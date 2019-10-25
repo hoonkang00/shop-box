@@ -17,6 +17,7 @@ export default class QASet extends Component {
   componentDidMount() {
     this.getAnswers(this.props.question.question_id);
   }
+
   getAnswers() {
     axios
       .get(
@@ -42,7 +43,6 @@ export default class QASet extends Component {
         <div>Q: {this.props.question.question_body}</div>
         <div className="q-a-set-right">
           Helpful? &nbsp;
-          
           <span
             className="yes-button"
             onClick={() => {
@@ -63,7 +63,13 @@ export default class QASet extends Component {
         <div>
           <div>A: </div>
           {this.state.answers.slice(0, this.state.counter).map(answer => {
-            return <Answers key={answer.answer_id} answer={answer} />;
+            return (
+              <Answers
+                getAnswers={this.getAnswers}
+                key={answer.answer_id}
+                answer={answer}
+              />
+            );
           })}
           {this.state.counter >= this.state.answers.length ? null : (
             <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
