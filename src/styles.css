@@ -209,6 +209,7 @@ p.mockup {
   right: 0%;
 }
 
+
 .style-bubble-area {
   min-width: 370px;
   display: flex;
@@ -242,4 +243,9 @@ p.mockup {
   border-radius: 50%;
   background-color: white;
   border: 1px solid rgb(119, 119, 119);
+}
+
+.card-link{
+  color:black;
+  text-decoration: none;
 }
