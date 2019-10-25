@@ -39,6 +39,9 @@ export default function QuestionAnswer(props) {
         <SearchQuestions
           questions={questions}
           updateSearchQs={updateSearchQs}
+          setQuestions={setQuestions}
+          getQuestions={getQuestions}
+          productId={props.productInfo.id}
         />
         <div className="q-and-a-scroll">
           {questions.slice(0, counter).map(question => {
@@ -46,7 +49,9 @@ export default function QuestionAnswer(props) {
               <QASet
                 key={question.question_id}
                 question={question}
+                getQuestions={getQuestions}
                 product={props.productInfo}
+                
               />
             );
           })}
