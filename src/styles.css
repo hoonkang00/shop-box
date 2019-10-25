@@ -272,3 +272,9 @@ p.mockup {
   color: black;
   text-decoration: none;
 }
+
+.form-rows {
+  min-width: 370px;
+  display: flex;
+  flex-wrap: wrap;
+}
