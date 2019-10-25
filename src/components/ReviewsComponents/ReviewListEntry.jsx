@@ -3,10 +3,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
-import { ListSubheader } from "@material-ui/core";
 
 const ReviewListEntry = ({ review }) => {
-  console.log(review);
   return (
     <div className="rowEntry">
       <Grid container>
