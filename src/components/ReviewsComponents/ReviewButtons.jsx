@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ReviewButtons(props) {
-  console.log(props);
   const classes = useStyles();
 
   const [page, updatePage] = useState(1);
@@ -34,8 +33,8 @@ export default function ReviewButtons(props) {
     updatePage(page + 1);
   };
 
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState("paper");
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
 
   const handleClickOpen = scrollType => () => {
     setOpen(true);
