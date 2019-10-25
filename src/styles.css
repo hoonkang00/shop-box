@@ -115,6 +115,7 @@ span.MuiSlider-track {
   grid-row-end: related-row-start;
   grid-column-start: start-main;
   grid-column-end: end-main;
+  font-family: "Roboto", sans-serif;
 }
 
 .related-products {
@@ -137,8 +138,25 @@ span.MuiSlider-track {
   grid-column-start: start-main;
   grid-column-end: end-main;
   border: solid 1px;
+  font-family: "Roboto", sans-serif;
 }
 
+.q-and-a-scroll {
+  height: 350px;
+  overflow: auto;
+}
+
+.q-a-button {
+  border-radius: 0;
+}
+.q-a-set-right {
+  float: right;
+}
+
+.q-a-set {
+  padding: 2px;
+  margin: 5px;
+}
 .ratings-and-reviews {
   grid-row-start: ratings-reviews-row-start;
   grid-row-end: ratings-reviews-row-end;
@@ -209,7 +227,6 @@ p.mockup {
   right: 0%;
 }
 
-
 .style-bubble-area {
   min-width: 370px;
   display: flex;
@@ -245,7 +262,7 @@ p.mockup {
   border: 1px solid rgb(119, 119, 119);
 }
 
-.card-link{
-  color:black;
+.card-link {
+  color: black;
   text-decoration: none;
 }
