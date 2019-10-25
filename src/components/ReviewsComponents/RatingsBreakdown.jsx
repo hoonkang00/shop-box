@@ -38,14 +38,15 @@ export default function InputSlider(props) {
     for (let slider = 5; slider >= 1; slider--) {
       let value = ratingSliderValues(slider);
       sliders.push(
-        <div className="ratings-val-bar">
+        <div className="ratings-val-bar" key={slider}>
           <div
+            key={slider}
             id={slider}
             className="ratingsValue"
             onClick={filterList}
           >{`${slider} stars`}</div>
           <Grid item xs className="ratingsBar">
-            <Slider value={value} aria-labelledby="input-slider" />
+            <Slider value={Number(value)} aria-labelledby="input-slider" />
           </Grid>
         </div>
       );
