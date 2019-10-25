@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Stars from "./Stars.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
 
-export default function Reviews({ rating }) {
+export default function Reviews({ rating, handleClick }) {
   const [average, setRatings] = useState(0);
   const [recommend, setRecommend] = useState(0);
 
@@ -41,7 +41,7 @@ export default function Reviews({ rating }) {
         </Grid>
         <h5>{`${recommend}% of reviews recommend this product`}</h5>
         <Grid item>
-          <RatingsBreakdown ratings={rating} />
+          <RatingsBreakdown ratings={rating} onClick={handleClick} />
         </Grid>
       </Grid>
     </div>
