@@ -71,6 +71,9 @@ span.MuiSlider-rail {
   color: #545454;
   flex-direction: row;
 }
+button.MuiButton-root {
+  border-radius: 0;
+}
 .ratings-val-bar {
   display: flex;
   flex-direction: row;
@@ -84,8 +87,11 @@ span.MuiSlider-rail {
 }
 span.MuiSlider-track {
   height: 5px;
-  color: #545454;
+  color: #0be613;
   flex-direction: column;
+}
+.clear {
+  text-decoration: underline;
 }
 /* .app-container {
   display: grid;
@@ -280,4 +286,10 @@ p.mockup {
 .card-link {
   color: black;
   text-decoration: none;
+}
+
+.form-rows {
+  min-width: 370px;
+  display: flex;
+  flex-wrap: wrap;
 }
