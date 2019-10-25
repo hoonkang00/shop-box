@@ -137,6 +137,7 @@ span.MuiSlider-track {
   grid-column-start: start-main;
   grid-column-end: end-main;
   border: solid 1px;
+  font-family: "Roboto", sans-serif;
 }
 
 .ratings-and-reviews {
