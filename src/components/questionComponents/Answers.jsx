@@ -18,7 +18,7 @@ export default function Answers({ answer }) {
   ];
   let year = d.getFullYear();
   let month = months[d.getMonth()];
-  let day = d.getDay();
+  let day = d.getDate();
 
   return (
     <div>
