@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard.jsx";
 import getRelatedItems from "../../lib/relatedItemsHelpers/relatedItemsApiCall.js";
 import { makeStyles } from "@material-ui/core/styles";
-import GridList from "@material-ui/core/GridList";
 import ItemsCarousel from "react-items-carousel";
 import Typography from "@material-ui/core/Typography";
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
