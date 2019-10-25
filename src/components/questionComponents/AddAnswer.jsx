@@ -194,12 +194,9 @@ class AddAnswer extends Component {
     };
     axios
       .post(`http://18.223.1.30/qa/${this.props.questionId}/answers`, answerObj)
-      .then(
-        //get all answers again
-        () => {
-          this.props.getAnswers();
-        }
-      )
+      .then(() => {
+        this.props.getAnswers();
+      })
       .catch(err => {
         console.log(err);
       });
