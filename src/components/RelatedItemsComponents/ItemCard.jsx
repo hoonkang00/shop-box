@@ -7,15 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import PopOut from "./PopOut.jsx"
-import { position } from "@material-ui/system";
-import Box from '@material-ui/core/Box';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import PopOut from "./PopOut.jsx";
+import { Link } from "react-router-dom";
+import StarRatings from "../ReviewsComponents/StarRatings.jsx";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -49,45 +43,54 @@ const defaultStyle = styles => {
   );
 };
 
+const findAverage = ratingsObject => {
+  let totalRatings = 0;
+  let totalRatingsValue = 0;
+
+  for (let p in ratingsObject) {
+    totalRatingsValue += Number(p * ratingsObject[p]);
+    totalRatings += Number(ratingsObject[p]);
+  }
+  let averageRating = totalRatingsValue / totalRatings || 0;
+
+  return averageRating;
+};
+
 export default function ItemCard(props) {
   const classes = useStyles();
   let style = defaultStyle(props.relatedProduct.results);
+  let averageReview = findAverage(props.relatedProduct.ratings);
   return (
-    // <Box  >
     <Card className={"item-card-box"}>
-     <Link className="card-link" to={`/${props.relatedProduct.id}/`}>
-     <CardActionArea
-     className={"item-card-box-action-area"}
-        onClick={() => {
-          props.setStoreProductInfo(props.relatedProduct.id);
-        }}
-      >
-     
-        <CardMedia
-          className={classes.media}
-          image={
-            style.photos[0].thumbnail_url ||
-            "https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
-          }
-          title={style.name}
-        />
-        
+      <Link className="card-link" to={`/${props.relatedProduct.id}/`}>
+        <CardActionArea
+          className={"item-card-box-action-area"}
+          onClick={() => {
+            props.setStoreProductInfo(props.relatedProduct.id);
+          }}
+        >
+          <CardMedia
+            className={classes.media}
+            image={
+              style.photos[0].thumbnail_url ||
+              "https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
+            }
+            title={style.name}
+          />
 
-        <CardContent>
+          <CardContent>
+            <Typography> {props.relatedProduct.category}</Typography>
+            <Typography> {props.relatedProduct.name}</Typography>
+            <Typography> ${props.relatedProduct.default_price}</Typography>
+            <StarRatings rating={averageReview} />
+          </CardContent>
+        </CardActionArea>
+      </Link>
 
- 
-     
-          <Typography> {props.relatedProduct.category}</Typography>
-          <Typography> {props.relatedProduct.name}</Typography>
-          <Typography> ${props.relatedProduct.default_price}</Typography>
-        </CardContent>
-      </CardActionArea>  
-     </Link>
-      
-     
-      <PopOut relatedProduct={props.relatedProduct} currentProduct={props.currentProduct}/>
+      <PopOut
+        relatedProduct={props.relatedProduct}
+        currentProduct={props.currentProduct}
+      />
     </Card>
-   
   );
 }
-
