@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import GetMoreReviewsButton from "../components/ReviewsComponents/ReviewButtons.jsx";
-import getReviewList from "../actions/getReviewList.js";
+import GetMoreReviewsButton from "../../components/ReviewsComponents/ReviewButtons.jsx";
+import getReviewList from "../../actions/getReviewList.js";
 
-const mapStateToProps = store => ({});
+const mapStateToProps = store => ({ productInfo: store.productInfo });
 const mapDispatchToProps = dispatch => {
   return {
-    handleClickGetReviews: page => {
+    handleClick: page => {
       dispatch(getReviewList(page));
     }
   };
