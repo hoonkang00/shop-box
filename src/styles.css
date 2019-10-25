@@ -115,6 +115,7 @@ span.MuiSlider-track {
   grid-row-end: related-row-start;
   grid-column-start: start-main;
   grid-column-end: end-main;
+  font-family: "Roboto", sans-serif;
 }
 
 .related-products {
