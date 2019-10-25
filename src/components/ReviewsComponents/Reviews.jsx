@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReviewList from "./ReviewList.jsx";
-import AddReview from "./ReviewButtons.jsx";
+import AddReview from "../../containers/RatingsReviewsContainers/ReviewsButtonsContainer.js";
 import Grid from "@material-ui/core/Grid";
 import Ratings from "../../containers/RatingsReviewsContainers/StarsContainer.js";
 
@@ -32,7 +32,7 @@ export default class Reviews extends Component {
           </Grid>
           <Grid item className="Reviews">
             <ReviewList props={this.props.reviews.results} />
-            <AddReview handleClick={this.props} />
+            <AddReview />
           </Grid>
         </Grid>
       </div>
