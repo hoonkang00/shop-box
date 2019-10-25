@@ -10,7 +10,7 @@ export default function QuestionAnswer(props) {
   const [counter, setCounter] = useState(2);
   let getQuestions = id => {
     axios
-      .get(`http://18.223.1.30/qa/${id}`)
+      .get(`http://18.223.1.30/qa/${id}/?count=1000`)
       .then(({ data }) => {
         setQuestions(data.results);
       })
@@ -18,7 +18,9 @@ export default function QuestionAnswer(props) {
         console.log(err);
       });
   };
-
+  let updateSearchQs = searchedQuestions => {
+    setQuestions(questions.concat(searchedQuestions));
+  };
   let showMoreQuestions = () => {
     setCounter(counter + 2);
   };
@@ -34,7 +36,10 @@ export default function QuestionAnswer(props) {
     <div>
       <div className="q-and-a">
         QUESTIONS & ANSWERS
-        <SearchQuestions />
+        <SearchQuestions
+          questions={questions}
+          updateSearchQs={updateSearchQs}
+        />
         <div className="q-and-a-scroll">
           {questions.slice(0, counter).map(question => {
             return (
