@@ -34,7 +34,7 @@ function onScroll({ scrollDirection, scrollUpdateWasRequested }) {
 
 const ReviewList = ({ props }) => {
   const arr = props === undefined ? [] : props;
-  console.log(props);
+  console.log("review List props", props);
   return (
     <div className="Review-Rows">
       <FixedSizeList
