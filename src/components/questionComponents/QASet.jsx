@@ -9,7 +9,8 @@ export default class QASet extends Component {
     super(props);
     this.state = {
       answers: [],
-      counter: 2
+      counter: 2,
+      qHelpful: false
     };
     this.getAnswers = this.getAnswers.bind(this);
     this.showMoreAnswers = this.showMoreAnswers.bind(this);
@@ -30,7 +31,18 @@ export default class QASet extends Component {
   showMoreAnswers() {
     this.setState({ counter: this.state.counter + 2 });
   }
-
+  markQuestionHelpful() {
+    axios
+      .put(
+        `http://18.223.1.30/qa/question/${this.props.question.question_id}/helpful`
+      )
+      .then(() => {
+        this.props.getQuestions(this.props.product.id);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   render() {
     let moreAnswersBtn;
     if (this.state.counter >= this.state.answers.length) {
@@ -46,7 +58,10 @@ export default class QASet extends Component {
           <span
             className="yes-button"
             onClick={() => {
-              console.log("yes working");
+              if (!this.state.qHelpful) {
+                this.setState({ qHelpful: true });
+                this.markQuestionHelpful();
+              }
             }}
           >
             Yes
