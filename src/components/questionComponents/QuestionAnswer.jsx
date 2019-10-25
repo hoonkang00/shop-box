@@ -35,20 +35,22 @@ export default function QuestionAnswer(props) {
       <div className="q-and-a">
         QUESTIONS & ANSWERS
         <SearchQuestions />
-        {questions.slice(0, counter).map(question => {
-          return (
-            <QASet
-              key={question.question_id}
-              question={question}
-              product={props.productInfo}
-            />
-          );
-        })}
-        <MoreQuestions
-          showCollapse={counter >= questions.length}
-          showMoreQuestions={showMoreQuestions}
-          collapseQuestions={collapseQuestions}
-        />
+        <div className="q-and-a-scroll">
+          {questions.slice(0, counter).map(question => {
+            return (
+              <QASet
+                key={question.question_id}
+                question={question}
+                product={props.productInfo}
+              />
+            );
+          })}
+          <MoreQuestions
+            showCollapse={counter >= questions.length}
+            showMoreQuestions={showMoreQuestions}
+            collapseQuestions={collapseQuestions}
+          />
+        </div>
         <AddQuestion product={props.productInfo} getQuestions={getQuestions} />
       </div>
     </div>

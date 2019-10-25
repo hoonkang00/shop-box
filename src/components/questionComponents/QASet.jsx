@@ -36,9 +36,9 @@ export default class QASet extends Component {
       moreAnswersBtn = <MoreAnswers />;
     }
     return (
-      <div>
+      <div className="q-a-set">
         <div>Q: {this.props.question.question_body}</div>
-        <div>
+        <div className="q-a-set-right">
           Helpful? Yes {"("} {this.props.question.question_helpfulness}
           {")"} |
           <AddAnswer
