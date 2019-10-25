@@ -9,11 +9,20 @@ export default class SearchQuestions extends Component {
     this.cancelSearch = this.cancelSearch.bind(this);
   }
   handleChange(e) {
+    if (e.length >= 3) {
+      console.log("checking", e);
+      console.log(this.props.questions[0].question_body);
+      console.log(this.props.questions[0].question_body.includes(e));
+      let searchQs = this.props.questions.filter(question => {
+        return question.question_body.includes(e);
+      });
+      console.log("what search qs", searchQs);
+      this.props.setQuestions(searchQs);
+    } else {
+      // console.log(this.props);
+      this.props.getQuestions(this.props.productId);
+    }
     // if (e.target.value.length >= 3) {
-    //   let searchQs = this.props.questions.filter(question => {
-    //     return question.question_body.includes(e.target.value);
-    //   });
-    //   console.log("what search qs", searchQs);
     //   //get request for all questions
     //   //for each question body of each question, if string INCLUDES e.target.value
     //   //add question obj to parent component

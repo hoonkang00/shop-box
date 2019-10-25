@@ -150,6 +150,9 @@ span.MuiSlider-track {
   border-radius: 0;
 }
 .q-a-set-right {
+  display: inline;
+  /* margin-left: auto;
+  margin-right: 0; */
   float: right;
 }
 

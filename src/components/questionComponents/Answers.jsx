@@ -22,14 +22,14 @@ export default function Answers({ answer }) {
 
   return (
     <div className="answer-block">
-      <li>
+      <div>
         {answer.body}
         <br />
         by {answer.answerer_name} {month}, {day}, {year}{" "}
         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful? Yes {"("}
         {answer.helpfulness}
         {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Report
-      </li>
+      </div>
     </div>
   );
 }
