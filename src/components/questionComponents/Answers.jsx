@@ -26,9 +26,26 @@ export default function Answers({ answer }) {
         {answer.body}
         <br />
         by {answer.answerer_name} {month}, {day}, {year}{" "}
-        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful? Yes {"("}
+        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful?{" "}
+        <span
+          className="yes-button"
+          onClick={() => {
+            console.log("yes working");
+          }}
+        >
+          Yes
+        </span>{" "}
+        {"("}
         {answer.helpfulness}
-        {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Report
+        {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <span
+          className="yes-button"
+          onClick={() => {
+            console.log("yes working");
+          }}
+        >
+          Report
+        </span>
       </div>
     </div>
   );

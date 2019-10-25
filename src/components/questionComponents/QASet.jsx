@@ -41,7 +41,17 @@ export default class QASet extends Component {
       <div className="q-a-set">
         <div>Q: {this.props.question.question_body}</div>
         <div className="q-a-set-right">
-          Helpful? Yes {"("} {this.props.question.question_helpfulness}
+          Helpful? &nbsp;
+          
+          <span
+            className="yes-button"
+            onClick={() => {
+              console.log("yes working");
+            }}
+          >
+            Yes
+          </span>
+          {" ("} {this.props.question.question_helpfulness}
           {")"} |
           <AddAnswer
             getAnswers={this.getAnswers}
