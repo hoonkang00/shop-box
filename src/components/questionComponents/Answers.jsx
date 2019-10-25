@@ -21,7 +21,7 @@ export default function Answers({ answer }) {
   let day = d.getDate();
 
   return (
-    <div>
+    <div className="answer-block">
       <li>
         {answer.body}
         <br />

@@ -153,6 +153,11 @@ span.MuiSlider-track {
   float: right;
 }
 
+.answer-block {
+  margin: 10px;
+  display: block;
+}
+
 .q-a-set {
   padding: 2px;
   margin: 5px;

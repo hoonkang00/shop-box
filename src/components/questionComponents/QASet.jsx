@@ -51,7 +51,7 @@ export default class QASet extends Component {
           />
         </div>
         <div>
-          A:{" "}
+          <div>A: </div>
           {this.state.answers.slice(0, this.state.counter).map(answer => {
             return <Answers key={answer.answer_id} answer={answer} />;
           })}
