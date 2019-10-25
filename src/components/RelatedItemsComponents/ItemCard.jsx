@@ -10,6 +10,12 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import PopOut from "./PopOut.jsx"
 import { position } from "@material-ui/system";
 import Box from '@material-ui/core/Box';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -46,11 +52,12 @@ const defaultStyle = styles => {
 export default function ItemCard(props) {
   const classes = useStyles();
   let style = defaultStyle(props.relatedProduct.results);
-
   return (
     // <Box  >
-    <Card className={"item-card-box"}>   
-      <CardActionArea
+    <Card className={"item-card-box"}>
+     <Link className="card-link" to={`/${props.relatedProduct.id}/`}>
+     <CardActionArea
+     className={"item-card-box-action-area"}
         onClick={() => {
           props.setStoreProductInfo(props.relatedProduct.id);
         }}
@@ -60,7 +67,7 @@ export default function ItemCard(props) {
           className={classes.media}
           image={
             style.photos[0].thumbnail_url ||
-            "https://webhostingmedia.net/wp-content/uploads/2018/01/http-error-404-not-found.png"
+            "https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
           }
           title={style.name}
         />
@@ -75,56 +82,12 @@ export default function ItemCard(props) {
           <Typography> ${props.relatedProduct.default_price}</Typography>
         </CardContent>
       </CardActionArea>  
+     </Link>
+      
      
       <PopOut relatedProduct={props.relatedProduct} currentProduct={props.currentProduct}/>
     </Card>
    
-    // </Box>
   );
 }
 
-{
-  /* <img src={defaultStyle(props.relatedProduct.results).photos[0].thumbnail_url}/>
-<h4>{props.relatedProduct.category}</h4>
-<h3>{props.relatedProduct.name}</h3>
-<h4>${props.relatedProduct.default_price}</h4> */
-}
-
-// <div
-//   key={item.product_id}
-//   style={{
-//     height: 200,
-//     background: "url(https://placeimg.com/380/200/nature)"
-//   }}
-// >
-
-//   {item.product_id}
-// </div>
-
-{
-  /* <GridListTile key={props.relatedProduct.product_id}>
-<img
-  src={style.photos[0].thumbnail_url}
-  alt={style.name}
-  style={{
-    height: 400,
-    background: "url(https://placeimg.com/380/200/nature)"
-  }}
-  onClick={() => {
-    alert(props.relatedProduct.product_id);
-  }}
-/>
-<GridListTileBar
-  title={props.relatedProduct.name}
-  classes={{
-    root: classes.titleBar,
-    title: classes.title
-  }}
-  actionIcon={
-    <IconButton aria-label={`star ${props.relatedProduct.name}`}>
-      <StarBorderIcon className={classes.title} />
-    </IconButton>
-  }
-/>
-</GridListTile> */
-}

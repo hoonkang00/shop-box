@@ -6,10 +6,14 @@ import QAContainer from "../containers/QAContainer.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import {
+  BrowserRouter as Router
+} from "react-router-dom";
 
 const App = props => {
   return (
-    <div className="components">
+    <Router basename="/products">
+       <div className="components">
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <ProductDetailsContainer />
@@ -25,6 +29,8 @@ const App = props => {
         </Grid>
       </Grid>
     </div>
+    </Router>
+   
   );
 };
 
