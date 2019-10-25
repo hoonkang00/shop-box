@@ -6,7 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { makeStyles } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/core/styles";
 import axios from "axios";
 
@@ -137,7 +136,6 @@ class AddQuestion extends Component {
       question: "",
       email: "",
       nickname: "",
-      photos: [],
       open: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -164,13 +162,14 @@ class AddQuestion extends Component {
     let questionObj = {
       body: this.state.answer,
       name: this.state.nickname,
-      email: this.state.email,
-      photos: this.state.photos
+      email: this.state.email
     };
+
     axios
-      .post(`http://18.223.1.30/qa/${this.props.questionId}/answers`, answerObj)
+      .post(`http://18.223.1.30/qa/${this.props.product.id}`, questionObj)
       .then(() => {
-        this.props.getAnswers();
+        console.log(this.props.product.id);
+        this.props.getQuestions(this.props.product.id);
       })
       .catch(err => {
         console.log(err);
@@ -246,23 +245,6 @@ class AddQuestion extends Component {
               helperText="For authentication reasons, you will not be emailed"
               fullWidth
             />
-            Upload Photos:
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="outlined-button-file"
-              multiple
-              type="file"
-            />
-            <label htmlFor="outlined-button-file">
-              <Button
-                variant="outlined"
-                component="span"
-                className={classes.button}
-              >
-                Upload
-              </Button>
-            </label>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

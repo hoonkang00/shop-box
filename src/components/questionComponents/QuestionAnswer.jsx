@@ -49,7 +49,7 @@ export default function QuestionAnswer(props) {
           showMoreQuestions={showMoreQuestions}
           collapseQuestions={collapseQuestions}
         />
-        <AddQuestion product={props.productInfo}/>
+        <AddQuestion product={props.productInfo} getQuestions={getQuestions} />
       </div>
     </div>
   );
