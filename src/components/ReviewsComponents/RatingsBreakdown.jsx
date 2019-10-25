@@ -8,6 +8,7 @@ import { height } from "@material-ui/system";
 export default function InputSlider(props) {
   const [value, setValue] = useState(0);
   const [clicked, setClick] = useState(false);
+  const [clear, setClear] = useState(false);
 
   const ratingSliderValues = value => {
     let ratings = props.ratings.ratings;
@@ -28,9 +29,16 @@ export default function InputSlider(props) {
     if (clicked === false) {
       props.onClick([event.target.id, "REVIEWS"]);
       setClick(true);
+      setClear(true);
     } else if (clicked === true) {
       props.onClick([event.target.id, "UPDATE-REVIEWS"]);
     }
+  };
+
+  const clearList = () => {
+    props.clear([1, "REVIEWS"]);
+    setClick(false);
+    setClear(false);
   };
 
   const GetBars = () => {
@@ -56,6 +64,13 @@ export default function InputSlider(props) {
 
   return (
     <div>
+      {clear === true ? (
+        <h6 className="clear" onClick={clearList}>
+          clear filters
+        </h6>
+      ) : (
+        ""
+      )}
       <Grid
         container
         spacing={2}

@@ -84,8 +84,11 @@ span.MuiSlider-rail {
 }
 span.MuiSlider-track {
   height: 5px;
-  color: #545454;
+  color: #0be613;
   flex-direction: column;
+}
+.clear {
+  text-decoration: underline;
 }
 /* .app-container {
   display: grid;
