@@ -8,22 +8,6 @@ import { height } from "@material-ui/system";
 export default function InputSlider(props) {
   const [value, setValue] = React.useState(0);
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleInputChange = event => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
-
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
-
   const ratingSliderValues = value => {
     let ratings = props.ratings.ratings;
     if (ratings !== undefined && ratings[value]) {
@@ -47,11 +31,7 @@ export default function InputSlider(props) {
         <div className="ratings-val-bar">
           <div className="ratingsValue">{`${slider} stars`}</div>
           <Grid item xs className="ratingsBar">
-            <Slider
-              value={value}
-              onChange={handleSliderChange}
-              aria-labelledby="input-slider"
-            />
+            <Slider value={value} aria-labelledby="input-slider" />
           </Grid>
         </div>
       );
