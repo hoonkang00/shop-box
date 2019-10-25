@@ -141,6 +141,22 @@ span.MuiSlider-track {
   font-family: "Roboto", sans-serif;
 }
 
+.q-and-a-scroll {
+  height: 500px;
+  overflow: auto;
+}
+
+.q-a-button {
+  border-radius: 0;
+}
+.q-a-set-right {
+  float: right;
+}
+
+.q-a-set {
+  padding: 2px;
+  margin: 5px;
+}
 .ratings-and-reviews {
   grid-row-start: ratings-reviews-row-start;
   grid-row-end: ratings-reviews-row-end;
