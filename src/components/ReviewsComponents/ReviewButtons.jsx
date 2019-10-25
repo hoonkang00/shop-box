@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ReviewButtons(props) {
-  console.log(props);
   const classes = useStyles();
 
   const [page, updatePage] = useState(1);

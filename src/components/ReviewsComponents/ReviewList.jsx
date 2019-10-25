@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import { FixedSizeList } from "react-window";
 import ReviewListEntry from "./ReviewListEntry.jsx";
 
 function Row(props) {
   const { index, data } = props;
-  console.log(props);
   return (
-    <div className="PAT">
+    <div className="review-list-entry">
       <ReviewListEntry review={data[index]} />
     </div>
   );
@@ -34,7 +32,6 @@ function onScroll({ scrollDirection, scrollUpdateWasRequested }) {
 
 const ReviewList = ({ props }) => {
   const arr = props === undefined ? [] : props;
-  console.log("review List props", props);
   return (
     <div className="Review-Rows">
       <FixedSizeList

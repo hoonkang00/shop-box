@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import Ratings from "../../containers/RatingsReviewsContainers/StarsContainer.js";
 
 export default function Reviews(props) {
-  console.log("here are props", props);
   useEffect(() => {
     props.listOfReviews([1, "REVIEWS"]);
   }, [props.prodInfo.id]);
