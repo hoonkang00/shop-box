@@ -19,7 +19,9 @@ export default class QASet extends Component {
   }
   getAnswers() {
     axios
-      .get(`http://18.223.1.30/qa/${this.props.question.question_id}/answers`)
+      .get(
+        `http://18.223.1.30/qa/${this.props.question.question_id}/answers/?count=1000`
+      )
       .then(({ data }) => {
         this.setState({ answers: data.results });
       });

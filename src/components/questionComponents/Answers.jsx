@@ -25,9 +25,10 @@ export default function Answers({ answer }) {
       <li>
         {answer.body}
         <br />
-        by {answer.answerer_name} {month}, {day}, {year} | Helpful? Yes {"("}
+        by {answer.answerer_name} {month}, {day}, {year}{" "}
+        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful? Yes {"("}
         {answer.helpfulness}
-        {")"} | Report
+        {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Report
       </li>
     </div>
   );
