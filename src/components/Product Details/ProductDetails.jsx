@@ -23,26 +23,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ProductDetailsNested = ({ style }) => {
-  const classes = useStyles();
-  const imgUrl = style ? style.photos[0].url : "";
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={2}>
-        <Grid item xs={8} className={classes.defaultLeft}>
-          <img className="main-img" src={imgUrl}></img>
-        </Grid>
-        <Grid item xs={4} className={classes.defaultRight}>
-          <div className="stars-mockup">stars and reviews link</div>
-          <ProductHeader />
-          <StyleBubbleAreaContainer />
-          <ShoppingForm style={style} />
-        </Grid>
-      </Grid>
-    </div>
-  );
-};
-
 const ProductDetails = props => {
   useEffect(() => {
     let id = window.location.pathname.split("/")[2];
@@ -56,10 +36,24 @@ const ProductDetails = props => {
     props.handleLoadMetadata(props.product.id);
   }, [props.product.id]);
 
+  const classes = useStyles();
   let style = props.styles ? props.styles[props.selectedStyleIndex] : null;
+  const imgUrl = style ? style.photos[0].url : "";
   return (
     <div className="product-details">
-      <ProductDetailsNested style={style} />
+      <div className={classes.root}>
+        <Grid container spacing={2}>
+          <Grid item xs={8} className={classes.defaultLeft}>
+            <img className="main-img" src={imgUrl}></img>
+          </Grid>
+          <Grid item xs={4} className={classes.defaultRight}>
+            <div className="stars-mockup">stars and reviews link</div>
+            <ProductHeader />
+            <StyleBubbleAreaContainer />
+            <ShoppingForm style={style} />
+          </Grid>
+        </Grid>
+      </div>
     </div>
   );
 };
