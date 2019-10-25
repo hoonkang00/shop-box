@@ -43,28 +43,25 @@ const ProductDetailsNested = ({ style }) => {
   );
 };
 
-class ProductDetails extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
+const ProductDetails = props => {
+  useEffect(() => {
     let id = window.location.pathname.split("/")[2];
-    this.props.handleLoadProduct(id);
-    this.props.handleLoadStyles(id);
-    this.props.handleLoadMetadata(id);
-  }
+    props.handleLoadProduct(id);
+    props.handleLoadStyles(id);
+    props.handleLoadMetadata(id);
+  }, []);
 
-  render() {
-    let style = this.props.styles
-      ? this.props.styles[this.props.selectedStyleIndex]
-      : null;
-    return (
-      <div className="product-details">
-        <ProductDetailsNested style={style} />
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    props.handleLoadStyles(props.product.id);
+    props.handleLoadMetadata(props.product.id);
+  }, [props.product.id]);
+
+  let style = props.styles ? props.styles[props.selectedStyleIndex] : null;
+  return (
+    <div className="product-details">
+      <ProductDetailsNested style={style} />
+    </div>
+  );
+};
 
 export default ProductDetails;
