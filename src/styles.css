@@ -71,6 +71,9 @@ span.MuiSlider-rail {
   color: #545454;
   flex-direction: row;
 }
+button.MuiButton-root {
+  border-radius: 0;
+}
 .ratings-val-bar {
   display: flex;
   flex-direction: row;
