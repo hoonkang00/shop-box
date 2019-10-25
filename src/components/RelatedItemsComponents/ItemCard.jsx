@@ -67,6 +67,7 @@ export default function ItemCard(props) {
           className={"item-card-box-action-area"}
           onClick={() => {
             props.setStoreProductInfo(props.relatedProduct.id);
+            props.resetCarousel(0)
           }}
         >
           <CardMedia
