@@ -18,7 +18,9 @@ export default function QuestionAnswer(props) {
         console.log(err);
       });
   };
-
+  let updateSearchQs = searchedQuestions => {
+    setQuestions(questions.concat(searchedQuestions));
+  };
   let showMoreQuestions = () => {
     setCounter(counter + 2);
   };
@@ -34,7 +36,10 @@ export default function QuestionAnswer(props) {
     <div>
       <div className="q-and-a">
         QUESTIONS & ANSWERS
-        <SearchQuestions />
+        <SearchQuestions
+          questions={questions}
+          updateSearchQs={updateSearchQs}
+        />
         <div className="q-and-a-scroll">
           {questions.slice(0, counter).map(question => {
             return (
