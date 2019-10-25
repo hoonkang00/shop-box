@@ -9,18 +9,16 @@ export default class SearchQuestions extends Component {
     this.cancelSearch = this.cancelSearch.bind(this);
   }
   handleChange(e) {
+    this.setState({ searchTerm: e });
     if (e.length >= 3) {
-      console.log(this.props.questions[0].question_body);
-      console.log(this.props.questions[0].question_body.includes(e));
       let searchQs = this.props.questions.filter(question => {
         return question.question_body.includes(e);
       });
-      console.log("what search qs", searchQs);
+
       this.props.setQuestions(searchQs);
     } else {
       this.props.getQuestions(this.props.productId);
     }
-    this.setState({ searchTerm: e });
   }
   cancelSearch() {
     this.setState({ searchTerm: "" });
