@@ -8,6 +8,7 @@ import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import StarRatings from "../ReviewsComponents/StarRatings.jsx";
+import RemoveMyOutfit from "./RemoveMyOutfit.jsx";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -77,6 +78,7 @@ export default function MyOutfitCard(props) {
       ) : (
         <StarRatings rating={averageReview} />
       )}
+      <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits}/>
     </Card>
   );
 }
