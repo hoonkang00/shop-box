@@ -323,3 +323,26 @@ p.mockup {
   display: flex;
   flex-wrap: wrap;
 }
+
+.prod-slogan {
+  margin: 0 0 10px;
+}
+
+.prod-description {
+  font-size: 14px;
+}
+
+.checkmark-small {
+  height: 10px;
+  object-fit: cover;
+}
+
+.feature {
+  display: flex;
+  margin: 10px 0 10px 20px;
+}
+
+.feature-value {
+  font-size: 14px;
+  margin-left: 10px;
+}
