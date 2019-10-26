@@ -233,7 +233,7 @@ h2 {
   display: grid;
   grid-template-columns: 75px;
   grid-row-gap: 20px;
-  grid-template-rows: repeat(5, 75px);
+  grid-template-rows: 5px repeat(5, 75px) 5px;
   padding: 30px 0 0 20px;
 }
 
@@ -244,6 +244,19 @@ h2 {
   height: 100%;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
+
+/* .img-arrow {
+  margin: 0 auto;
+}
+
+.top-arrow {
+  margin-bottom: 5px;
+}
+
+.bottom-arrow {
+  transform: rotate(180deg);
+  margin-top: 10px;
+} */
 
 .stars-mockup {
   padding: 15px 0;
