@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const getReviewList = ([page, actionType, productID, count = 2, sort = ""]) => {
+const getReviewList = ([
+  page,
+  actionType,
+  productID,
+  count = 2,
+  sort = "relevance"
+]) => {
   return dispatch => {
     return axios
       .get(
