@@ -16,14 +16,14 @@ export default function OutlinedButtons({ showMoreAnswers }) {
 
   return (
     <div>
-      <Button
-        className={classes.button}
+      <span
+        className="load-more"
         onClick={() => {
           showMoreAnswers();
         }}
       >
-        Load more answers
-      </Button>
+        LOAD MORE ANSWERS
+      </span>
     </div>
   );
 }

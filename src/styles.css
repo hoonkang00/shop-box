@@ -95,6 +95,7 @@ span.MuiSlider-rail {
 }
 button.MuiButton-root {
   border-radius: 0;
+  color: black;
 }
 .ratings-val-bar {
   display: flex;
@@ -173,8 +174,11 @@ span.MuiSlider-track {
   grid-row-end: ratings-reviews-row-start;
   grid-column-start: start-main;
   grid-column-end: end-main;
-  /* border: solid 1px; */
+
   font-family: "Roboto", sans-serif;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
 }
 
 .q-and-a-scroll {
@@ -185,28 +189,47 @@ span.MuiSlider-track {
 .q-a-button {
   border-radius: 0;
 }
-.q-a-set-right {
-  display: inline;
-  /* margin-left: auto;
-  margin-right: 0; */
-  float: right;
+.question {
+  display: flex;
+}
+.question-left {
+  width: 60%;
+}
+.question-right {
+  width: 40%;
 }
 
 .answer-block {
   margin: 10px;
   display: block;
 }
-
+.answer-detail {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+}
 .q-a-set {
   padding: 2px;
   margin: 5px;
+  width: 100%;
 }
+.add-answer {
+  display: inline;
+}
+
 span.yes-button {
   text-decoration: underline;
 }
 span.yes-button:hover {
   color: darkblue;
   cursor: pointer;
+}
+span.load-more:hover {
+  color: darkblue;
+  cursor: pointer;
+}
+.load-more {
+  font-weight: bold;
+  font-size: 14px;
 }
 .ratings-and-reviews {
   grid-row-start: ratings-reviews-row-start;
