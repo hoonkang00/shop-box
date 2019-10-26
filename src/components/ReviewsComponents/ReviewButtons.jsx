@@ -45,6 +45,7 @@ export default function ReviewButtons(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const MyForm = React.forwardRef((props, ref) => <Form ref={ref} />);
 
   return (
@@ -71,17 +72,7 @@ export default function ReviewButtons(props) {
       >
         <DialogTitle id="scroll-dialog-title">Write Your Review</DialogTitle>
         <DialogTitle id="scroll-dialog-title">{`About the ${props.productInfo.name}`}</DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
-          <Form />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Add Review
-          </Button>
-        </DialogActions>
+        <Form />
       </Dialog>
     </div>
   );
