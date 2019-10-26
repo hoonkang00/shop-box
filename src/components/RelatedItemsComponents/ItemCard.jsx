@@ -67,27 +67,31 @@ export default function ItemCard(props) {
           className={"item-card-box-action-area"}
           onClick={() => {
             props.setStoreProductInfo(props.relatedProduct.id);
-            props.resetCarousel(0)
+            props.resetCarousel(0);
           }}
         >
           <CardMedia
             className={classes.media}
             image={
-              style.photos[0].thumbnail_url ||
-              "https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
+              style
+                ? style.photos[0].thumbnail_url ||
+                  "https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
+                : ""
             }
-            title={style.name}
+            title={style ? style.name : ""}
           />
 
           <CardContent>
             <Typography> {props.relatedProduct.category}</Typography>
             <Typography> {props.relatedProduct.name}</Typography>
             <Typography> ${props.relatedProduct.default_price}</Typography>
-           
           </CardContent>
         </CardActionArea>
-        {averageReview===0?(<Typography>No reviews</Typography>):<StarRatings rating={averageReview} />
-            }
+        {averageReview === 0 ? (
+          <Typography>No reviews</Typography>
+        ) : (
+          <StarRatings rating={averageReview} />
+        )}
       </Link>
 
       <PopOut
