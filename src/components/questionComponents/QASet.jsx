@@ -46,9 +46,7 @@ export default class QASet extends Component {
       });
   }
   reportQuestion() {
-    console.log("123");
     if (!this.state.reported) {
-      console.log("check reported");
       axios
         .put(
           `http://18.223.1.30/qa/question/${this.props.question.question_id}/report`
@@ -70,42 +68,47 @@ export default class QASet extends Component {
     }
     return (
       <div className="q-a-set">
-        <div>Q: {this.props.question.question_body}</div>
-        <div className="q-a-set-right">
-          Helpful? &nbsp;
-          <span
-            className="yes-button"
-            onClick={() => {
-              if (!this.state.qHelpful) {
-                this.setState({ qHelpful: true });
-                this.markQuestionHelpful();
-              }
-            }}
-          >
-            Yes
-          </span>
-          {" ("} {this.props.question.question_helpfulness}
-          {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-          {this.state.reported ? (
-            <span className="yes-button" style={{ color: "red" }}>
-              Reported!
-            </span>
-          ) : (
+        <div className="question">
+          <div className="question-left">
+            Q: {this.props.question.question_body}
+          </div>
+          <div className="question-right answer-detail">
+            Helpful? &nbsp;
             <span
               className="yes-button"
               onClick={() => {
-                this.reportQuestion();
+                if (!this.state.qHelpful) {
+                  this.setState({ qHelpful: true });
+                  this.markQuestionHelpful();
+                }
               }}
             >
-              Report
+              Yes
             </span>
-          )}
-          <AddAnswer
-            getAnswers={this.getAnswers}
-            product={this.props.product}
-            qbody={this.props.question.question_body}
-            questionId={this.props.question.question_id}
-          />
+            {" ("} {this.props.question.question_helpfulness}
+            {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            {this.state.reported ? (
+              <span className="yes-button" style={{ color: "red" }}>
+                Reported!
+              </span>
+            ) : (
+              <span
+                className="yes-button"
+                onClick={() => {
+                  this.reportQuestion();
+                }}
+              >
+                Report
+              </span>
+            )}
+            &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <AddAnswer
+              getAnswers={this.getAnswers}
+              product={this.props.product}
+              qbody={this.props.question.question_body}
+              questionId={this.props.question.question_id}
+            />
+          </div>
         </div>
         <div>
           <div>A: </div>

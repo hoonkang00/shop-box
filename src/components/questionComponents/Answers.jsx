@@ -49,32 +49,33 @@ export default function Answers({ answer, getAnswers }) {
     <div className="answer-block">
       <div>
         {answer.body}
-        <br />
-        by {answer.answerer_name} {month}, {day}, {year}{" "}
-        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful?{" "}
-        <span
-          className="yes-button"
-          onClick={() => {
-            if (!helpful) {
-              updateHelpful(true);
-              markAnswerHelpful();
-            }
-          }}
-        >
-          Yes
-        </span>{" "}
-        {"("}
-        {answer.helpfulness}
-        {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        {reported ? (
-          <span className="yes-button" style={{ color: "red" }}>
-            Reported!
-          </span>
-        ) : (
-          <span className="yes-button" onClick={reportAnswer}>
-            Report
-          </span>
-        )}
+        <div className="answer-detail">
+          by {answer.answerer_name} {month}, {day}, {year}{" "}
+          &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful?{" "}
+          <span
+            className="yes-button"
+            onClick={() => {
+              if (!helpful) {
+                updateHelpful(true);
+                markAnswerHelpful();
+              }
+            }}
+          >
+            Yes
+          </span>{" "}
+          {"("}
+          {answer.helpfulness}
+          {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          {reported ? (
+            <span className="yes-button" style={{ color: "red" }}>
+              Reported!
+            </span>
+          ) : (
+            <span className="yes-button" onClick={reportAnswer}>
+              Report
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
