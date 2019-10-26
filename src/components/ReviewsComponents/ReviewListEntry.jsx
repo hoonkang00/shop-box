@@ -9,7 +9,7 @@ import updateFunction from "../../actions/updateHelpfulness.js";
 import report from "../../actions/reportReview.js";
 
 const ReviewListEntry = ({ review }) => {
-  const renderResponse = !["null", null, 0].includes(review.response);
+  const renderResponse = !["null", null, 0, ""].includes(review.response);
   const [helpful, setHelpful] = useState(review.helpfulness);
   const [reported, setReported] = useState(false);
 
