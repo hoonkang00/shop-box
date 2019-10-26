@@ -95,6 +95,7 @@ span.MuiSlider-rail {
 }
 button.MuiButton-root {
   border-radius: 0;
+  color: black;
 }
 .ratings-val-bar {
   display: flex;
