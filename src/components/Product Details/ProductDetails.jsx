@@ -4,22 +4,35 @@ import Grid from "@material-ui/core/Grid";
 import ShoppingForm from "./ShoppingForm.jsx";
 import ProductHeader from "./ProductHeader.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";
+import { getOrAddSession } from "../../../helpers/getSession.js";
 import "../../styles.css";
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  top: {
     flexGrow: 1,
     minWidth: "500px",
-    maxWidth: "1100px"
+    maxWidth: "1100px",
+    height: "max-content",
+    marginBottom: "20px"
   },
   defaultLeft: {
-    height: "600px",
+    minHeight: "600px",
+    maxHeight: "700px",
     overflow: "hidden"
   },
   defaultRight: {
-    height: "600px",
+    height: "max-content",
     display: "flex",
     flexDirection: "column"
+  },
+  bottom: {
+    flexGrow: 1,
+    minWidth: "500px",
+    maxWidth: "1100px",
+    height: "max-content"
+  },
+  bottomRight: {
+    borderLeft: "2px solid black"
   }
 }));
 
@@ -41,7 +54,7 @@ const ProductDetails = props => {
   const imgUrl = style ? style.photos[0].url : "";
   return (
     <div className="product-details">
-      <div className={classes.root}>
+      <div className={classes.top}>
         <Grid container spacing={2}>
           <Grid item xs={8} className={classes.defaultLeft}>
             <img className="main-img" src={imgUrl}></img>
@@ -51,6 +64,29 @@ const ProductDetails = props => {
             <ProductHeader />
             <StyleBubbleAreaContainer />
             <ShoppingForm style={style} />
+          </Grid>
+        </Grid>
+      </div>
+      <div className={classes.bottom}>
+        <Grid container spacing={2}>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={7} className={classes.bottomLeft}>
+            <h3 className="prod-slogan">{props.product.slogan}</h3>
+            <p className="prod-description">{props.product.description}</p>
+          </Grid>
+          <Grid item xs={4} className={classes.bottomRight}>
+            {props.product.features &&
+              props.product.features.map(feature => (
+                <div key={feature.feature} className="feature">
+                  <img
+                    src="images/checkmark.png"
+                    className="checkmark-small"
+                  ></img>
+                  <p className="feature-value">
+                    {feature.value === "null" ? feature.feature : feature.value}
+                  </p>
+                </div>
+              ))}
           </Grid>
         </Grid>
       </div>

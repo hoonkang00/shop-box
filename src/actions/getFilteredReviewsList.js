@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const getFilteredReviewsList = ([rating, actionType]) => {
-  const productID = parseInt(
-    window.location.href.split("products/")[1].substring(0, 1)
-  );
-
+const getFilteredReviewsList = ([rating, actionType, productID]) => {
   return dispatch => {
     return axios
       .get(`http://18.223.1.30/reviews/${productID}/list?count=10000`)

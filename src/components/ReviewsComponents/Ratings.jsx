@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Stars from "./Stars.jsx";
 import RatingsBreakdown from "./RatingsBreakdown.jsx";
+import Characteristics from "./Characteristics.jsx";
 
-export default function Reviews({ rating, handleClick, clear }) {
+export default function Reviews({ rating, handleClick, clear, prodInfo }) {
   const [average, setRatings] = useState(0);
   const [recommend, setRecommend] = useState(0);
 
@@ -45,7 +46,11 @@ export default function Reviews({ rating, handleClick, clear }) {
             ratings={rating}
             onClick={handleClick}
             clear={clear}
+            prodId={prodInfo}
           />
+        </Grid>
+        <Grid item>
+          <Characteristics values={rating} />
         </Grid>
       </Grid>
     </div>
