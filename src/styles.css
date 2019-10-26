@@ -57,13 +57,27 @@
   width: 0;
   height: 0;
 }
-span.characteristic span span.MuiSlider-thumbColorPrimary {
+.char span.MuiSlider-thumbColorPrimary {
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #f00;
-  cursor: pointer;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #f00;
+  background-color: transparent;
+}
+span.MuiSlider-mark {
+  width: 4px;
+  height: 5px;
+  position: absolute;
+  border-radius: 0;
+  color: white;
+}
+div.list-of-character {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 40px;
+  flex-direction: column;
 }
 span.MuiRating-root {
   color: #2c2c2c;
