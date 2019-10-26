@@ -3,7 +3,10 @@ import Ratings from "../../components/ReviewsComponents/Ratings.jsx";
 import getFilteredReviewsList from "../../actions/getFilteredReviewsList.js";
 import getReviewList from "../../actions/getReviewList.js";
 
-const mapStateToProps = store => ({ rating: store.reviewMetaData });
+const mapStateToProps = store => ({
+  rating: store.reviewMetaData,
+  prodInfo: store.productInfo
+});
 const mapDispatchToProps = dispatch => {
   return {
     handleClick: actionType => {

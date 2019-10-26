@@ -93,6 +93,14 @@ span.MuiSlider-track {
 .clear {
   text-decoration: underline;
 }
+.response {
+  background-color: lightgray;
+  padding: 30px;
+}
+
+.response span {
+  font-size: 14px;
+}
 /* .app-container {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];

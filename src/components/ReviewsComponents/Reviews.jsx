@@ -6,7 +6,7 @@ import Ratings from "../../containers/RatingsReviewsContainers/StarsContainer.js
 
 export default function Reviews(props) {
   useEffect(() => {
-    props.listOfReviews([1, "REVIEWS"]);
+    props.listOfReviews([1, "REVIEWS", props.prodInfo.id]);
   }, [props.prodInfo.id]);
 
   return (

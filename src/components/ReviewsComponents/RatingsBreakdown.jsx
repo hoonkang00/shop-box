@@ -27,16 +27,16 @@ export default function InputSlider(props) {
 
   const filterList = event => {
     if (clicked === false) {
-      props.onClick([event.target.id, "REVIEWS"]);
+      props.onClick([event.target.id, "REVIEWS", props.prodId.id]);
       setClick(true);
       setClear(true);
     } else if (clicked === true) {
-      props.onClick([event.target.id, "UPDATE-REVIEWS"]);
+      props.onClick([event.target.id, "UPDATE-REVIEWS", props.prodId.id]);
     }
   };
 
   const clearList = () => {
-    props.clear([1, "REVIEWS"]);
+    props.clear([1, "REVIEWS", props.prodId.id]);
     setClick(false);
     setClear(false);
   };
