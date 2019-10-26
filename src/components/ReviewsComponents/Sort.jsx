@@ -17,12 +17,23 @@ const Sort = ({ sortReviews, productId }) => {
         console.log(err);
       });
   }, [productId.id]);
+
+  const sort = event => {
+    page, actionType, productID, count, sort;
+    sortReviews(1, "REVIEWS", productId.id, 100000, event);
+  };
+
   return (
     <div>
       {numOfReviews !== 0 ? (
         <div className="sorting-section">
           <div>{numOfReviews} reviews, sorted by</div>
-          <select className={classes.root}>
+          <select
+            className={classes.root}
+            onChange={event => {
+              sort(event);
+            }}
+          >
             <option>relevance</option>
             <option>newest</option>
             <option>helpfulness</option>
