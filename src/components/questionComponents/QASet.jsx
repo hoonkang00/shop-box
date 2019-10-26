@@ -10,10 +10,12 @@ export default class QASet extends Component {
     this.state = {
       answers: [],
       counter: 2,
-      qHelpful: false
+      qHelpful: false,
+      reported: false
     };
     this.getAnswers = this.getAnswers.bind(this);
     this.showMoreAnswers = this.showMoreAnswers.bind(this);
+    this.reportQuestion = this.reportQuestion.bind(this);
   }
   componentDidMount() {
     this.getAnswers(this.props.question.question_id);
@@ -43,6 +45,22 @@ export default class QASet extends Component {
         console.log(err);
       });
   }
+  reportQuestion() {
+    console.log("123");
+    if (!this.state.reported) {
+      console.log("check reported");
+      axios
+        .put(
+          `http://18.223.1.30/qa/question/${this.props.question.question_id}/report`
+        )
+        .then(() => {
+          this.setState({ reported: true });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
   render() {
     let moreAnswersBtn;
     if (this.state.counter >= this.state.answers.length) {
@@ -67,7 +85,21 @@ export default class QASet extends Component {
             Yes
           </span>
           {" ("} {this.props.question.question_helpfulness}
-          {")"} |
+          {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          {this.state.reported ? (
+            <span className="yes-button" style={{ color: "red" }}>
+              Reported!
+            </span>
+          ) : (
+            <span
+              className="yes-button"
+              onClick={() => {
+                this.reportQuestion();
+              }}
+            >
+              Report
+            </span>
+          )}
           <AddAnswer
             getAnswers={this.getAnswers}
             product={this.props.product}

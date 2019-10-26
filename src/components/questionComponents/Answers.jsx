@@ -33,15 +33,17 @@ export default function Answers({ answer, getAnswers }) {
       });
   };
   const [reported, markReported] = useState(false);
-  const reportReview = () => {
-    axios
-      .put(`http://18.223.1.30/qa/answer/${answer.answer_id}/report`)
-      .then(() => {
-        markReported(true);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  const reportAnswer = () => {
+    if (!reported) {
+      axios
+        .put(`http://18.223.1.30/qa/answer/${answer.answer_id}/report`)
+        .then(() => {
+          markReported(true);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
   return (
     <div className="answer-block">
@@ -65,9 +67,13 @@ export default function Answers({ answer, getAnswers }) {
         {answer.helpfulness}
         {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         {reported ? (
-          <span style={{ color: "red" }}>Reported!</span>
+          <span className="yes-button" style={{ color: "red" }}>
+            Reported!
+          </span>
         ) : (
-          <span onClick={reportReview}>Report</span>
+          <span className="yes-button" onClick={reportAnswer}>
+            Report
+          </span>
         )}
       </div>
     </div>
