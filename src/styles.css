@@ -223,6 +223,14 @@ span.yes-button:hover {
   color: darkblue;
   cursor: pointer;
 }
+span.load-more:hover {
+  color: darkblue;
+  cursor: pointer;
+}
+.load-more {
+  font-weight: bold;
+  font-size: 14px;
+}
 .ratings-and-reviews {
   grid-row-start: ratings-reviews-row-start;
   grid-row-end: ratings-reviews-row-end;
