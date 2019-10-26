@@ -1,9 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
 import EnabledQuantitySelector from "./EnabledQuantitySelector.jsx";
 import DisabledQuantitySelector from "./DisabledQuantitySelector.jsx";
 import InStockSizeForm from "./InStockSizeForm.jsx";
@@ -11,6 +8,14 @@ import InStockSizeForm from "./InStockSizeForm.jsx";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
+  },
+  button: {
+    margin: theme.spacing(1),
+    marginLeft: "16px",
+    width: "210px",
+    border: "1px solid black",
+    padding: "13.7px 10px 13.7px 20px",
+    borderRadius: 0
   },
   formControl: {
     margin: theme.spacing(1),
@@ -66,7 +71,7 @@ export default function ShoppingForm({ style }) {
 
   if (inStock) {
     return (
-      <div>
+      <div className="form-rows">
         <InStockSizeForm
           size={size}
           handleChange={handleChange}
@@ -74,12 +79,17 @@ export default function ShoppingForm({ style }) {
           classes={classes}
         />
         {maxQuantity ? (
-          <EnabledQuantitySelector
-            quantities={quantityOptions}
-            quantity={quantity}
-            handleChange={handleChange}
-            classes={classes}
-          />
+          <>
+            <EnabledQuantitySelector
+              quantities={quantityOptions}
+              quantity={quantity}
+              handleChange={handleChange}
+              classes={classes}
+            />
+            <Button variant="outlined" className={classes.button}>
+              Add to Cart +
+            </Button>
+          </>
         ) : (
           <DisabledQuantitySelector classes={classes} />
         )}
