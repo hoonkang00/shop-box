@@ -78,10 +78,10 @@ class AddAnswer extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <Button onClick={this.handleClickOpen} className={classes.button}>
+      <div className="answer-detail add-answer">
+        <span className="yes-button" onClick={this.handleClickOpen}>
           Add Answer
-        </Button>
+        </span>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
