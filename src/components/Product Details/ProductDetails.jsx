@@ -3,8 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ShoppingForm from "./ShoppingForm.jsx";
 import ProductHeader from "./ProductHeader.jsx";
+import DefaultImageView from "./DefaultImageView.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";
 import { getOrAddSession } from "../../../helpers/getSession.js";
+import convertFeatures from "../../../helpers/convertFeatures.js";
 import "../../styles.css";
 
 const useStyles = makeStyles(theme => ({
@@ -51,13 +53,12 @@ const ProductDetails = props => {
 
   const classes = useStyles();
   let style = props.styles ? props.styles[props.selectedStyleIndex] : null;
-  const imgUrl = style ? style.photos[0].url : "";
   return (
     <div className="product-details">
       <div className={classes.top}>
         <Grid container spacing={2}>
           <Grid item xs={8} className={classes.defaultLeft}>
-            <img className="main-img" src={imgUrl}></img>
+            <DefaultImageView photos={style && style.photos} />
           </Grid>
           <Grid item xs={4} className={classes.defaultRight}>
             <div className="stars-mockup">stars and reviews link</div>
@@ -76,15 +77,13 @@ const ProductDetails = props => {
           </Grid>
           <Grid item xs={4} className={classes.bottomRight}>
             {props.product.features &&
-              props.product.features.map(feature => (
-                <div key={feature.feature} className="feature">
+              convertFeatures(props.product.features).map((feature, index) => (
+                <div key={index} className="feature">
                   <img
                     src="images/checkmark.png"
                     className="checkmark-small"
                   ></img>
-                  <p className="feature-value">
-                    {feature.value === "null" ? feature.feature : feature.value}
-                  </p>
+                  <p className="feature-value">{feature}</p>
                 </div>
               ))}
           </Grid>

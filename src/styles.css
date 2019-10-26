@@ -242,9 +242,22 @@ h2 {
 
 .main-img {
   height: 100%;
-  width: 100%;
-  object-fit: cover;
+  background-position: 50% 50%;
+  background-size: cover;
   object-position: 50% 50%;
+  display: grid;
+  grid-template-columns: 75px;
+  grid-row-gap: 20px;
+  grid-template-rows: repeat(5, 75px);
+  padding: 30px 0 0 20px;
+}
+
+.list-image {
+  background-position: 50% 50%;
+  background-size: cover;
+  object-position: 50% 50%;
+  height: 100%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .stars-mockup {
@@ -309,7 +322,7 @@ p.mockup {
   height: 61px;
   width: 61px;
   border-radius: 50%;
-  background-size: 100% auto;
+  background-size: cover;
   background-position: 50% 50%;
   background-color: rgb(230, 230, 230);
   border: 1px solid rgb(119, 119, 119);
