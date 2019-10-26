@@ -9,16 +9,16 @@ export default class SearchQuestions extends Component {
     this.cancelSearch = this.cancelSearch.bind(this);
   }
   handleChange(e) {
-    // if (e.target.value.length >= 3) {
-    //   let searchQs = this.props.questions.filter(question => {
-    //     return question.question_body.includes(e.target.value);
-    //   });
-    //   console.log("what search qs", searchQs);
-    //   //get request for all questions
-    //   //for each question body of each question, if string INCLUDES e.target.value
-    //   //add question obj to parent component
-    // }
     this.setState({ searchTerm: e });
+    if (e.length >= 3) {
+      let searchQs = this.props.questions.filter(question => {
+        return question.question_body.includes(e);
+      });
+
+      this.props.setQuestions(searchQs);
+    } else {
+      this.props.getQuestions(this.props.productId);
+    }
   }
   cancelSearch() {
     this.setState({ searchTerm: "" });
@@ -30,6 +30,7 @@ export default class SearchQuestions extends Component {
         onRequestSearch={() => console.log("onRequestSearch")}
         onCancelSearch={() => {
           this.cancelSearch();
+          this.handleChange("");
         }}
         style={{
           margin: "0 auto",
