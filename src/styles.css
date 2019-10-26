@@ -7,6 +7,11 @@
 .MuiGrid-grid-xs-11 {
   width: 80%;
 }
+.sorting-section {
+  display: inline-flex;
+  width: 300px;
+  flex-direction: row;
+}
 .Reviews {
   flex-direction: column;
   align-items: stretch;
