@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const getReviewList = ([page, actionType, sort = ""]) => {
-  const productID = parseInt(
-    window.location.href.split("products/")[1].substring(0, 1)
-  );
-
+const getReviewList = ([page, actionType, productID, sort = ""]) => {
   return dispatch => {
     return axios
       .get(

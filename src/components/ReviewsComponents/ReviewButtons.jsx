@@ -30,7 +30,7 @@ export default function ReviewButtons(props) {
 
   const searchMoreProducts = () => {
     let nextPage = page + 1;
-    props.handleClick([nextPage, "UPDATE-REVIEWS"]);
+    props.handleClick([nextPage, "UPDATE-REVIEWS", props.productInfo.id]);
     updatePage(page + 1);
   };
 
