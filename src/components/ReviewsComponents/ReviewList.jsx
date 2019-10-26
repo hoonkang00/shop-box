@@ -12,11 +12,6 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  index: PropTypes.number.isRequired,
-  style: PropTypes.object.isRequired
-};
-
 /* TODO: ===Infinite Scroll Functionality====
 function onScroll({ scrollDirection, scrollUpdateWasRequested }) {
   // scrollDirection is either "forward" or "backward".

@@ -59,7 +59,6 @@ const findAverage = ratingsObject => {
 export default function ItemCard(props) {
   const classes = useStyles();
   let style = defaultStyle(props.relatedProduct.results);
-  let styleThumbnail = style.photos[0].thumbnail_url||"https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
   let averageReview = findAverage(props.relatedProduct.ratings);
   return (
     <Card className={"item-card-box"}>
@@ -74,9 +73,12 @@ export default function ItemCard(props) {
           <CardMedia
             className={classes.media}
             image={
-              styleThumbnail
+              style
+                ? style.photos[0].thumbnail_url ||
+                  "https://avatars1.githubusercontent.com/u/5233442?s=460&v=4"
+                : ""
             }
-            title={style.name}
+            title={style ? style.name : ""}
           />
 
           <CardContent>

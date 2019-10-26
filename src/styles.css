@@ -53,9 +53,31 @@
   box-sizing: border-box;
   flex-direction: column;
 }
-span.MuiSlider-thumb {
-  height: 0;
+.ratingsBar span span.MuiSlider-thumb {
   width: 0;
+  height: 0;
+}
+.char span.MuiSlider-thumbColorPrimary {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #f00;
+  background-color: transparent;
+}
+span.MuiSlider-mark {
+  width: 4px;
+  height: 5px;
+  position: absolute;
+  border-radius: 0;
+  color: white;
+}
+div.list-of-character {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 40px;
+  flex-direction: column;
 }
 span.MuiRating-root {
   color: #2c2c2c;
@@ -92,6 +114,14 @@ span.MuiSlider-track {
 }
 .clear {
   text-decoration: underline;
+}
+.response {
+  background-color: lightgray;
+  padding: 30px;
+}
+
+.response span {
+  font-size: 14px;
 }
 /* .app-container {
   display: grid;
@@ -292,4 +322,27 @@ p.mockup {
   min-width: 370px;
   display: flex;
   flex-wrap: wrap;
+}
+
+.prod-slogan {
+  margin: 0 0 10px;
+}
+
+.prod-description {
+  font-size: 14px;
+}
+
+.checkmark-small {
+  height: 10px;
+  object-fit: cover;
+}
+
+.feature {
+  display: flex;
+  margin: 10px 0 10px 20px;
+}
+
+.feature-value {
+  font-size: 14px;
+  margin-left: 10px;
 }
