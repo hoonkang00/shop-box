@@ -28,9 +28,19 @@ export default function MyOutfitsList(props) {
     }, false);
   };
 
+
+  const removeFromOutfits=(index)=>{
+    let removed = myOutfits.slice()
+    removed.splice(index,1)
+    console.log(removed)
+    addToLocalStorage(removed)
+    setmyOutfits(removed);
+
+  }
+
   const addToOufits = () => {
     let inMyOutfit = checkInOutfit(props.productInfo.id);
-    console.log(inMyOutfit)
+    console.log(inMyOutfit);
     if (!inMyOutfit) {
       let newOutfit = {
         id: props.productInfo.id,
@@ -39,8 +49,9 @@ export default function MyOutfitsList(props) {
         ...props.reviewMetaData
       };
       let newState = [newOutfit, ...myOutfits];
-      setmyOutfits(newState);
+      
       addToLocalStorage(newState);
+      setmyOutfits(newState);
     }
   };
 
@@ -57,8 +68,8 @@ export default function MyOutfitsList(props) {
 
   return (
     <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
-    <Typography>MY OUTFITS</Typography>
-    <button onClick={addToOufits}>Add to my outfits</button>
+      <Typography>MY OUTFITS</Typography>
+      <button onClick={addToOufits}>Add to my outfits</button>
       <ItemsCarousel
         infiniteLoop={false}
         gutter={30}
@@ -78,12 +89,14 @@ export default function MyOutfitsList(props) {
         rightChevron={<NavigateNextIcon />}
         leftChevron={<NavigateBeforeIcon />}
       >
-        {myOutfits.map(item => {
+        {myOutfits.map((item, index) => {
           return (
             <MyOutfitCard
+              index={index}
               key={item.id}
               resetCarousel={setActiveItemIndex}
               myOutfit={item}
+              removeFromOutfits={removeFromOutfits}
             />
           );
         })}
