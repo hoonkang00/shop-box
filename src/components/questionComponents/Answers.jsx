@@ -32,37 +32,50 @@ export default function Answers({ answer, getAnswers }) {
         console.log(err);
       });
   };
-  const [reported, updateReported] = useState(false);
-
+  const [reported, markReported] = useState(false);
+  const reportAnswer = () => {
+    if (!reported) {
+      axios
+        .put(`http://18.223.1.30/qa/answer/${answer.answer_id}/report`)
+        .then(() => {
+          markReported(true);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
   return (
     <div className="answer-block">
       <div>
         {answer.body}
-        <br />
-        by {answer.answerer_name} {month}, {day}, {year}{" "}
-        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful?{" "}
-        <span
-          className="yes-button"
-          onClick={() => {
-            if (!helpful) {
-              updateHelpful(true);
-              markAnswerHelpful();
-            }
-          }}
-        >
-          Yes
-        </span>{" "}
-        {"("}
-        {answer.helpfulness}
-        {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <span
-          className="yes-button"
-          onClick={() => {
-            console.log("yes working");
-          }}
-        >
-          Report
-        </span>
+        <div className="answer-detail">
+          by {answer.answerer_name} {month}, {day}, {year}{" "}
+          &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful?{" "}
+          <span
+            className="yes-button"
+            onClick={() => {
+              if (!helpful) {
+                updateHelpful(true);
+                markAnswerHelpful();
+              }
+            }}
+          >
+            Yes
+          </span>{" "}
+          {"("}
+          {answer.helpfulness}
+          {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          {reported ? (
+            <span className="yes-button" style={{ color: "red" }}>
+              Reported!
+            </span>
+          ) : (
+            <span className="yes-button" onClick={reportAnswer}>
+              Report
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
