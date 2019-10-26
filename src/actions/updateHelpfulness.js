@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const updateHelpfulness = ([rating, actionType, productID]) => {
+const updateHelpfulness = ([reviewId]) => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/helpful/${reviewId}`)
+      .put(`http://18.223.1.30/reviews/helpful/${reviewId}`)
       .then(({ data }) => {
         let filteredList = [];
         data.results.forEach(review => {

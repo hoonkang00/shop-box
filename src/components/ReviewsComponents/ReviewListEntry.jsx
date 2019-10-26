@@ -34,7 +34,7 @@ const ReviewListEntry = ({ review }) => {
         )}
         <div>
           <span>Helpful?</span>
-          <span onClick={}>Yes ({review.helpfulness})</span>
+          {/* <span onClick={}>Yes ({review.helpfulness})</span> */}
           <span>|</span>
           <span>Report</span>
         </div>
