@@ -19,24 +19,29 @@ const labels = {
   5: "Great"
 };
 
-export default function AddReview({ handleClick, prodId }) {
+export default function AddReview({ handleClick, prodMeta, newReview }) {
   const [hover, setHover] = useState(-1);
   const [value, setValue] = useState(0);
-
-  const [formData, setFormData] = useState({
-    rating: 0,
-    summary: "",
-    body: "",
-    recommend: "",
-    name: "",
-    email: "",
-    photos: [],
-    characteristics: {}
-  });
+  const [recommended, setRecommended] = useState(0);
 
   const add = () => {
-    handleClick(propdId, formData);
+    handleClick(prodMeta.id, newReview);
   };
+
+  const updateReview = event => {
+    if (event.target.name === "recommend") {
+      setRecommended(event.target.value);
+      if (event.target.value === "true") {
+        newReview[event.target.name] = true;
+      } else {
+        newReview[event.target.name] = false;
+      }
+    } else {
+      newReview[event.target.name] = event.target.value;
+    }
+  };
+
+  //TODO: recommended check for radio button
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
@@ -66,54 +71,82 @@ export default function AddReview({ handleClick, prodId }) {
               onClickCapture={event => {
                 event.persist();
                 setValue(hover);
-                setFormData({
-                  ...formData,
-                  [event.target.name]: hover
-                });
+                updateReview(event);
               }}
             />
             <Box ml={2}>{labels[value !== 0 ? value : hover]}</Box>
           </div>
           <Grid item>
             <label>Recommend</label>
-            <Radio value="yes" label="Yes" />
-            <Radio value="no" label="No" />
-            <FormCharacteristics />
+            <Radio
+              name="recommend"
+              value="true"
+              label="Yes"
+              checked={recommended === "true"}
+              onChange={event => {
+                updateReview(event);
+              }}
+            />
+            <Radio
+              name="recommend"
+              value="false"
+              label="No"
+              checked={recommended === "false"}
+              onChange={event => {
+                updateReview(event);
+              }}
+            />
+            <FormCharacteristics
+              newReviewCharacteristic={newReview.characteristics}
+              characteristicId={prodMeta.characteristics}
+            />
             <form className="form-content3">
               <label>Summary: </label>
               <input
                 type="text"
-                name="Review Summary"
+                name="summary"
                 id=""
                 required
                 maxLength="60"
+                onChange={event => {
+                  updateReview(event);
+                }}
               />
               <label>Body: </label>
               <input
                 type="text"
-                name="Review Body"
+                name="body"
                 id=""
                 required
                 minLength="50"
                 maxLength="1000"
+                onChange={event => {
+                  updateReview(event);
+                }}
               />
               {/* TODO: Add materialui image button*/}
               <label>Nickname</label>
               <input
                 type="text"
-                name="Nickname"
+                name="name"
                 id=""
                 required
                 maxLength="60"
+                onChange={event => {
+                  updateReview(event);
+                }}
               />
               <label>Email</label>
               <input
                 type="text"
-                name="Email"
+                name="email"
                 id=""
                 required
                 maxLength="60"
                 placeholder="jackson11@email.com"
+                onChange={event => {
+                  updateReview(event);
+                }}
               />
               {/* TODO: radio buttons for characteristics */}
             </form>
@@ -124,7 +157,12 @@ export default function AddReview({ handleClick, prodId }) {
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleClose} color="primary" onClick={add}>
+        <Button
+          onClick={() => {
+            handleClose(), add();
+          }}
+          color="primary"
+        >
           Add Review
         </Button>
       </DialogActions>

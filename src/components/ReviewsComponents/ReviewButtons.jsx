@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form from "./AddReviewForm.jsx";
+import Form from "../../containers/RatingsReviewsContainers/AddNewReview.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";

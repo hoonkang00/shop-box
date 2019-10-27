@@ -2,11 +2,14 @@ import { connect } from "react-redux";
 import addReview from "../../actions/addReview.js";
 import AddReviewForm from "../../components/ReviewsComponents/AddReviewForm.jsx";
 
-const mapStateToProps = store => ({ prodId: store.productInfo.id });
+const mapStateToProps = store => ({
+  prodMeta: store.reviewMetaData,
+  newReview: store.newReview
+});
 const mapDispatchToProps = dispatch => {
   return {
-    handleClick: prodId => {
-      dispatch(addReview(prodId));
+    handleClick: (prodId, review) => {
+      dispatch(addReview(prodId, review));
     }
   };
 };
