@@ -56,26 +56,44 @@ class AddQuestion extends Component {
   handleClose() {
     this.setState({ open: false });
   }
+  emailIsValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
 
   handleSubmit(e) {
     e.preventDefault();
     let questionObj = {
-      body: this.state.answer,
+      body: this.state.question,
       name: this.state.nickname,
       email: this.state.email
     };
+    let errorMsg = [];
+    if (this.state.question === "" || this.state.question == null) {
+      errorMsg.push("Question is required");
+    }
+    if (this.state.nickname === "" || this.state.nickname == null) {
+      errorMsg.push("Name is required");
+    }
+    if (this.state.email === "" || this.state.email == null) {
+      errorMsg.push("Email is required");
+    }
+    if (!this.emailIsValid(this.state.email)) {
+      errorMsg.push("Email format is incorrect");
+    }
+    if (errorMsg.length > 0) {
+      alert(errorMsg.join("\n"));
+    } else {
+      axios
+        .post(`http://18.223.1.30/qa/${this.props.product.id}`, questionObj)
+        .then(() => {
+          this.props.getQuestions(this.props.product.id);
+        })
+        .catch(err => {
+          console.log(err);
+        });
 
-    axios
-      .post(`http://18.223.1.30/qa/${this.props.product.id}`, questionObj)
-      .then(() => {
-        console.log(this.props.product.id);
-        this.props.getQuestions(this.props.product.id);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    this.setState({ open: false });
+      this.setState({ open: false });
+    }
   }
 
   render() {
@@ -84,7 +102,6 @@ class AddQuestion extends Component {
       <div>
         <Button
           variant="outlined"
-          // color="primary"
           className={classes.button}
           onClick={this.handleClickOpen}
         >
@@ -104,7 +121,7 @@ class AddQuestion extends Component {
             <TextField
               required
               id="outlined-multiline-flexible"
-              label="Input answer here"
+              label="Input question here"
               multiline
               rowsMax="4"
               maxLength="1000"
@@ -112,7 +129,7 @@ class AddQuestion extends Component {
               onChange={e => {
                 this.handleChange(e);
               }}
-              name="answer"
+              name="question"
               className={classes.textField}
               margin="normal"
               variant="outlined"

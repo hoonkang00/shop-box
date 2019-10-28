@@ -40,7 +40,6 @@ class AddAnswer extends Component {
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.emailIsValid = this.emailIsValid.bind(this);
   }
   handleChange(e) {
     const target = e.target;
