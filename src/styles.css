@@ -29,6 +29,11 @@
   flex-grow: 1;
 }
 
+.form-content3 {
+  display: flex;
+  flex-direction: column;
+}
+
 .rows:first-child {
   max-height: 500px;
 }
@@ -432,7 +437,6 @@ p.mockup {
   font-size: 14px;
   margin-left: 10px;
 }
-
 
 #addOutfit-card-box {
   background-color: #0be613;
