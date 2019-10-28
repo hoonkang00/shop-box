@@ -25,6 +25,7 @@ export default function RemoveMyOutfit(props) {
   const removeFromLocalStorage = ()=>{
     console.log(props.index)
     props.removeFromOutfits(props.index)
+    props.setisItInMyOutfit(false)
   }
 
   return (
@@ -33,7 +34,7 @@ export default function RemoveMyOutfit(props) {
         variant="contained"
         onClick={removeFromLocalStorage}
       >
-        <DeleteForeverIcon />
+        <DeleteForeverIcon htmlColor='black' />
       </IconButton>
 
     </div>
