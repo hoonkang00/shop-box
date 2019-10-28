@@ -3,18 +3,51 @@ import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
 
 const CharacteristicsEntry = ({ characteristicName, characteristicValue }) => {
+  const labels = {
+    Size: {
+      small: "Too small",
+      mid: "Perfect",
+      large: "Too big"
+    },
+    Width: {
+      small: "Too narrow",
+      mid: "Perfect",
+      large: "Too wide"
+    },
+    Comfort: {
+      small: "Uncomfortable",
+      mid: "Ok",
+      large: "Perfect"
+    },
+    Quality: {
+      small: "Poor",
+      mid: "Expected",
+      large: "Perfect"
+    },
+    Length: {
+      small: "Short",
+      mid: "Perfect",
+      large: "Long"
+    },
+    Fit: {
+      small: "Tight",
+      mid: "Perfect",
+      large: "Long"
+    }
+  };
+
   const marks = [
     {
       value: 0,
-      label: characteristicName === "Size" ? "Too small" : "Poor"
+      label: labels[characteristicName].small
     },
     {
       value: 50,
-      label: characteristicName === "Size" ? "Perfect" : "Good"
+      label: labels[characteristicName].mid
     },
     {
       value: 100,
-      label: characteristicName === "Size" ? "Too big" : "Great"
+      label: labels[characteristicName].large
     }
   ];
   return (
@@ -24,7 +57,7 @@ const CharacteristicsEntry = ({ characteristicName, characteristicValue }) => {
         <Slider
           value={Number((characteristicValue.value / 5) * 100)}
           aria-labelledby="input-slider"
-          className="char"
+          className="characteristic-slider"
           marks={marks}
         />
       </Grid>
