@@ -195,7 +195,7 @@ span.MuiSlider-track {
   font-family: "Roboto", sans-serif;
   display: inline-block;
   width: 100%;
-  vertical-align: top;
+  /* vertical-align: top; */
 }
 
 .q-and-a-scroll {
@@ -214,6 +214,10 @@ span.MuiSlider-track {
 }
 .question-right {
   width: 40%;
+}
+
+.q-a-buttons {
+  display: flex;
 }
 
 .answer {

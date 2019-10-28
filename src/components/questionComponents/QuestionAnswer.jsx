@@ -70,9 +70,14 @@ export default function QuestionAnswer(props) {
             showMoreQuestions={showMoreQuestions}
             collapseQuestions={collapseQuestions}
           /> */}
-          {moreQsBtn}
         </div>
-        <AddQuestion product={props.productInfo} getQuestions={getQuestions} />
+        <div className="q-a-buttons">
+          {moreQsBtn}
+          <AddQuestion
+            product={props.productInfo}
+            getQuestions={getQuestions}
+          />
+        </div>
       </div>
     </div>
   );

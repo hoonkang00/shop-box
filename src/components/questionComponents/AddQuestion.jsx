@@ -23,6 +23,9 @@ const styles = theme => ({
   },
   menu: {
     width: 200
+  },
+  button: {
+    margin: theme.spacing(1)
   }
 });
 
@@ -81,7 +84,8 @@ class AddQuestion extends Component {
       <div>
         <Button
           variant="outlined"
-          color="primary"
+          // color="primary"
+          className={classes.button}
           onClick={this.handleClickOpen}
         >
           Add A Question +
