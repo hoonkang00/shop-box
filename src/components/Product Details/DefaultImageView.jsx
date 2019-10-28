@@ -22,6 +22,8 @@ export default ({ photos }) => {
   }
   const [selectedIndex, updateSelectedIndex] = useState(0);
   const [firstIndex, updateFirstIndex] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+
   let mainPhoto = photos ? photos[selectedIndex].url : "";
   let displayedPhotos = [];
   for (let i = 0; i < photos.length; i++) {
@@ -31,8 +33,20 @@ export default ({ photos }) => {
   }
   const classes = useStyles();
 
-  return (
-    <div className="main-img" style={{ backgroundImage: `url(${mainPhoto})` }}>
+  return expanded ? (
+    <div className="background-expanded-view">
+      <img
+        className="image-expanded"
+        src={mainPhoto}
+        onClick={() => setExpanded(!expanded)}
+      ></img>
+    </div>
+  ) : (
+    <div
+      className="main-img"
+      style={{ backgroundImage: `url(${mainPhoto})` }}
+      onClick={() => setExpanded(!expanded)}
+    >
       <div className={classes.root}>
         <ExpandLessIcon className={classes.arrowTop} />
       </div>
@@ -41,7 +55,10 @@ export default ({ photos }) => {
           key={index}
           className="list-image"
           style={{ backgroundImage: `url(${imgUrl})` }}
-          onClick={() => updateSelectedIndex(index)}
+          onClick={e => {
+            updateSelectedIndex(index);
+            e.stopPropagation();
+          }}
         ></div>
       ))}
       <div className={classes.root}>
