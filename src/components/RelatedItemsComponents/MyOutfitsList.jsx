@@ -6,6 +6,7 @@ import ItemsCarousel from "react-items-carousel";
 import Typography from "@material-ui/core/Typography";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import AddOutfitCardButton from "./AddOutfitCardButton.jsx"
 
 export default function MyOutfitsList(props) {
   if (!window.localStorage.getItem("Shop-Box-My-Outfits")) {
@@ -69,7 +70,6 @@ export default function MyOutfitsList(props) {
   return (
     <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
       <Typography>MY OUTFITS</Typography>
-      <button onClick={addToOufits}>Add to my outfits</button>
       <ItemsCarousel
         infiniteLoop={false}
         gutter={30}
@@ -89,6 +89,7 @@ export default function MyOutfitsList(props) {
         rightChevron={<NavigateNextIcon />}
         leftChevron={<NavigateBeforeIcon />}
       >
+        <AddOutfitCardButton add = {addToOufits}/>
         {myOutfits.map((item, index) => {
           return (
             <MyOutfitCard
@@ -97,6 +98,7 @@ export default function MyOutfitsList(props) {
               resetCarousel={setActiveItemIndex}
               myOutfit={item}
               removeFromOutfits={removeFromOutfits}
+              goToOutfit={props.setStoreProductInfo}
             />
           );
         })}

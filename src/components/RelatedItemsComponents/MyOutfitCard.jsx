@@ -55,6 +55,7 @@ export default function MyOutfitCard(props) {
         className={"item-card-box-action-area"}
         onClick={() => {
           props.resetCarousel(0);
+          props.goToOutfit(props.myOutfit.id)
         }}
       >
         <CardMedia
