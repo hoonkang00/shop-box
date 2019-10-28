@@ -77,7 +77,6 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
           )
           .then(({ data }) => {
             newReview["photos"].push(data.data.link);
-            console.log(newReview);
           })
           .catch(err => {
             console.log(err);
@@ -188,7 +187,6 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
                   updateReview(event);
                 }}
               />
-              {/* TODO: radio buttons for characteristics */}
             </form>
           </Grid>
         </Box>
