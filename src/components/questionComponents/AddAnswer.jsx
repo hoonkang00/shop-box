@@ -138,7 +138,7 @@ class AddAnswer extends Component {
               helperText="For authentication reasons, you will not be emailed"
               fullWidth
             />
-            Upload Photos:
+            {/* Upload Photos:
             <input
               accept="image/*"
               className={classes.input}
@@ -153,8 +153,8 @@ class AddAnswer extends Component {
                 className={classes.button}
               >
                 Upload
-              </Button>
-            </label>
+              </Button> */}
+            {/* </label> */}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

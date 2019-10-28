@@ -52,7 +52,7 @@ export default function Answers({ answer, getAnswers }) {
         {answer.photos.length > 0
           ? answer.photos.map(photo => {
               return (
-                <img src={photo.url} alt="review photo" height="100"></img>
+                <img className="answer-photo" src={photo.url} alt="answer photo" height="100"></img>
               );
             })
           : null}
