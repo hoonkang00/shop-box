@@ -47,8 +47,15 @@ export default function Answers({ answer, getAnswers }) {
   };
   return (
     <div className="answer-block">
+      {answer.body}
       <div>
-        {answer.body}
+        {answer.photos.length > 0
+          ? answer.photos.map(photo => {
+              return (
+                <img src={photo.url} alt="review photo" height="100"></img>
+              );
+            })
+          : null}
         <div className="answer-detail">
           by {answer.answerer_name} {month}, {day}, {year}{" "}
           &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Helpful?{" "}
