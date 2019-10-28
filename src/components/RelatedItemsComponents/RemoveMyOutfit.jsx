@@ -25,6 +25,7 @@ export default function RemoveMyOutfit(props) {
   const removeFromLocalStorage = ()=>{
     console.log(props.index)
     props.removeFromOutfits(props.index)
+    props.setisItInMyOutfit(false)
   }
 
   return (

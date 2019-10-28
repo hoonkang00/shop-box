@@ -17,6 +17,9 @@ export default function MyOutfitsList(props) {
   const [myOutfits, setmyOutfits] = useState(
     JSON.parse(window.localStorage.getItem("Shop-Box-My-Outfits"))
   );
+
+  const [isItInMyOutfit, setisItInMyOutfit] = useState(false)
+  
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
   const checkInOutfit = id => {
@@ -33,16 +36,13 @@ export default function MyOutfitsList(props) {
   const removeFromOutfits=(index)=>{
     let removed = myOutfits.slice()
     removed.splice(index,1)
-    console.log(removed)
     addToLocalStorage(removed)
     setmyOutfits(removed);
 
   }
 
   const addToOufits = () => {
-    let inMyOutfit = checkInOutfit(props.productInfo.id);
-    console.log(inMyOutfit);
-    if (!inMyOutfit) {
+    if (!isItInMyOutfit) {
       let newOutfit = {
         id: props.productInfo.id,
         ...props.productInfo,
@@ -53,6 +53,7 @@ export default function MyOutfitsList(props) {
       
       addToLocalStorage(newState);
       setmyOutfits(newState);
+      setisItInMyOutfit(true)
     }
   };
 
@@ -66,6 +67,10 @@ export default function MyOutfitsList(props) {
       addToLocalStorage(myOutfits);
     };
   }, []);
+
+  useEffect(()=>{
+    setisItInMyOutfit(checkInOutfit(props.productInfo.id))
+  }, [props.productInfo.id])
 
   return (
     <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
@@ -89,7 +94,10 @@ export default function MyOutfitsList(props) {
         rightChevron={<NavigateNextIcon />}
         leftChevron={<NavigateBeforeIcon />}
       >
-        <AddOutfitCardButton add = {addToOufits}/>
+        {
+          !isItInMyOutfit && <AddOutfitCardButton add = {addToOufits}/>
+        }
+        
         {myOutfits.map((item, index) => {
           return (
             <MyOutfitCard
@@ -99,6 +107,7 @@ export default function MyOutfitsList(props) {
               myOutfit={item}
               removeFromOutfits={removeFromOutfits}
               goToOutfit={props.setStoreProductInfo}
+              setisItInMyOutfit = {setisItInMyOutfit}
             />
           );
         })}

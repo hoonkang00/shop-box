@@ -54,7 +54,6 @@ export default function MyOutfitCard(props) {
       <CardActionArea
         className={"item-card-box-action-area"}
         onClick={() => {
-          props.resetCarousel(0);
           props.goToOutfit(props.myOutfit.id)
         }}
       >
@@ -79,7 +78,7 @@ export default function MyOutfitCard(props) {
       ) : (
         <StarRatings rating={averageReview} />
       )}
-      <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits}/>
+      <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits} setisItInMyOutfit={props.setisItInMyOutfit}/>
     </Card>
   );
 }
