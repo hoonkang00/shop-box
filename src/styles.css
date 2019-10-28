@@ -196,7 +196,7 @@ span.MuiSlider-track {
 }
 
 .q-and-a-scroll {
-  height: 350px;
+  max-height: 350px;
   overflow: auto;
 }
 
