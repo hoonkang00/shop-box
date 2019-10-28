@@ -7,6 +7,9 @@
 .MuiGrid-grid-xs-11 {
   width: 80%;
 }
+.MuiDialogContent-root {
+  font-family: "Roboto", sans-serif;
+}
 .sorting-section {
   display: inline-flex;
   width: 300px;
