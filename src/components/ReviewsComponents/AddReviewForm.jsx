@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
 import FormCharacteristics from "./FormCharacteristics.jsx";
 import axios from "axios";
@@ -42,47 +38,37 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
     }
   };
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [scroll, setScroll] = useState("paper");
 
-  const handleClickOpen = scrollType => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  //TODO: Promisify the img function
   const img = event => {
-    var files = event.target.files;
-    var file = files[0];
+    var files = [...event.target.files];
+    if (files) {
+      files.map(file => {
+        var reader = new FileReader();
 
-    if (files && file) {
-      var reader = new FileReader();
-
-      reader.onload = function(readerEvt) {
-        var binaryString = readerEvt.target.result;
-        var p = btoa(binaryString);
-        axios
-          .post(
-            "https://api.imgur.com/3/image",
-            { image: p },
-            {
-              headers: {
-                Authorization: "Client-ID 6e6d850fc03dd7f"
+        reader.onload = function(readerEvt) {
+          var binaryString = readerEvt.target.result;
+          var imageBase64 = btoa(binaryString);
+          return axios
+            .post(
+              "https://api.imgur.com/3/image",
+              { image: imageBase64 },
+              {
+                headers: {
+                  Authorization: "Client-ID 6e6d850fc03dd7f"
+                }
               }
-            }
-          )
-          .then(({ data }) => {
-            newReview["photos"].push(data.data.link);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
-      reader.readAsBinaryString(file);
+            )
+            .then(({ data }) => {
+              newReview["photos"].push(data.data.link);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        };
+        reader.readAsBinaryString(file);
+      });
     }
   };
 
@@ -191,19 +177,6 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
           </Grid>
         </Box>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Cancel
-        </Button>
-        <Button
-          onClick={() => {
-            handleClose(), add();
-          }}
-          color="primary"
-        >
-          Add Review
-        </Button>
-      </DialogActions>
     </div>
   );
 }
