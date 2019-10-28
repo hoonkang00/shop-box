@@ -34,7 +34,7 @@ export default function RemoveMyOutfit(props) {
         variant="contained"
         onClick={removeFromLocalStorage}
       >
-        <DeleteForeverIcon />
+        <DeleteForeverIcon htmlColor='black' />
       </IconButton>
 
     </div>

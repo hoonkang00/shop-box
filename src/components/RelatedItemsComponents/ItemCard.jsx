@@ -62,7 +62,7 @@ export default function ItemCard(props) {
   let averageReview = findAverage(props.relatedProduct.ratings);
   return (
     <Card className={"item-card-box"}>
-      <Link className="card-link" to={`/${props.relatedProduct.id}/`}>
+      <Link className="card-link" to={`/products/${props.relatedProduct.id}/`}>
         <CardActionArea
           className={"item-card-box-action-area"}
           onClick={() => {
