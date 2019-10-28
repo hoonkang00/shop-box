@@ -46,7 +46,7 @@ export default function Answers({ answer, getAnswers }) {
     }
   };
   return (
-    <div className="answer-block">
+    <div>
       {answer.body}
       <div>
         {answer.photos.length > 0
