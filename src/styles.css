@@ -412,5 +412,22 @@ p.mockup {
 
 
 #addOutfit-card-box {
-  background-color: #0be613;
+  background-color: blanchedalmond;
+}
+
+
+#related-product-card-description{
+
+  height: 3em;
+}
+
+
+.MuiCard-root{
+  height:99%;
+}
+
+#no-review-text{
+  height:18px;
+  padding: 0px 10px 15px 10px;
+
 }
