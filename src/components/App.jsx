@@ -7,30 +7,50 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation
 } from "react-router-dom";
 
+const ScrollToTop = props =>{
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null
+
+}
+
+
+
 const App = props => {
+
   return (
-    <Router basename="/products">
-       <div className="components">
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <ProductDetailsContainer />
-        </Grid>
-        <Grid item xs={11}>
-          <RelatedItems />
-        </Grid>
-        <Grid item xs={11}>
-          <QAContainer />
-        </Grid>
-        <Grid item xs={11}>
-          <ReviewsContainer />
-        </Grid>
-      </Grid>
-    </div>
+    <Router>
+      <ScrollToTop/>
+      <div className="components">
+        <Switch>
+          <Route path="/products/">
+            <Grid container spacing={4}>
+              <Grid item xs={12}>
+                <ProductDetailsContainer />
+              </Grid>
+              <Grid item xs={11}>
+                <RelatedItems />
+              </Grid>
+              <Grid item xs={11}>
+                <QAContainer />
+              </Grid>
+              <Grid item xs={11}>
+                <ReviewsContainer />
+              </Grid>
+            </Grid>
+          </Route>
+        </Switch>
+      </div>
     </Router>
-   
   );
 };
 

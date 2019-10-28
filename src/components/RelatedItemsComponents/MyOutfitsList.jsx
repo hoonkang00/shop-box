@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MyOutfitCard from "./MyOutfitCard.jsx";
-import getRelatedItems from "../../lib/relatedItemsHelpers/relatedItemsApiCall.js";
 import { makeStyles } from "@material-ui/core/styles";
 import ItemsCarousel from "react-items-carousel";
 import Typography from "@material-ui/core/Typography";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import AddOutfitCardButton from "./AddOutfitCardButton.jsx"
 
 export default function MyOutfitsList(props) {
   if (!window.localStorage.getItem("Shop-Box-My-Outfits")) {
@@ -16,6 +16,9 @@ export default function MyOutfitsList(props) {
   const [myOutfits, setmyOutfits] = useState(
     JSON.parse(window.localStorage.getItem("Shop-Box-My-Outfits"))
   );
+
+  const [isItInMyOutfit, setisItInMyOutfit] = useState(false)
+  
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
   const checkInOutfit = id => {
@@ -32,16 +35,13 @@ export default function MyOutfitsList(props) {
   const removeFromOutfits=(index)=>{
     let removed = myOutfits.slice()
     removed.splice(index,1)
-    console.log(removed)
     addToLocalStorage(removed)
     setmyOutfits(removed);
 
   }
 
   const addToOufits = () => {
-    let inMyOutfit = checkInOutfit(props.productInfo.id);
-    console.log(inMyOutfit);
-    if (!inMyOutfit) {
+    if (!isItInMyOutfit) {
       let newOutfit = {
         id: props.productInfo.id,
         ...props.productInfo,
@@ -52,6 +52,7 @@ export default function MyOutfitsList(props) {
       
       addToLocalStorage(newState);
       setmyOutfits(newState);
+      setisItInMyOutfit(true)
     }
   };
 
@@ -66,10 +67,13 @@ export default function MyOutfitsList(props) {
     };
   }, []);
 
+  useEffect(()=>{
+    setisItInMyOutfit(checkInOutfit(props.productInfo.id))
+  }, [props.productInfo.id])
+
   return (
     <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
       <Typography>MY OUTFITS</Typography>
-      <button onClick={addToOufits}>Add to my outfits</button>
       <ItemsCarousel
         infiniteLoop={false}
         gutter={30}
@@ -89,6 +93,10 @@ export default function MyOutfitsList(props) {
         rightChevron={<NavigateNextIcon />}
         leftChevron={<NavigateBeforeIcon />}
       >
+        {
+          !isItInMyOutfit && <AddOutfitCardButton add = {addToOufits}/>
+        }
+        
         {myOutfits.map((item, index) => {
           return (
             <MyOutfitCard
@@ -97,6 +105,8 @@ export default function MyOutfitsList(props) {
               resetCarousel={setActiveItemIndex}
               myOutfit={item}
               removeFromOutfits={removeFromOutfits}
+              goToOutfit={props.setStoreProductInfo}
+              setisItInMyOutfit = {setisItInMyOutfit}
             />
           );
         })}
