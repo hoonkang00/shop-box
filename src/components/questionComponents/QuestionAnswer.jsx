@@ -27,7 +27,18 @@ export default function QuestionAnswer(props) {
   let collapseQuestions = () => {
     setCounter(2);
   };
-
+  let moreQsBtn;
+  if (questions.length <= 2) {
+    moreQsBtn = null;
+  } else {
+    moreQsBtn = (
+      <MoreQuestions
+        showCollapse={counter >= questions.length}
+        showMoreQuestions={showMoreQuestions}
+        collapseQuestions={collapseQuestions}
+      />
+    );
+  }
   useEffect(() => {
     getQuestions(props.productInfo.id);
   }, [props]);
@@ -51,15 +62,15 @@ export default function QuestionAnswer(props) {
                 question={question}
                 getQuestions={getQuestions}
                 product={props.productInfo}
-                
               />
             );
           })}
-          <MoreQuestions
+          {/* <MoreQuestions
             showCollapse={counter >= questions.length}
             showMoreQuestions={showMoreQuestions}
             collapseQuestions={collapseQuestions}
-          />
+          /> */}
+          {moreQsBtn}
         </div>
         <AddQuestion product={props.productInfo} getQuestions={getQuestions} />
       </div>
