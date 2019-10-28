@@ -60,7 +60,7 @@
   width: 0;
   height: 0;
 }
-.char span.MuiSlider-thumbColorPrimary {
+.characteristic-slider span.MuiSlider-thumbColorPrimary {
   width: 0;
   height: 0;
   border-left: 8px solid transparent;
@@ -68,8 +68,16 @@
   border-top: 8px solid #f00;
   background-color: transparent;
 }
+.characteristic-slider span.MuiSlider-markLabel {
+  font-size: 10px;
+}
+.characteristic-slider span.MuiSlider-track {
+  color: #545454;
+  opacity: 0;
+}
+
 span.MuiSlider-mark {
-  width: 4px;
+  width: 6px;
   height: 5px;
   position: absolute;
   border-radius: 0;

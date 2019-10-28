@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getNumberOfTotalReviews = productID => {
+const getTotalReviews = productID => {
   return axios
     .get(`http://18.223.1.30/reviews/${productID}/list?count=100000`)
     .then(({ data }) => {
@@ -11,4 +11,4 @@ const getNumberOfTotalReviews = productID => {
     });
 };
 
-export default getNumberOfTotalReviews;
+export default getTotalReviews;

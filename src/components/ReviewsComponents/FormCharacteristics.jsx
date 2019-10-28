@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
 
 const useStyles = makeStyles({
   root: {
@@ -18,28 +19,50 @@ const useStyles = makeStyles({
   }
 });
 
-function createData(name, value1, value2, value3, value4, value5) {
-  return { name, value1, value2, value3, value4, value5 };
-}
+export default function FormCharacteristic({
+  newReviewCharacteristic,
+  characteristicId
+}) {
+  const initialState = Object.keys(characteristicId).reduce(
+    (obj, radioState) => {
+      obj[radioState] = false;
+      return obj;
+    },
+    {}
+  );
+  const [active, setActive] = useState(initialState);
 
-const getRadioRows = () => {
-  let radios = [];
-  for (let i = 1; i <= 5; i++) {
-    radios.push(<Radio value={i} />);
-  }
-  return radios;
-};
+  const createData = (name, value1, value2, value3, value4, value5, id) => {
+    return { name, value1, value2, value3, value4, value5, id };
+  };
 
-const rows = [
-  createData("Size", ...getRadioRows()),
-  createData("Width", ...getRadioRows()),
-  createData("Comfort", ...getRadioRows()),
-  createData("Quality", ...getRadioRows()),
-  createData("Length", ...getRadioRows()),
-  createData("Fit", ...getRadioRows())
-];
+  const getRadioRows = rowName => {
+    let radios = [];
+    for (let i = 1; i <= 5; i++) {
+      radios.push(
+        <Radio
+          value={i}
+          id={`${characteristicId[rowName].id}`}
+          name={rowName}
+          checked={active[rowName] === `${i}`}
+        />
+      );
+    }
+    return radios;
+  };
 
-export default function SimpleTable() {
+  const rows = Object.keys(characteristicId).map(rowName => {
+    return createData(
+      rowName,
+      ...getRadioRows(rowName),
+      characteristicId[rowName].id
+    );
+  });
+
+  const update = event => {
+    newReviewCharacteristic[event.target.id] = event.target.value;
+    setActive({ ...active, [event.target.name]: event.target.value });
+  };
   const classes = useStyles();
 
   return (
@@ -57,7 +80,14 @@ export default function SimpleTable() {
         </TableHead>
         <TableBody>
           {rows.map(row => (
-            <TableRow key={row.name}>
+            <TableRow
+              key={row.name}
+              id={row.id}
+              onChange={event => {
+                event.persist();
+                update(event);
+              }}
+            >
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
