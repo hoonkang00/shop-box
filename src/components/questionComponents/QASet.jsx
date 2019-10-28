@@ -69,8 +69,9 @@ export default class QASet extends Component {
     return (
       <div className="q-a-set">
         <div className="question">
-          <div className="question-left">
-            Q: {this.props.question.question_body}
+          <div className="question-title">Q:</div>
+          <div className="question-block">
+            {this.props.question.question_body}
           </div>
           <div className="question-right answer-detail">
             Helpful? &nbsp;
@@ -110,20 +111,22 @@ export default class QASet extends Component {
             />
           </div>
         </div>
-        <div>
-          <div>A: </div>
-          {this.state.answers.slice(0, this.state.counter).map(answer => {
-            return (
-              <Answers
-                getAnswers={this.getAnswers}
-                key={answer.answer_id}
-                answer={answer}
-              />
-            );
-          })}
-          {this.state.counter >= this.state.answers.length ? null : (
-            <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
-          )}
+        <div className="answer">
+          <div className="answer-title">A: </div>
+          <div className="answer-block">
+            {this.state.answers.slice(0, this.state.counter).map(answer => {
+              return (
+                <Answers
+                  getAnswers={this.getAnswers}
+                  key={answer.answer_id}
+                  answer={answer}
+                />
+              );
+            })}
+            {this.state.counter >= this.state.answers.length ? null : (
+              <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
+            )}
+          </div>
         </div>
       </div>
     );
