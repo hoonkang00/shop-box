@@ -64,7 +64,7 @@ const ProductDetails = props => {
             <div className="stars-mockup">stars and reviews link</div>
             <ProductHeader />
             <StyleBubbleAreaContainer />
-            <ShoppingForm style={style} />
+            <ShoppingForm style={style} product={props.product} />
           </Grid>
         </Grid>
       </div>
