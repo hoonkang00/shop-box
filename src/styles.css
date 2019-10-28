@@ -7,6 +7,11 @@
 .MuiGrid-grid-xs-11 {
   width: 80%;
 }
+.sorting-section {
+  display: inline-flex;
+  width: 300px;
+  flex-direction: row;
+}
 .Reviews {
   flex-direction: column;
   align-items: stretch;
@@ -31,6 +36,15 @@
 
 .rows:first-child {
   max-height: 500px;
+}
+
+div.MuiDialog-paperWidthSm {
+  max-width: 900px;
+}
+.form-content3 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 .star-rating {
   flex-direction: row;
