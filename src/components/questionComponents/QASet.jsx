@@ -110,7 +110,7 @@ export default class QASet extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className="answer">
           <div>A: </div>
           {this.state.answers.slice(0, this.state.counter).map(answer => {
             return (

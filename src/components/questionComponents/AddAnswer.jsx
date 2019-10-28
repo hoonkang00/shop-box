@@ -40,6 +40,7 @@ class AddAnswer extends Component {
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.emailIsValid = this.emailIsValid.bind(this);
   }
   handleChange(e) {
     const target = e.target;
@@ -54,7 +55,9 @@ class AddAnswer extends Component {
   handleClose() {
     this.setState({ open: false });
   }
-
+  emailIsValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
   handleSubmit(e) {
     e.preventDefault();
     let answerObj = {
@@ -63,16 +66,36 @@ class AddAnswer extends Component {
       email: this.state.email,
       photos: this.state.photos
     };
-    axios
-      .post(`http://18.223.1.30/qa/${this.props.questionId}/answers`, answerObj)
-      .then(() => {
-        this.props.getAnswers();
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    let errorMsg = [];
+    if (this.state.answer === "" || this.state.answer == null) {
+      errorMsg.push("Answer is required");
+    }
+    if (this.state.nickname === "" || this.state.nickname == null) {
+      errorMsg.push("Name is required");
+    }
+    if (this.state.email === "" || this.state.email == null) {
+      errorMsg.push("Email is required");
+    }
+    if (!this.emailIsValid(this.state.email)) {
+      errorMsg.push("Email format is incorrect");
+    }
+    if (errorMsg.length > 0) {
+      alert(errorMsg.join("\n"));
+    } else {
+      axios
+        .post(
+          `http://18.223.1.30/qa/${this.props.questionId}/answers`,
+          answerObj
+        )
+        .then(() => {
+          this.props.getAnswers();
+        })
+        .catch(err => {
+          console.log(err);
+        });
 
-    this.setState({ open: false });
+      this.setState({ open: false });
+    }
   }
 
   render() {

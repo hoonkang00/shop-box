@@ -216,7 +216,12 @@ span.MuiSlider-track {
   width: 40%;
 }
 
+.answer {
+  /* display: flex; */
+}
+
 .answer-block {
+  /* width: 100%; */
   margin: 10px;
   display: block;
 }
