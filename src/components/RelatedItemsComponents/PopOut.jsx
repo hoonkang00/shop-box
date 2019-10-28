@@ -36,7 +36,7 @@ export default function PopOut(props) {
         variant="contained"
         onClick={handleClick}
       >
-        <StarBorderIcon />
+        <StarBorderIcon htmlColor='yellow'/>
       </IconButton>
 
       <Popover
@@ -54,6 +54,7 @@ export default function PopOut(props) {
         }}
       >
         <Paper>
+          <Typography>COMPAIRING</Typography>
           {props.relatedProduct.features.map(feature => {
             return (
             

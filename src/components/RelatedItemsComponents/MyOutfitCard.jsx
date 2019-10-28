@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import StarRatings from "../ReviewsComponents/StarRatings.jsx";
 import RemoveMyOutfit from "./RemoveMyOutfit.jsx";
+import { Link } from "react-router-dom";
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -51,10 +53,10 @@ export default function MyOutfitCard(props) {
   let averageReview = findAverage(props.myOutfit.ratings);
   return (
     <Card className={"item-card-box"}>
+      <Link className="card-link" to={`/products/${props.myOutfit.id}/`}>
       <CardActionArea
         className={"item-card-box-action-area"}
         onClick={() => {
-          props.resetCarousel(0);
           props.goToOutfit(props.myOutfit.id)
         }}
       >
@@ -79,7 +81,8 @@ export default function MyOutfitCard(props) {
       ) : (
         <StarRatings rating={averageReview} />
       )}
-      <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits}/>
+      </Link>
+      <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits} setisItInMyOutfit={props.setisItInMyOutfit}/>
     </Card>
   );
 }
