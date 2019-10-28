@@ -16,14 +16,10 @@ const labels = {
   5: "Great"
 };
 
-export default function AddReview({ handleClick, prodMeta, newReview }) {
+export default function AddReview({ prodMeta, newReview }) {
   const [hover, setHover] = useState(-1);
   const [value, setValue] = useState(0);
   const [recommended, setRecommended] = useState(0);
-
-  const add = () => {
-    handleClick([prodMeta.product_id, newReview]);
-  };
 
   const updateReview = event => {
     if (event.target.name === "recommend") {
@@ -37,8 +33,6 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
       newReview[event.target.name] = event.target.value;
     }
   };
-
-  const [open, setOpen] = useState(true);
   const [scroll, setScroll] = useState("paper");
 
   const img = event => {

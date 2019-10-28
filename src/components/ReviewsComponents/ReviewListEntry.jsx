@@ -23,6 +23,21 @@ const ReviewListEntry = ({ review }) => {
     setReported(true);
   };
 
+  const GetPhotos = () => {
+    return review.photos.map(pic => {
+      return (
+        <img
+          src={pic.url}
+          alt={pic.url}
+          height="100"
+          width="100"
+          key={pic.id}
+          className="review-image"
+        />
+      );
+    });
+  };
+
   return (
     <div className="rowEntry">
       <Grid container>
@@ -31,19 +46,11 @@ const ReviewListEntry = ({ review }) => {
         <ListItem button>
           <ListItemText primary={review.summary} secondary={review.body} />
         </ListItem>
+        {review.photos.length > 0 ? <GetPhotos /> : ""}
         {review.recommend === 1 ? (
           <span>
             <CheckIcon /> <span> I recommend this product</span>
           </span>
-        ) : (
-          ""
-        )}
-        {renderResponse ? (
-          <ListItemText
-            primary={"Response:"}
-            secondary={review.response}
-            className="response"
-          />
         ) : (
           ""
         )}
@@ -55,6 +62,15 @@ const ReviewListEntry = ({ review }) => {
             <span style={{ color: "red" }}>Reported!</span>
           ) : (
             <span onClick={reportReview}>Report</span>
+          )}
+          {renderResponse ? (
+            <ListItemText
+              primary={"Response:"}
+              secondary={review.response}
+              className="response"
+            />
+          ) : (
+            ""
           )}
         </div>
         <Divider />
