@@ -5,7 +5,7 @@
   width: 100%;
 }
 .MuiGrid-grid-xs-11 {
-  width: 80%;
+  width: 70%;
 }
 .MuiDialogContent-root {
   font-family: "Roboto", sans-serif;
@@ -145,18 +145,25 @@ span.MuiSlider-track {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
   grid-template-rows:
-    [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
-    [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
-      100px,
-      max-content
+  [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
+  [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
+    100px,
+    max-content
     )
     [q-and-a-row-start] minmax(100px, max-content)
     [ratings-reviews-row-start] minmax(100px, max-content)
     [ratings-reviews-row-end];
-  grid-row-gap: 20px;
-  justify-content: center;
-} */
+    grid-row-gap: 20px;
+    justify-content: center;
+  } */
 
+.MuiPaper-rounded {
+  border-radius: 0px !important;
+}
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+  border: solid 1px;
+}
 .nav {
   grid-row-start: nav-row-start;
   grid-row-end: details-row-start;

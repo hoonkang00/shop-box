@@ -65,11 +65,7 @@ export default function QuestionAnswer(props) {
               />
             );
           })}
-          {/* <MoreQuestions
-            showCollapse={counter >= questions.length}
-            showMoreQuestions={showMoreQuestions}
-            collapseQuestions={collapseQuestions}
-          /> */}
+  
         </div>
         <div className="q-a-buttons">
           {moreQsBtn}
