@@ -54,7 +54,9 @@ class AddAnswer extends Component {
   handleClose() {
     this.setState({ open: false });
   }
-
+  emailIsValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
   handleSubmit(e) {
     e.preventDefault();
     let answerObj = {
@@ -63,16 +65,36 @@ class AddAnswer extends Component {
       email: this.state.email,
       photos: this.state.photos
     };
-    axios
-      .post(`http://18.223.1.30/qa/${this.props.questionId}/answers`, answerObj)
-      .then(() => {
-        this.props.getAnswers();
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    let errorMsg = [];
+    if (this.state.answer === "" || this.state.answer == null) {
+      errorMsg.push("Answer is required");
+    }
+    if (this.state.nickname === "" || this.state.nickname == null) {
+      errorMsg.push("Name is required");
+    }
+    if (this.state.email === "" || this.state.email == null) {
+      errorMsg.push("Email is required");
+    }
+    if (!this.emailIsValid(this.state.email)) {
+      errorMsg.push("Email format is incorrect");
+    }
+    if (errorMsg.length > 0) {
+      alert(errorMsg.join("\n"));
+    } else {
+      axios
+        .post(
+          `http://18.223.1.30/qa/${this.props.questionId}/answers`,
+          answerObj
+        )
+        .then(() => {
+          this.props.getAnswers();
+        })
+        .catch(err => {
+          console.log(err);
+        });
 
-    this.setState({ open: false });
+      this.setState({ open: false });
+    }
   }
 
   render() {
@@ -138,7 +160,7 @@ class AddAnswer extends Component {
               helperText="For authentication reasons, you will not be emailed"
               fullWidth
             />
-            Upload Photos:
+            {/* Upload Photos:
             <input
               accept="image/*"
               className={classes.input}
@@ -153,8 +175,8 @@ class AddAnswer extends Component {
                 className={classes.button}
               >
                 Upload
-              </Button>
-            </label>
+              </Button> */}
+            {/* </label> */}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
