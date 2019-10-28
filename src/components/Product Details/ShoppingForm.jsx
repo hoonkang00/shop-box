@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import EnabledQuantitySelector from "./EnabledQuantitySelector.jsx";
 import DisabledQuantitySelector from "./DisabledQuantitySelector.jsx";
+import { TwitterShareButton } from "react-twitter-embed";
 import InStockSizeForm from "./InStockSizeForm.jsx";
 
 const useStyles = makeStyles(theme => ({
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ShoppingForm({ style }) {
+export default function ShoppingForm({ style, product }) {
   // console.log("inside form", style);
   const classes = useStyles();
   const [quantity, setQuantity] = React.useState(1);
@@ -68,6 +69,7 @@ export default function ShoppingForm({ style }) {
       }
     }
   }
+  const url = window.location.href;
 
   if (inStock) {
     return (
@@ -89,6 +91,12 @@ export default function ShoppingForm({ style }) {
             <Button variant="outlined" className={classes.button}>
               Add to Cart +
             </Button>
+            <TwitterShareButton
+              url={url}
+              options={{
+                text: `Check out this cool ${product.name}  ${product.category} on ShopBox. #ShopBox`
+              }}
+            />
           </>
         ) : (
           <DisabledQuantitySelector classes={classes} />
