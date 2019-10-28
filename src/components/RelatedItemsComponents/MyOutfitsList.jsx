@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import MyOutfitCard from "./MyOutfitCard.jsx";
-import getRelatedItems from "../../lib/relatedItemsHelpers/relatedItemsApiCall.js";
 import { makeStyles } from "@material-ui/core/styles";
 import ItemsCarousel from "react-items-carousel";
 import Typography from "@material-ui/core/Typography";
