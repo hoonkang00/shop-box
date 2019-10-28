@@ -73,8 +73,6 @@ export default class QASet extends Component {
           <div className="question-block">
             {this.props.question.question_body}
           </div>
-          {/* <div className="question-left">
-          </div> */}
           <div className="question-right answer-detail">
             Helpful? &nbsp;
             <span
