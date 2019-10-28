@@ -8,8 +8,9 @@ const mapStateToProps = store => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    handleClick: (prodId, review) => {
-      dispatch(addReview(prodId, review));
+    handleClick: review => {
+      console.log(review);
+      dispatch(addReview(review));
     }
   };
 };

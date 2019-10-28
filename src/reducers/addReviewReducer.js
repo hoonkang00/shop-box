@@ -11,7 +11,7 @@ const newReview = {
 const addReviewReducer = (state = newReview, action) => {
   switch (action.type) {
     case "ADD-REVIEW":
-      return action.data;
+      return state;
     default:
       return state;
   }

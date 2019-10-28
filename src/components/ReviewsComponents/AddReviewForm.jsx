@@ -10,6 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
 import FormCharacteristics from "./FormCharacteristics.jsx";
+import axios from "axios";
 
 const labels = {
   1: "Poor",
@@ -25,7 +26,7 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
   const [recommended, setRecommended] = useState(0);
 
   const add = () => {
-    handleClick(prodMeta.id, newReview);
+    handleClick([prodMeta.product_id, newReview]);
   };
 
   const updateReview = event => {
@@ -41,8 +42,6 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
     }
   };
 
-  //TODO: recommended check for radio button
-
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
 
@@ -53,6 +52,39 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  //TODO: Promisify the img function
+  const img = event => {
+    var files = event.target.files;
+    var file = files[0];
+
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = function(readerEvt) {
+        var binaryString = readerEvt.target.result;
+        var p = btoa(binaryString);
+        axios
+          .post(
+            "https://api.imgur.com/3/image",
+            { image: p },
+            {
+              headers: {
+                Authorization: "Client-ID 6e6d850fc03dd7f"
+              }
+            }
+          )
+          .then(({ data }) => {
+            newReview["photos"].push(data.data.link);
+            console.log(newReview);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      };
+      reader.readAsBinaryString(file);
+    }
   };
 
   return (
@@ -125,6 +157,14 @@ export default function AddReview({ handleClick, prodMeta, newReview }) {
                 }}
               />
               {/* TODO: Add materialui image button*/}
+              <input
+                type="file"
+                onChange={event => {
+                  event.persist();
+                  img(event);
+                }}
+                multiple
+              ></input>
               <label>Nickname</label>
               <input
                 type="text"
