@@ -11,14 +11,17 @@ const mapStateToProps = (store, oldProps) => {
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     setStoreProductInfo: id => {
-//       return dispatch(getProductInfo(id));
-//     }
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    setStoreProductInfo: id => {
+      return dispatch(getProductInfo(id));
+    }
+  };
+};
 
-const MyOutfitsListContainer = connect(mapStateToProps)(MyOutfitsList);
+const MyOutfitsListContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyOutfitsList);
 
 export default MyOutfitsListContainer;
