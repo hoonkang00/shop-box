@@ -14,11 +14,12 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 65,
+    width:180,
     raised: true
   },
   media: {
     height: 100,
+    width:180,
     paddingTop: "56.25%" // 16:9
   }
 }));
@@ -52,10 +53,10 @@ export default function MyOutfitCard(props) {
   let style = defaultStyle(props.myOutfit.productStyles);
   let averageReview = findAverage(props.myOutfit.ratings);
   return (
-    <Card className={"item-card-box"}>
+    <Card  className={["item-card-box", classes.card]}>
       <Link className="card-link" to={`/products/${props.myOutfit.id}/`}>
       <CardActionArea
-        className={"item-card-box-action-area"}
+        className="item-card-box-action-area"
         onClick={() => {
           props.goToOutfit(props.myOutfit.id)
         }}
@@ -74,13 +75,14 @@ export default function MyOutfitCard(props) {
           <Typography> {props.myOutfit.category}</Typography>
           <Typography> {props.myOutfit.name}</Typography>
           <Typography> ${props.myOutfit.default_price}</Typography>
-        </CardContent>
-      </CardActionArea>
-      {averageReview === 0 ? (
+          {averageReview === 0 ? (
         <Typography>No reviews</Typography>
       ) : (
         <StarRatings rating={averageReview} />
       )}
+        </CardContent>
+      </CardActionArea>
+     
       </Link>
       <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits} setisItInMyOutfit={props.setisItInMyOutfit}/>
     </Card>

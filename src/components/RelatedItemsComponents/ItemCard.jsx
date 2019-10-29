@@ -13,22 +13,14 @@ import StarRatings from "../ReviewsComponents/StarRatings.jsx";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 65,
-    raised: true
+    width:180,
+    raised: true,
+    height:350
   },
   media: {
     height: 100,
+    width:180,
     paddingTop: "56.25%" // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
   }
 }));
 
@@ -61,7 +53,7 @@ export default function ItemCard(props) {
   let style = defaultStyle(props.relatedProduct.results);
   let averageReview = findAverage(props.relatedProduct.ratings);
   return (
-    <Card className={"item-card-box"}>
+    <Card className={["item-card-box", classes.card]}>
       <Link className="card-link" to={`/products/${props.relatedProduct.id}/`}>
         <CardActionArea
           className={"item-card-box-action-area"}
@@ -83,15 +75,16 @@ export default function ItemCard(props) {
 
           <CardContent>
             <Typography> {props.relatedProduct.category}</Typography>
-            <Typography> {props.relatedProduct.name}</Typography>
+            <Typography id={'related-product-card-description'}> {props.relatedProduct.name}</Typography>
             <Typography> ${props.relatedProduct.default_price}</Typography>
+            {averageReview === 0 ? (
+            <Typography className='no-review-text'>No reviews</Typography>
+          ) : (
+            <StarRatings className='no-review-text' rating={averageReview} />
+          )}
           </CardContent>
+         
         </CardActionArea>
-        {averageReview === 0 ? (
-          <Typography>No reviews</Typography>
-        ) : (
-          <StarRatings rating={averageReview} />
-        )}
       </Link>
 
       <PopOut

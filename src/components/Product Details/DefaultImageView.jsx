@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
     zIndex: "51"
   }
 }));
+let aspectRatio = 1;
 
 export default ({ photos }) => {
   if (photos === undefined) {
@@ -46,7 +47,9 @@ export default ({ photos }) => {
   }
   const [selectedIndex, updateSelectedIndex] = useState(0);
   const [firstIndex, updateFirstIndex] = useState(0);
-  const [expanded, setExpanded] = useState(false);
+  const [view, setView] = useState("DEFAULT");
+  const [offsetX, setOffsetX] = useState("0px");
+  const [offsetY, setOffsetY] = useState("0px");
 
   const decrementFirstIndex = e => {
     updateFirstIndex(firstIndex - 1);
@@ -57,6 +60,40 @@ export default ({ photos }) => {
     e.stopPropagation();
   };
 
+  const setAspectRatio = () => {
+    if (photos) {
+      let aspectImage = new Image();
+      aspectImage.src = photos[selectedIndex].url;
+      aspectImage.onload = () => {
+        aspectRatio = aspectImage.naturalHeight / aspectImage.naturalWidth;
+      };
+    }
+  };
+
+  const incrementSelectedIndex = (e, photoList, index) => {
+    updateSelectedIndex(selectedIndex + 1);
+    e.stopPropagation();
+  };
+
+  const decrementSelectedIndex = e => {
+    updateSelectedIndex(selectedIndex - 1);
+    e.stopPropagation();
+  };
+
+  const escFunction = e => {
+    if (e.key === "Escape") {
+      if (view === "FULL") {
+        setView("EXPANDED");
+      } else if (view === "EXPANDED") {
+        setView("DEFAULT");
+      }
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, true);
+  }, [view]);
+
   let mainPhoto = photos ? photos[selectedIndex].url : "";
   let displayedPhotos = [];
   for (let i = 0; i < photos.length; i++) {
@@ -66,31 +103,72 @@ export default ({ photos }) => {
   }
   const classes = useStyles();
 
-  return expanded ? (
-    <div className="background-expanded-view">
+  return view === "EXPANDED" ? (
+    <div
+      className="background-expanded-view"
+      onClick={e => {
+        setView("DEFAULT");
+        e.stopPropagation();
+      }}
+    >
       {selectedIndex > 0 && (
         <ExpandLessIcon
           className={classes.arrowLeft}
-          onClick={() => updateSelectedIndex(selectedIndex - 1)}
+          onClick={decrementSelectedIndex}
         />
       )}
       {selectedIndex < photos.length - 1 && (
         <ExpandLessIcon
           className={classes.arrowRight}
-          onClick={() => updateSelectedIndex(selectedIndex + 1)}
+          onClick={incrementSelectedIndex}
         />
       )}
       <img
         className="image-expanded"
         src={mainPhoto}
-        onClick={() => setExpanded(!expanded)}
+        onClick={e => {
+          setView("FULL");
+          e.stopPropagation();
+          setAspectRatio();
+        }}
       ></img>
+    </div>
+  ) : view === "FULL" ? (
+    <div className={"zoom-view-background"}>
+      <div
+        className={"zoom-view"}
+        style={{
+          backgroundImage: `url(${mainPhoto})`,
+          "--x": offsetX,
+          "--y": offsetY
+        }}
+        onMouseMove={e => {
+          const xPixels =
+            aspectRatio > 1
+              ? -e.screenX + "px"
+              : -e.screenX / aspectRatio / 2 + "px";
+          const yPixels =
+            aspectRatio > 1
+              ? -e.screenY * aspectRatio * 2 + "px"
+              : -e.screenY + "px";
+          setOffsetX(xPixels);
+          setOffsetY(yPixels);
+        }}
+        onClick={e => {
+          setView("EXPANDED");
+          e.stopPropagation();
+        }}
+        tabIndex={0}
+        onKeyDown={e => {
+          e.keyCode === 27 && setView("EXPANDED");
+        }}
+      ></div>
     </div>
   ) : (
     <div
       className="main-img"
       style={{ backgroundImage: `url(${mainPhoto})` }}
-      onClick={() => setExpanded(!expanded)}
+      onClick={() => setView("EXPANDED")}
     >
       <div className={classes.root}>
         {firstIndex > 0 && (

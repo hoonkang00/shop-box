@@ -72,7 +72,7 @@ export default function MyOutfitsList(props) {
   }, [props.productInfo.id])
 
   return (
-    <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
+    <div style={{ padding: "0 60px", height:375, width: 800, margin: "0 auto" }}>
       <Typography>MY OUTFITS</Typography>
       <ItemsCarousel
         infiniteLoop={false}
@@ -97,6 +97,7 @@ export default function MyOutfitsList(props) {
           !isItInMyOutfit && <AddOutfitCardButton add = {addToOufits}/>
         }
         
+        
         {myOutfits.map((item, index) => {
           return (
             <MyOutfitCard
@@ -114,3 +115,5 @@ export default function MyOutfitsList(props) {
     </div>
   );
 }
+
+//asd

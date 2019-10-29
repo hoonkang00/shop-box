@@ -3,20 +3,31 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import EnabledQuantitySelector from "./EnabledQuantitySelector.jsx";
 import DisabledQuantitySelector from "./DisabledQuantitySelector.jsx";
-import { TwitterShareButton } from "react-twitter-embed";
 import InStockSizeForm from "./InStockSizeForm.jsx";
+import ShareButton from "./ShareButton.jsx";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    minWidth: "30px"
   },
   button: {
     margin: theme.spacing(1),
     marginLeft: "16px",
-    width: "210px",
+    width: "220px",
+    height: "50px",
     border: "1px solid black",
     padding: "13.7px 10px 13.7px 20px",
     borderRadius: 0
+  },
+  shareButton: {
+    margin: theme.spacing(1),
+    width: "50px",
+    height: "50px",
+    border: "1px solid black",
+    marginLeft: "16px",
+    borderRadius: 0,
+    color: "rgb(119,119,119)"
   },
   formControl: {
     margin: theme.spacing(1),
@@ -25,6 +36,7 @@ const useStyles = makeStyles(theme => ({
   selectSize: {
     margin: theme.spacing(1),
     width: "170px",
+    height: "50px",
     border: "1px solid black",
     padding: "10px 10px 10px 20px"
   },
@@ -35,6 +47,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     marginLeft: 0,
     width: "100px",
+    height: "50px",
     border: "1px solid black",
     padding: "10px;"
   }
@@ -45,6 +58,7 @@ export default function ShoppingForm({ style, product }) {
   const classes = useStyles();
   const [quantity, setQuantity] = React.useState(1);
   const [size, setSize] = React.useState("");
+  const [share, toggleShare] = React.useState(false);
 
   const handleChange = event => {
     if (event.target.name === "size") {
@@ -69,7 +83,6 @@ export default function ShoppingForm({ style, product }) {
       }
     }
   }
-  const url = window.location.href;
 
   if (inStock) {
     return (
@@ -91,15 +104,32 @@ export default function ShoppingForm({ style, product }) {
             <Button variant="outlined" className={classes.button}>
               Add to Cart +
             </Button>
-            <TwitterShareButton
-              url={url}
-              options={{
-                text: `Check out this cool ${product.name}  ${product.category} on ShopBox. #ShopBox`
-              }}
+            <ShareButton
+              share={share}
+              toggleShare={toggleShare}
+              product={product}
+              classes={classes}
+              photo={style && style.photos[0].url}
             />
           </>
         ) : (
-          <DisabledQuantitySelector classes={classes} />
+          <>
+            <DisabledQuantitySelector classes={classes} />
+            <Button
+              variant="outlined"
+              className={classes.button}
+              disabled={true}
+            >
+              Add to Cart +
+            </Button>
+            <ShareButton
+              share={share}
+              toggleShare={toggleShare}
+              product={product}
+              classes={classes}
+              photo={style && style.photos[0].url}
+            />
+          </>
         )}
       </div>
     );
@@ -108,6 +138,15 @@ export default function ShoppingForm({ style, product }) {
       <div>
         <OutOfStockSizeForm />
         <DisabledQuantitySelector classes={classes} />
+        <Button variant="outlined" className={classes.button + " hidden"}>
+          Add to Cart +
+        </Button>
+        <ShareButton
+          share={share}
+          toggleShare={toggleShare}
+          product={product}
+          classes={classes}
+        />
         )}
       </div>
     );

@@ -12,8 +12,10 @@ export default function ItemList(props) {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   let getData = async id => {
     let data;
-    data = await getRelatedItems(id);
-    setRelatedProducts(data);
+    data = await getRelatedItems(id); 
+    console.log(data, id)
+    data.filter(item=> item.id!==id)
+    setRelatedProducts( data.filter(item=> item.id!==id));
   };
 
   useEffect(() => {
@@ -21,9 +23,10 @@ export default function ItemList(props) {
   }, [props.productInfo.id]);
 
   return (
-    <div style={{ padding: "0 60px", maxWidth: 800, margin: "0 auto" }}>
-      <Typography>Related Items</Typography>
+    <div style={{ padding: "0 60px", height:375, width: 800, margin: "0 auto" }}>
+      <Typography>RELATED ITEMS</Typography>
       <ItemsCarousel
+      className={'item-list-carousel'}
         infiniteLoop={false}
         gutter={30}
         activePosition={"center"}
