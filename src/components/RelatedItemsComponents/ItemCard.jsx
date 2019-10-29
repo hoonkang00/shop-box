@@ -13,8 +13,9 @@ import StarRatings from "../ReviewsComponents/StarRatings.jsx";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 65,
-    raised: true
+    width:180,
+    raised: true,
+    height:350
   },
   media: {
     height: 100,
@@ -61,7 +62,7 @@ export default function ItemCard(props) {
   let style = defaultStyle(props.relatedProduct.results);
   let averageReview = findAverage(props.relatedProduct.ratings);
   return (
-    <Card className={"item-card-box"}>
+    <Card className={["item-card-box", classes.card]}>
       <Link className="card-link" to={`/products/${props.relatedProduct.id}/`}>
         <CardActionArea
           className={"item-card-box-action-area"}
@@ -85,12 +86,13 @@ export default function ItemCard(props) {
             <Typography> {props.relatedProduct.category}</Typography>
             <Typography id={'related-product-card-description'}> {props.relatedProduct.name}</Typography>
             <Typography> ${props.relatedProduct.default_price}</Typography>
-          </CardContent>
-          {averageReview === 0 ? (
-            <Typography id={'no-review-text'}>No reviews</Typography>
+            {averageReview === 0 ? (
+            <Typography className='no-review-text'>No reviews</Typography>
           ) : (
-            <StarRatings id={'no-review-text'} rating={averageReview} />
+            <StarRatings className='no-review-text' rating={averageReview} />
           )}
+          </CardContent>
+         
         </CardActionArea>
       </Link>
 
