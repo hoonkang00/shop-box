@@ -5,6 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 
 const useStyles = makeStyles(theme => ({
   popover: {
@@ -28,6 +33,33 @@ export default function PopOut(props) {
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+  let data = {};
+  let dataArr = [];
+
+  if (props.currentProduct && props.relatedProduct) {
+    props.currentProduct.features.forEach(item => {
+      data[item.feature] = {
+        cP: item.value || "",
+        rP: ""
+      };
+    });
+
+    props.relatedProduct.features.forEach(item => {
+      if (!data[item.feature]) {
+        data[item.feature] = {
+          cP: "",
+          rP: item.value
+        };
+      } else {
+        data[item.feature].rP = item.value;
+      }
+    });
+    for (let feature in data) {
+      let current = data[feature].cP;
+      let related = data[feature].rP;
+      dataArr.push([feature, current, related]);
+    }
+  }
 
   return (
     <div className={"PopOut"}>
@@ -36,7 +68,7 @@ export default function PopOut(props) {
         variant="contained"
         onClick={handleClick}
       >
-        <StarBorderIcon htmlColor='blanchedalmond'/>
+        <StarBorderIcon htmlColor="blanchedalmond" />
       </IconButton>
 
       <Popover
@@ -55,15 +87,32 @@ export default function PopOut(props) {
       >
         <Paper>
           <Typography>COMPARING</Typography>
-          {props.relatedProduct.features.map(feature => {
-            return (
-            
-                <Typography key={feature.feature} className={classes.typography}>
-                  {feature.feature} ===  {feature.value}
-                </Typography>
-             
-            );
-          })}
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">{props.currentProduct.name}</TableCell>
+                <TableCell align="center">FEATURES</TableCell>
+                <TableCell align="right">{props.relatedProduct.name}</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {dataArr.map(item => {
+                return (
+                  <TableRow key={item}>
+                    <TableCell align="left">
+                      <Typography>{item[1]}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography>{item[0]}</Typography>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Typography>{item[2]}</Typography>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
         </Paper>
       </Popover>
     </div>
