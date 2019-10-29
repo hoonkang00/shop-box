@@ -388,6 +388,28 @@ p.mockup {
   padding-left: 2px !important;
 }
 
+.share-container {
+  position: relative;
+  left: 5px;
+  top: -18px;
+  height: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.makeStyles-shareButton-111 {
+  min-width: 30px !important;
+}
+
+.share-button {
+  margin: 1px;
+  cursor: pointer;
+}
+
+.share-button:focus {
+  outline: none;
+}
+
 .item-card-box {
   border: solid 1px;
   position: relative;
@@ -469,29 +491,35 @@ p.mockup {
   margin-left: 10px;
 }
 
-
 #addOutfit-card-box {
   background-color: blanchedalmond;
 }
 
-
-#related-product-card-description{
-
+#related-product-card-description {
   height: 3em;
 }
 
-
-.MuiCard-root{
-  height:99%;
+.MuiCard-root {
+  height: 99%;
 }
 
-#no-review-text{
-  height:18px;
+#no-review-text {
+  height: 18px;
   padding: 0px 10px 15px 10px;
-
 }
-
 
 .item-list-carousel{
   height:350px;
+}
+
+
+
+
+.hidden {
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px) !important;
+}
+
+.hidden2 {
+  display: none;
+
 }
