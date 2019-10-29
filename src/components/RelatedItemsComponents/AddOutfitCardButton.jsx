@@ -14,7 +14,7 @@ import AddIcon from "@material-ui/icons/Add";
 const useStyles = makeStyles(theme => ({
   cardSpecial: {
     width:180,
-    height:300
+    height:350
 
   },
   media: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   
   content:{
-    'margin-top':35
+    'margin-top':33
   },
   
   icon:{
@@ -43,7 +43,9 @@ export default function AddOutfitCardButton(props) {
       >
         <CardContent className={classes.content} id="addOutfit-card-content">
           <AddIcon className={classes.icon} htmlColor='black' fontSize='large'/>
+          <AddIcon className={classes.icon} htmlColor='black' fontSize='large'/>
           <Typography variant='h4'> ADD TO MY OUTFITS</Typography>
+          <AddIcon className={classes.icon} htmlColor='black' fontSize='large'/>
           <AddIcon className={classes.icon} htmlColor='black' fontSize='large'/>
         </CardContent>
       </CardActionArea>
