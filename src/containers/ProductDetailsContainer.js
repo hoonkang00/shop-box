@@ -8,7 +8,8 @@ export default connect(
   state => ({
     product: state.productInfo,
     styles: state.productStyles,
-    selectedStyleIndex: state.selectedStyleIndex
+    selectedStyleIndex: state.selectedStyleIndex,
+    ratings: state.reviewMetaData.ratings
   }),
   dispatch => ({
     handleLoadProduct: id => dispatch(getProductInfo(id)),
