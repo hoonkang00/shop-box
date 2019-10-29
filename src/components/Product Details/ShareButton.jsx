@@ -37,7 +37,7 @@ const ShareButton = ({ product, share, toggleShare, photo, classes }) => (
       </FacebookShareButton>
       <PinterestShareButton
         url={window.location.href}
-        media={photo}
+        media={photo ? photo : ""}
         windowWidth={1000}
         windowHeight={730}
         className="share-button"
