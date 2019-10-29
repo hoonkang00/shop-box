@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
     pointerEvents: "none"
   },
   paper: {
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
+    position: "absolute"
   }
 }));
 
@@ -68,7 +69,7 @@ export default function PopOut(props) {
         variant="contained"
         onClick={handleClick}
       >
-        <StarBorderIcon htmlColor="blanchedalmond" />
+        <StarBorderIcon htmlColor="blanchedalmond" filled={true}/>
       </IconButton>
 
       <Popover
@@ -96,20 +97,29 @@ export default function PopOut(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {dataArr.map(item => {
-                return (
-                  <TableRow key={item}>
-                    <TableCell align="left">
-                      <Typography>{item[1]}</Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Typography>{item[0]}</Typography>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Typography>{item[2]}</Typography>
-                    </TableCell>
-                  </TableRow>
-                );
+              {dataArr.map(item => { 
+                let leftDescription = item[1] !== "null" ? item[1] : "";
+                let rightDescription = item[2] !== "null" ? item[2] : "";
+
+                if (!(leftDescription === "" && rightDescription === "")) {
+                  return (
+                    <TableRow key={item}>
+                      <TableCell align="left">
+                        <Typography>
+                          {item[1] !== "null" ? item[1] : ""}
+                        </Typography>
+                      </TableCell>
+                      <TableCell align="center">
+                        <Typography>{item[0]}</Typography>
+                      </TableCell>
+                      <TableCell align="right">
+                        <Typography>
+                          {item[2] !== "null" ? item[2] : ""}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  );
+                }
               })}
             </TableBody>
           </Table>
