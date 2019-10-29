@@ -344,6 +344,28 @@ p.mockup {
   padding-left: 2px !important;
 }
 
+.share-container {
+  position: relative;
+  left: 5px;
+  top: -18px;
+  height: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.makeStyles-shareButton-111 {
+  min-width: 30px !important;
+}
+
+.share-button {
+  margin: 1px;
+  cursor: pointer;
+}
+
+.share-button:focus {
+  outline: none;
+}
+
 .item-card-box {
   border: solid 1px;
   position: relative;
@@ -425,7 +447,14 @@ p.mockup {
   margin-left: 10px;
 }
 
-
 #addOutfit-card-box {
   background-color: #0be613;
+}
+
+.hidden {
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px) !important;
+}
+
+.hidden2 {
+  display: none;
 }
