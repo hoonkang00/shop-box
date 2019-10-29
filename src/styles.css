@@ -19,6 +19,18 @@
   justify-content: center;
 }
 
+.product-stars-container {
+  display: flex;
+  align-items: center;
+}
+
+.review-link {
+  text-decoration: underline;
+  margin-left: 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
 .Review-Rows {
   flex-grow: 1;
 }
@@ -487,12 +499,9 @@ p.mockup {
   padding: 0px 10px 15px 10px;
 }
 
-.item-list-carousel{
-  height:350px;
+.item-list-carousel {
+  height: 350px;
 }
-
-
-
 
 .hidden {
   clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px) !important;
@@ -500,7 +509,6 @@ p.mockup {
 
 .hidden2 {
   display: none;
-
 }
 
 .background-expanded-view {

@@ -67,7 +67,7 @@ export default function Reviews(props) {
   };
 
   return (
-    <div className="Ratings-Reviews">
+    <div className="Ratings-Reviews" id="reviews">
       <h5>{"RATINGS & REVIEWS"}</h5>
       <Grid container spacing={6} className="hello testing">
         <Grid item>
