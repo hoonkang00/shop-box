@@ -7,6 +7,8 @@ const reviewsListReducer = (state = {}, action) => {
         ...state,
         results: [...state.results, ...action.payload.results]
       };
+    case "REMOVE-FILTERS":
+      return action.payload;
     default:
       return state;
   }

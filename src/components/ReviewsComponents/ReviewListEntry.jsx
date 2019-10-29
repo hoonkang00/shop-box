@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
@@ -10,12 +10,11 @@ import report from "../../actions/reportReview.js";
 
 const ReviewListEntry = ({ review }) => {
   const renderResponse = !["null", null, 0, ""].includes(review.response);
-  const [helpful, setHelpful] = useState(review.helpfulness);
   const [reported, setReported] = useState(false);
 
   const updateHelpfulness = () => {
     updateFunction(review.review_id);
-    setHelpful(helpful + 1);
+    review.helpfulness += 1;
   };
 
   const reportReview = () => {
@@ -36,6 +35,10 @@ const ReviewListEntry = ({ review }) => {
     });
   };
 
+  useEffect(() => {
+    review.helpfulness;
+  }, [review.helpfulness]);
+
   return (
     <div className="rowEntry">
       <Grid container>
@@ -54,7 +57,7 @@ const ReviewListEntry = ({ review }) => {
         )}
         <div className="helpful-report-container">
           <span>Helpful?</span>
-          <span onClick={updateHelpfulness}>Yes ({helpful})</span>
+          <span onClick={updateHelpfulness}>Yes ({review.helpfulness})</span>
           <span>|</span>
           {reported ? (
             <span style={{ color: "red" }}>Reported!</span>

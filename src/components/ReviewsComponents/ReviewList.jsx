@@ -2,14 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FixedSizeList } from "react-window";
 import ReviewListEntry from "./ReviewListEntry.jsx";
+import Grid from "@material-ui/core/Grid";
 
 function Row(props) {
-  const { index, data } = props;
-  return (
-    <div className="review-list-entry">
-      <ReviewListEntry review={data[index]} />
-    </div>
-  );
+  return props.rows.map((data, index) => {
+    return (
+      <div className="review-list-entry" key={index}>
+        <ReviewListEntry review={data} />
+      </div>
+    );
+  });
 }
 
 /* TODO: ===Infinite Scroll Functionality====
@@ -29,17 +31,9 @@ const ReviewList = ({ props }) => {
   const arr = props === undefined ? [] : props;
   return (
     <div className="Review-Rows">
-      <FixedSizeList
-        height={400}
-        width={500}
-        itemSize={175}
-        itemCount={arr.length}
-        itemData={arr}
-        useIsScrolling
-        className="rows"
-      >
-        {Row}
-      </FixedSizeList>
+      <Grid container className="grid-reviews">
+        {props !== undefined ? <Row rows={props} /> : ""}
+      </Grid>
     </div>
   );
 };

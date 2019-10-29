@@ -5,7 +5,8 @@ import getReviewList from "../../actions/getReviewList.js";
 const mapStateToProps = store => ({
   productInfo: store.productInfo,
   prodMeta: store.reviewMetaData,
-  newReview: store.newReview
+  newReview: store.newReview,
+  numOfReviews: store.reviews.results ? store.reviews.results.length : 0
 });
 const mapDispatchToProps = dispatch => {
   return {

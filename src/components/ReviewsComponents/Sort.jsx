@@ -44,6 +44,7 @@ const Sort = ({ sortReviews, productId }) => {
 
   const clearList = () => {
     sortReviews([1, "REVIEWS", productId.id]);
+    document.getElementById("sort-options").value = "relevance";
     setClear(false);
   };
 
@@ -61,10 +62,7 @@ const Sort = ({ sortReviews, productId }) => {
                   event.persist();
                   sort(event);
                 }}
-                inputProps={{
-                  name: "age",
-                  id: "age-native-simple"
-                }}
+                id="sort-options"
               >
                 <option value="relevance">relevance</option>
                 <option value="newest">newest</option>
@@ -74,7 +72,7 @@ const Sort = ({ sortReviews, productId }) => {
           </div>
           {clear === true ? (
             <h6 className="clear" onClick={clearList}>
-              clear filters
+              Remove all filters
             </h6>
           ) : (
             ""
@@ -88,23 +86,3 @@ const Sort = ({ sortReviews, productId }) => {
 };
 
 export default Sort;
-
-// export default function SimpleSelect() {
-//   const classes = useStyles();
-//   const [values, setValues] = React.useState({
-//     age: '',
-//     name: 'hai',
-//   })
-
-//   const inputLabel = React.useRef(null);
-//   const [labelWidth, setLabelWidth] = React.useState(0);
-//   React.useEffect(() => {
-//     setLabelWidth(inputLabel.current.offsetWidth);
-//   }, []);
-
-//   const handleChange = event => {
-//     setValues(oldValues => ({
-//       ...oldValues,
-//       [event.target.name]: event.target.value,
-//     }));
-//   };
