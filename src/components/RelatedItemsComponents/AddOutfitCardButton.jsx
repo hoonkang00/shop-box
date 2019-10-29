@@ -34,7 +34,7 @@ export default function AddOutfitCardButton(props) {
         }}
       >
         <CardContent>
-          <AddIcon htmlColor='white' fontSize='large'/>
+          <AddIcon htmlColor='black' fontSize='large'/>
           <Typography variant='h4'> ADD TO MY OUTFITS</Typography>
         </CardContent>
       </CardActionArea>

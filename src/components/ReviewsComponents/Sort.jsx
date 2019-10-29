@@ -2,10 +2,26 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  }
+}));
+
 const Sort = ({ sortReviews, productId }) => {
+  const classes = useStyles();
   const [numOfReviews, setNumber] = useState(0);
   const [clear, setClear] = useState(false);
 
@@ -37,16 +53,24 @@ const Sort = ({ sortReviews, productId }) => {
         <div className="sorting-section">
           <div>
             <span>{numOfReviews} reviews, sorted by</span>
-            <select
-              onChange={event => {
-                event.persist();
-                sort(event);
-              }}
-            >
-              <option value="relevance">relevance</option>
-              <option value="newest">newest</option>
-              <option value="helpfulness">helpfulness</option>
-            </select>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="age-native-simple"></InputLabel>
+              <Select
+                native
+                onChange={event => {
+                  event.persist();
+                  sort(event);
+                }}
+                inputProps={{
+                  name: "age",
+                  id: "age-native-simple"
+                }}
+              >
+                <option value="relevance">relevance</option>
+                <option value="newest">newest</option>
+                <option value="helpfulness">helpfulness</option>
+              </Select>
+            </FormControl>
           </div>
           {clear === true ? (
             <h6 className="clear" onClick={clearList}>

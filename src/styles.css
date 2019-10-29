@@ -5,7 +5,10 @@
   width: 100%;
 }
 .MuiGrid-grid-xs-11 {
-  width: 80%;
+  width: 70%;
+}
+.MuiDialogContent-root {
+  font-family: "Roboto", sans-serif;
 }
 .Reviews {
   flex-direction: column;
@@ -20,7 +23,7 @@
   flex-grow: 1;
 }
 .rows {
-  height: auto !important;
+  height: auto !;
   flex-grow: 1;
 }
 
@@ -32,6 +35,13 @@
 .form-content3 {
   display: flex;
   flex-direction: column;
+}
+
+.review-image {
+  border: solid 1px;
+  margin: 5px;
+  height: 100px;
+  width: 100px;
 }
 
 .rows:first-child {
@@ -141,18 +151,25 @@ span.MuiSlider-track {
   display: grid;
   grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
   grid-template-rows:
-    [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
-    [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
-      100px,
-      max-content
+  [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
+  [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
+    100px,
+    max-content
     )
     [q-and-a-row-start] minmax(100px, max-content)
     [ratings-reviews-row-start] minmax(100px, max-content)
     [ratings-reviews-row-end];
-  grid-row-gap: 20px;
-  justify-content: center;
-} */
+    grid-row-gap: 20px;
+    justify-content: center;
+  } */
 
+.MuiPaper-rounded {
+  border-radius: 0px !important;
+}
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+  border: solid 1px;
+}
 .nav {
   grid-row-start: nav-row-start;
   grid-row-end: details-row-start;
@@ -191,11 +208,11 @@ span.MuiSlider-track {
   font-family: "Roboto", sans-serif;
   display: inline-block;
   width: 100%;
-  vertical-align: top;
+  /* vertical-align: top; */
 }
 
 .q-and-a-scroll {
-  height: 350px;
+  max-height: 350px;
   overflow: auto;
 }
 
@@ -203,22 +220,48 @@ span.MuiSlider-track {
   border-radius: 0;
 }
 .question {
-  display: flex;
+  position: relative;
+  margin-bottom: 10px;
 }
-.question-left {
-  width: 60%;
+.question-title {
+  position: absolute;
+}
+
+.question-block {
+  position: relative;
+  left: 25px;
 }
 .question-right {
-  width: 40%;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+.q-a-buttons {
+  display: flex;
+}
+
+.answer {
+  position: relative;
+  margin-bottom: 10px;
+}
+.answer-title {
+  position: absolute;
 }
 
 .answer-block {
-  margin: 10px;
-  display: block;
+  position: relative;
+  left: 25px;
+}
+.answer-photo {
+  border: solid 1px;
+  margin: 5px;
 }
 .answer-detail {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.54);
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 .q-a-set {
   padding: 2px;
@@ -439,5 +482,18 @@ p.mockup {
 }
 
 #addOutfit-card-box {
-  background-color: #0be613;
+  background-color: blanchedalmond;
+}
+
+#related-product-card-description {
+  height: 3em;
+}
+
+.MuiCard-root {
+  height: 99%;
+}
+
+#no-review-text {
+  height: 18px;
+  padding: 0px 10px 15px 10px;
 }

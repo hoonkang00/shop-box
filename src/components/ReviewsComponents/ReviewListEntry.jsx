@@ -29,8 +29,6 @@ const ReviewListEntry = ({ review }) => {
         <img
           src={pic.url}
           alt={pic.url}
-          height="100"
-          width="100"
           key={pic.id}
           className="review-image"
         />

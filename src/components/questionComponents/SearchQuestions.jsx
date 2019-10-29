@@ -34,8 +34,8 @@ export default class SearchQuestions extends Component {
           this.handleChange("");
         }}
         style={{
-          margin: "0 auto",
-          maxWidth: 800
+          margin: "10px auto"
+          // maxWidth: 800
         }}
         value={this.state.searchTerm}
       />
