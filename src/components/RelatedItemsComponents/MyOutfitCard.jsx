@@ -72,15 +72,16 @@ export default function MyOutfitCard(props) {
 
         <CardContent>
           <Typography> {props.myOutfit.category}</Typography>
-          <Typography> {props.myOutfit.name}</Typography>
+          <Typography id={'related-product-card-description'}> {props.myOutfit.name}</Typography>
           <Typography> ${props.myOutfit.default_price}</Typography>
         </CardContent>
-      </CardActionArea>
-      {averageReview === 0 ? (
-        <Typography>No reviews</Typography>
+        {averageReview === 0 ? (
+        <Typography id={'no-review-text'}>No reviews</Typography>
       ) : (
-        <StarRatings rating={averageReview} />
+        <StarRatings  id={'no-review-text'} rating={averageReview} />
       )}
+      </CardActionArea>
+     
       </Link>
       <RemoveMyOutfit index={props.index} removeFromOutfits={props.removeFromOutfits} setisItInMyOutfit={props.setisItInMyOutfit}/>
     </Card>

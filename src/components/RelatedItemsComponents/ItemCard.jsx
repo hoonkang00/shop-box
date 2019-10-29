@@ -83,15 +83,15 @@ export default function ItemCard(props) {
 
           <CardContent>
             <Typography> {props.relatedProduct.category}</Typography>
-            <Typography> {props.relatedProduct.name}</Typography>
+            <Typography id={'related-product-card-description'}> {props.relatedProduct.name}</Typography>
             <Typography> ${props.relatedProduct.default_price}</Typography>
           </CardContent>
+          {averageReview === 0 ? (
+            <Typography id={'no-review-text'}>No reviews</Typography>
+          ) : (
+            <StarRatings id={'no-review-text'} rating={averageReview} />
+          )}
         </CardActionArea>
-        {averageReview === 0 ? (
-          <Typography>No reviews</Typography>
-        ) : (
-          <StarRatings rating={averageReview} />
-        )}
       </Link>
 
       <PopOut
