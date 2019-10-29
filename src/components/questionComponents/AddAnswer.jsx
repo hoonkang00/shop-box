@@ -40,6 +40,7 @@ class AddAnswer extends Component {
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.img = this.img.bind(this);
   }
   handleChange(e) {
     const target = e.target;
@@ -88,12 +89,45 @@ class AddAnswer extends Component {
         )
         .then(() => {
           this.props.getAnswers();
+          this.setState({ photos: [] });
         })
         .catch(err => {
           console.log(err);
         });
 
       this.setState({ open: false });
+    }
+  }
+  img(event) {
+    var files = [...event.target.files];
+    if (files) {
+      files.map(file => {
+        var reader = new FileReader();
+
+        reader.onload = readerEvt => {
+          var binaryString = readerEvt.target.result;
+          var imageBase64 = btoa(binaryString);
+          return axios
+            .post(
+              "https://api.imgur.com/3/image",
+              { image: imageBase64 },
+              {
+                headers: {
+                  Authorization: "Client-ID 6e6d850fc03dd7f"
+                }
+              }
+            )
+            .then(({ data }) => {
+              this.setState({
+                photos: this.state.photos.concat(data.data.link)
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        };
+        reader.readAsBinaryString(file);
+      });
     }
   }
 
@@ -160,23 +194,14 @@ class AddAnswer extends Component {
               helperText="For authentication reasons, you will not be emailed"
               fullWidth
             />
-            {/* Upload Photos:
             <input
-              accept="image/*"
-              className={classes.input}
-              id="outlined-button-file"
-              multiple
               type="file"
-            />
-            <label htmlFor="outlined-button-file">
-              <Button
-                variant="outlined"
-                component="span"
-                className={classes.button}
-              >
-                Upload
-              </Button> */}
-            {/* </label> */}
+              onChange={event => {
+                event.persist();
+                this.img(event);
+              }}
+              multiple
+            ></input>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
