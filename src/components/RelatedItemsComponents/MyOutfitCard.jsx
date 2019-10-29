@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 65,
+    width:180,
     raised: true
   },
   media: {
@@ -52,10 +52,10 @@ export default function MyOutfitCard(props) {
   let style = defaultStyle(props.myOutfit.productStyles);
   let averageReview = findAverage(props.myOutfit.ratings);
   return (
-    <Card className={"item-card-box"}>
+    <Card  className={["item-card-box", classes.card]}>
       <Link className="card-link" to={`/products/${props.myOutfit.id}/`}>
       <CardActionArea
-        className={"item-card-box-action-area"}
+        className="item-card-box-action-area"
         onClick={() => {
           props.goToOutfit(props.myOutfit.id)
         }}
@@ -72,14 +72,14 @@ export default function MyOutfitCard(props) {
 
         <CardContent>
           <Typography> {props.myOutfit.category}</Typography>
-          <Typography id={'related-product-card-description'}> {props.myOutfit.name}</Typography>
+          <Typography> {props.myOutfit.name}</Typography>
           <Typography> ${props.myOutfit.default_price}</Typography>
-        </CardContent>
-        {averageReview === 0 ? (
-        <Typography id={'no-review-text'}>No reviews</Typography>
+          {averageReview === 0 ? (
+        <Typography>No reviews</Typography>
       ) : (
-        <StarRatings  id={'no-review-text'} rating={averageReview} />
+        <StarRatings rating={averageReview} />
       )}
+        </CardContent>
       </CardActionArea>
      
       </Link>

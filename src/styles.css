@@ -331,27 +331,6 @@ h2 {
   /* box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8); */
 }
 
-.background-expanded-view {
-  z-index: 49;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
-.image-expanded {
-  z-index: 50;
-  height: 85vh;
-  width: 100%;
-  position: relative;
-  top: 5vh;
-  object-fit: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 /* .img-arrow {
   margin: 0 auto;
 }
@@ -398,6 +377,28 @@ p.mockup {
 
 #qty-label {
   padding-left: 2px !important;
+}
+
+.share-container {
+  position: relative;
+  left: 5px;
+  top: -18px;
+  height: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.makeStyles-shareButton-111 {
+  min-width: 30px !important;
+}
+
+.share-button {
+  margin: 1px;
+  cursor: pointer;
+}
+
+.share-button:focus {
+  outline: none;
 }
 
 .item-card-box {
@@ -496,4 +497,64 @@ p.mockup {
 #no-review-text {
   height: 18px;
   padding: 0px 10px 15px 10px;
+}
+
+.item-list-carousel {
+  height: 350px;
+}
+
+.hidden {
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px) !important;
+}
+
+.hidden2 {
+  display: none;
+}
+
+.background-expanded-view {
+  z-index: 49;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-expanded {
+  z-index: 50;
+  height: 85vh;
+  width: auto;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: cell;
+}
+
+.zoom-view-background {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 52;
+}
+.zoom-view {
+  --x: 0px;
+  --y: 0px;
+  background-size: 250%;
+  background-position: var(--x) var(--y);
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid white;
+  z-index: 53;
+  cursor: zoom-out;
 }
