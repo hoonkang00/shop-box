@@ -143,14 +143,16 @@ export default ({ photos }) => {
           "--y": offsetY
         }}
         onMouseMove={e => {
+          // proprietary solution... totally works?
+          const viewPortRatio = window.innerHeight / window.innerWidth;
           const xPixels =
             aspectRatio > 1
-              ? -e.screenX + "px"
-              : -e.screenX / aspectRatio / 2 + "px";
+              ? -e.screenX * aspectRatio + "px"
+              : -e.screenX / aspectRatio + "px";
           const yPixels =
             aspectRatio > 1
-              ? -e.screenY * aspectRatio * 2 + "px"
-              : -e.screenY + "px";
+              ? (-e.screenY / viewPortRatio) * aspectRatio * 1.7 + "px"
+              : (-e.screenY / viewPortRatio) * aspectRatio * 1.2 + "px";
           setOffsetX(xPixels);
           setOffsetY(yPixels);
         }}
