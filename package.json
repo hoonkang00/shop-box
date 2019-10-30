@@ -60,6 +60,11 @@
     "url-loader": "^2.2.0",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.jsx$": "babel-jest"
+    }
   }
-  
 }

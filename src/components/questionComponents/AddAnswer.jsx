@@ -8,6 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import axios from "axios";
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import LoopOutlinedIcon from "@material-ui/icons/LoopOutlined";
 
 const styles = theme => ({
   container: {
@@ -34,6 +35,7 @@ class AddAnswer extends Component {
       email: "",
       nickname: "",
       photos: [],
+      showIcon: false,
       open: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -79,27 +81,29 @@ class AddAnswer extends Component {
     if (!this.emailIsValid(this.state.email)) {
       errorMsg.push("Email format is incorrect");
     }
-    if (errorMsg.length > 0) {
-      alert(errorMsg.join("\n"));
-    } else {
-      axios
-        .post(
-          `http://18.223.1.30/qa/${this.props.questionId}/answers`,
-          answerObj
-        )
-        .then(() => {
-          this.props.getAnswers();
-          this.setState({ photos: [] });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    if (this.state.photosLoaded)
+      if (errorMsg.length > 0) {
+        alert(errorMsg.join("\n"));
+      } else {
+        axios
+          .post(
+            `http://18.223.1.30/qa/${this.props.questionId}/answers`,
+            answerObj
+          )
+          .then(() => {
+            this.props.getAnswers();
+            this.setState({ photos: [] });
+          })
+          .catch(err => {
+            console.log(err);
+          });
 
-      this.setState({ open: false });
-    }
+        this.setState({ open: false });
+      }
   }
   img(event) {
     var files = [...event.target.files];
+    this.setState({ showIcon: true });
     if (files) {
       files.map(file => {
         var reader = new FileReader();
@@ -119,7 +123,8 @@ class AddAnswer extends Component {
             )
             .then(({ data }) => {
               this.setState({
-                photos: this.state.photos.concat(data.data.link)
+                photos: this.state.photos.concat(data.data.link),
+                showIcon: false
               });
             })
             .catch(err => {
@@ -166,6 +171,16 @@ class AddAnswer extends Component {
               variant="outlined"
               fullWidth
             />
+            <input
+              type="file"
+              onChange={event => {
+                event.persist();
+                this.img(event);
+              }}
+              multiple
+            ></input>
+            {this.showIcon ? <LoopOutlinedIcon /> : null}
+            <br />
             Nickname
             <TextField
               onChange={this.handleChange}
@@ -194,14 +209,6 @@ class AddAnswer extends Component {
               helperText="For authentication reasons, you will not be emailed"
               fullWidth
             />
-            <input
-              type="file"
-              onChange={event => {
-                event.persist();
-                this.img(event);
-              }}
-              multiple
-            ></input>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
