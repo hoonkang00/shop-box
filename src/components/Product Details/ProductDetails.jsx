@@ -98,6 +98,7 @@ const ProductDetails = props => {
                 <div key={index} className="feature">
                   <img
                     src="images/checkmark.png"
+                    alt="feature"
                     className="checkmark-small"
                   ></img>
                   <p className="feature-value">{feature}</p>

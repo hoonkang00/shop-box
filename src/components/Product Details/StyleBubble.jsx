@@ -12,7 +12,11 @@ const StyleBubble = ({ index, style, selected, useStyle, handleSelect }) => (
       onClick={() => handleSelect(index)}
     ></div>
     {selected && (
-      <img src="./images/checkmark.png" className="check-circle"></img>
+      <img
+        src="./images/checkmark.png"
+        alt="selected"
+        className="check-circle"
+      ></img>
     )}
   </div>
 );
