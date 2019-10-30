@@ -1,8 +1,5 @@
 import React from "react";
 import { mount, shallow, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-// import "babel-polyfill";
-configure({ adapter: new Adapter() });
 
 import AddToMyOutfitCardButton from "../src/components/RelatedItemsComponents/AddOutfitCardButton.jsx";
 
