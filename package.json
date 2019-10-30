@@ -70,9 +70,9 @@
     "webpack-cli": "^3.3.9"
   },
   "jest": {
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.jsx$": "babel-jest"
-    }
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme"
   }
 }
