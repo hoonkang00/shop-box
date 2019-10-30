@@ -94,7 +94,7 @@ export default function MyOutfitsList(props) {
         leftChevron={<NavigateBeforeIcon />}
       >
         {
-          !isItInMyOutfit?(<AddOutfitCardButton add = {addToOufits}/>):(<React.Fragment></React.Fragment>)
+          !isItInMyOutfit?(<AddOutfitCardButton add = {addToOufits}/>):(null)
         }
         
         
