@@ -66,7 +66,7 @@ export default function FormCharacteristic({
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} className="characteristic-form-entries">
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>

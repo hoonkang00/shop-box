@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import DialogContent from "@material-ui/core/DialogContent";
 import Radio from "@material-ui/core/Radio";
 import FormCharacteristics from "./FormCharacteristics.jsx";
+import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 
 const labels = {
@@ -84,6 +85,7 @@ export default function AddReview({ prodMeta, newReview }) {
                 setValue(hover);
                 updateReview(event);
               }}
+              className="review-form-field"
             />
             <Box ml={2}>{labels[value !== 0 ? value : hover]}</Box>
           </div>
@@ -97,6 +99,7 @@ export default function AddReview({ prodMeta, newReview }) {
               onChange={event => {
                 updateReview(event);
               }}
+              className="review-form-field"
             />
             <Radio
               name="recommend"
@@ -106,67 +109,83 @@ export default function AddReview({ prodMeta, newReview }) {
               onChange={event => {
                 updateReview(event);
               }}
+              className="review-form-field"
             />
             <FormCharacteristics
               newReviewCharacteristic={newReview.characteristics}
               characteristicId={prodMeta.characteristics}
             />
-            <form className="form-content3">
-              <label>Summary: </label>
-              <input
-                type="text"
-                name="summary"
-                id=""
-                required
-                maxLength="60"
-                onChange={event => {
-                  updateReview(event);
-                }}
-              />
-              <label>Body: </label>
-              <input
-                type="text"
-                name="body"
-                id=""
-                required
-                minLength="50"
-                maxLength="1000"
-                onChange={event => {
-                  updateReview(event);
-                }}
-              />
+
+            <form className="form-content3" autoComplete="off">
+              <div className="review-form-field">
+                <label>Summary: </label>
+                <TextField
+                  required
+                  id="standard-error"
+                  name="summary"
+                  margin="normal"
+                  inputProps={{ maxLength: 60 }}
+                  onChange={event => {
+                    updateReview(event);
+                  }}
+                />
+              </div>
+              <div className="review-form-field">
+                <label>Body: </label>
+                <TextField
+                  required
+                  id="outlined-multiline-flexible"
+                  label="Review"
+                  multiline
+                  rowsMax="4"
+                  inputProps={{ minLength: 50, maxLength: 1000 }}
+                  onChange={event => {
+                    updateReview(event);
+                  }}
+                  name="body"
+                  margin="normal"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
               {/* TODO: Add materialui image button*/}
-              <input
-                type="file"
-                onChange={event => {
-                  event.persist();
-                  img(event);
-                }}
-                multiple
-              ></input>
-              <label>Nickname</label>
-              <input
-                type="text"
-                name="name"
-                id=""
-                required
-                maxLength="60"
-                onChange={event => {
-                  updateReview(event);
-                }}
-              />
-              <label>Email</label>
-              <input
-                type="text"
-                name="email"
-                id=""
-                required
-                maxLength="60"
-                placeholder="jackson11@email.com"
-                onChange={event => {
-                  updateReview(event);
-                }}
-              />
+              <div className="review-form-field">
+                <input
+                  type="file"
+                  onChange={event => {
+                    event.persist();
+                    img(event);
+                  }}
+                  multiple
+                ></input>
+              </div>
+              <div className="review-form-field">
+                <label>Nickname</label>
+                <TextField
+                  type="text"
+                  name="name"
+                  id=""
+                  required
+                  maxLength="60"
+                  onChange={event => {
+                    updateReview(event);
+                  }}
+                />
+              </div>
+              <div className="review-form-field">
+                <label>Email</label>
+                <TextField
+                  type="text"
+                  name="email"
+                  id=""
+                  required
+                  maxLength="60"
+                  placeholder="Example: jackson11@email.com"
+                  onChange={event => {
+                    updateReview(event);
+                  }}
+                />
+              </div>
             </form>
           </Grid>
         </Box>

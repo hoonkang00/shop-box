@@ -113,6 +113,7 @@ export default function ReviewButtons(props) {
         onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
+        className="add-review-modal"
       >
         <DialogTitle id="scroll-dialog-title">Write Your Review</DialogTitle>
         <DialogTitle id="scroll-dialog-title">{`About the ${props.productInfo.name}`}</DialogTitle>

@@ -64,9 +64,9 @@ const Sort = ({ sortReviews, productId }) => {
                 }}
                 id="sort-options"
               >
-                <option value="relevance">relevance</option>
+                <option value="relevant">relevance</option>
                 <option value="newest">newest</option>
-                <option value="helpfulness">helpfulness</option>
+                <option value="helpful">helpfulness</option>
               </Select>
             </FormControl>
           </div>
