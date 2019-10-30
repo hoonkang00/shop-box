@@ -6,7 +6,6 @@ import ProductHeader from "./ProductHeader.jsx";
 import DefaultImageView from "./DefaultImageView.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";
 import StarRatings from "../../components/ReviewsComponents/StarRatings.jsx";
-import { getOrAddSession } from "../../../helpers/getSession.js";
 import convertFeatures from "../../../helpers/convertFeatures.js";
 import calculateAverage from "../../../helpers/calculateAverage.js";
 import "../../styles.css";
@@ -60,7 +59,10 @@ const ProductDetails = props => {
       <div className={classes.top}>
         <Grid container spacing={2}>
           <Grid item xs={8} className={classes.defaultLeft}>
-            <DefaultImageView photos={style && style.photos} />
+            <DefaultImageView
+              photos={style && style.photos}
+              styleId={style && style.style_id}
+            />
           </Grid>
           <Grid item xs={4} className={classes.defaultRight}>
             <div className="product-stars-container">

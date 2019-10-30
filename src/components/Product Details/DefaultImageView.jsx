@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 }));
 let aspectRatio = 1;
 
-export default ({ photos }) => {
+export default ({ photos, styleId }) => {
   if (photos === undefined) {
     return <></>;
   }
@@ -50,6 +50,11 @@ export default ({ photos }) => {
   const [view, setView] = useState("DEFAULT");
   const [offsetX, setOffsetX] = useState("0px");
   const [offsetY, setOffsetY] = useState("0px");
+
+  useEffect(() => {
+    updateFirstIndex(0);
+    updateSelectedIndex(0);
+  }, [styleId]);
 
   const decrementFirstIndex = e => {
     updateFirstIndex(firstIndex - 1);
@@ -94,11 +99,12 @@ export default ({ photos }) => {
     document.addEventListener("keydown", escFunction, true);
   }, [view]);
 
-  let mainPhoto = photos ? photos[selectedIndex].url : "";
+  let mainPhoto =
+    photos && photos[selectedIndex] ? photos[selectedIndex].url : "";
   let displayedPhotos = [];
   for (let i = 0; i < photos.length; i++) {
     if (i >= firstIndex && i < firstIndex + 5) {
-      displayedPhotos.push([photos[i].url, i]);
+      displayedPhotos.push([photos[i].thumbnail_url, i]);
     }
   }
   const classes = useStyles();
