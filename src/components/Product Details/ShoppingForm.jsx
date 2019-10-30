@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
     marginLeft: "16px",
-    width: "220px",
+    width: "207px",
     height: "50px",
     border: "1px solid black",
     padding: "13.7px 10px 13.7px 20px",
@@ -147,9 +147,8 @@ export default function ShoppingForm({ style, product }) {
     );
   } else {
     return (
-      <div>
+      <div className="form-rows out-of-stock">
         <OutOfStockSizeForm />
-        <DisabledQuantitySelector classes={classes} />
         <Button variant="outlined" className={classes.button + " hidden"}>
           Add to Cart +
         </Button>
@@ -159,7 +158,6 @@ export default function ShoppingForm({ style, product }) {
           product={product}
           classes={classes}
         />
-        )}
       </div>
     );
   }

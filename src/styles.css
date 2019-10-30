@@ -459,6 +459,14 @@ p.mockup {
   flex-wrap: wrap;
 }
 
+.out-of-stock {
+  height: 200px;
+  min-width: 250px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 290px;
+}
+
 .prod-slogan {
   margin: 0 0 10px;
 }
