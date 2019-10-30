@@ -132,6 +132,7 @@ export default ({ photos, styleId }) => {
       <img
         className="image-expanded"
         src={mainPhoto}
+        alt=""
         onClick={e => {
           setView("FULL");
           e.stopPropagation();
