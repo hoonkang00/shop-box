@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import EnabledQuantitySelector from "./EnabledQuantitySelector.jsx";
@@ -67,6 +67,12 @@ export default function ShoppingForm({ style, product }) {
       setQuantity(event.target.value);
     }
   };
+
+  const style_id = style ? style.style_id : 0;
+  useEffect(() => {
+    setQuantity(1);
+    setSize("");
+  }, [style_id]);
 
   const OutOfStockSizeForm = () => <div>TODO - add out of stock size form</div>;
 

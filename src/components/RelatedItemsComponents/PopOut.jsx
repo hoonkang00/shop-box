@@ -69,7 +69,7 @@ export default function PopOut(props) {
         variant="contained"
         onClick={handleClick}
       >
-        <StarBorderIcon htmlColor="blanchedalmond" filled={true}/>
+        <StarBorderIcon htmlColor="blanchedalmond" />
       </IconButton>
 
       <Popover
