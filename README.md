@@ -1,6 +1,4 @@
-# Greenfield-project
-
-ShopBox App
+# ShopBox App
 
 ## Building and running on localhost
 
