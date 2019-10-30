@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 export default function AddOutfitCardButton(props) {
   const classes = useStyles();
   return (
-    <Card className={["item-card-box", classes.cardSpecial]} id="addOutfit-card-box">
+    <Card className={`item-card-box ${classes.cardSpecial}`} id="addOutfit-card-box">
       <CardActionArea
         className={"item-card-box-action-area"}
         onClick={() => {

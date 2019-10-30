@@ -33,6 +33,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-share": "^3.0.1",
+    "react-test-renderer": "^16.11.0",
     "react-window": "^1.8.5",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
@@ -41,18 +42,29 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "file-loader": "^4.2.0",
     "jest": "^24.9.0",
+    "jest-enzyme": "^7.1.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "url-loader": "^2.2.0",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme"
   }
 }
