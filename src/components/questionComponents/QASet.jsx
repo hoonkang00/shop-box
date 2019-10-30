@@ -3,6 +3,7 @@ import axios from "axios";
 import Answers from "./Answers.jsx";
 import AddAnswer from "./AddAnswer.jsx";
 import MoreAnswers from "./MoreAnswers.jsx";
+import Grid from "@material-ui/core/Grid";
 
 export default class QASet extends Component {
   constructor(props) {
@@ -67,13 +68,17 @@ export default class QASet extends Component {
       moreAnswersBtn = <MoreAnswers />;
     }
     return (
-      <div className="q-a-set">
-        <div className="question">
-          <div className="question-title">Q:</div>
-          <div className="question-block">
-            {this.props.question.question_body}
+      <Grid container spacing={4}>
+        <Grid item xs={1}>
+          <div className="question">
+            <div className="question-title">Q:</div>
           </div>
-          <div className="question-right answer-detail">
+        </Grid>
+        <Grid item xs={7}>
+          {this.props.question.question_body}
+        </Grid>
+        <Grid item xs={4}>
+          <div className="answer-detail">
             Helpful? &nbsp;
             <span
               className="yes-button"
@@ -110,25 +115,91 @@ export default class QASet extends Component {
               questionId={this.props.question.question_id}
             />
           </div>
-        </div>
-        <div className="answer">
-          <div className="answer-title">A: </div>
-          <div className="answer-block">
-            {this.state.answers.slice(0, this.state.counter).map(answer => {
-              return (
-                <Answers
-                  getAnswers={this.getAnswers}
-                  key={answer.answer_id}
-                  answer={answer}
-                />
-              );
-            })}
-            {this.state.counter >= this.state.answers.length ? null : (
-              <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
-            )}
+        </Grid>
+        <Grid item xs={1}>
+          <div className="answer">
+            <div className="answer-title">A: </div>
           </div>
-        </div>
-      </div>
+        </Grid>
+        <Grid item xs={7}>
+          {this.state.answers.slice(0, this.state.counter).map(answer => {
+            return (
+              <Answers
+                getAnswers={this.getAnswers}
+                key={answer.answer_id}
+                answer={answer}
+              />
+            );
+          })}
+          {this.state.counter >= this.state.answers.length ? null : (
+            <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
+          )}
+        </Grid>
+        <Grid item xs={4}></Grid>
+      </Grid>
+
+      // <div className="q-a-set">
+      //   <div className="question">
+      //     <div className="question-title">Q:</div>
+      //     <div className="question-block">
+      //       {this.props.question.question_body}
+      //     </div>
+      //     <div className="question-right answer-detail">
+      //       Helpful? &nbsp;
+      //       <span
+      //         className="yes-button"
+      //         onClick={() => {
+      //           if (!this.state.qHelpful) {
+      //             this.setState({ qHelpful: true });
+      //             this.markQuestionHelpful();
+      //           }
+      //         }}
+      //       >
+      //         Yes
+      //       </span>
+      //       {" ("} {this.props.question.question_helpfulness}
+      //       {")"} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      //       {this.state.reported ? (
+      //         <span className="yes-button" style={{ color: "red" }}>
+      //           Reported!
+      //         </span>
+      //       ) : (
+      //         <span
+      //           className="yes-button"
+      //           onClick={() => {
+      //             this.reportQuestion();
+      //           }}
+      //         >
+      //           Report
+      //         </span>
+      //       )}
+      //       &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+      //       <AddAnswer
+      //         getAnswers={this.getAnswers}
+      //         product={this.props.product}
+      //         qbody={this.props.question.question_body}
+      //         questionId={this.props.question.question_id}
+      //       />
+      //     </div>
+      //   </div>
+      //   <div className="answer">
+      //     <div className="answer-title">A: </div>
+      //     <div className="answer-block">
+      //       {this.state.answers.slice(0, this.state.counter).map(answer => {
+      //         return (
+      //           <Answers
+      //             getAnswers={this.getAnswers}
+      //             key={answer.answer_id}
+      //             answer={answer}
+      //           />
+      //         );
+      //       })}
+      //       {this.state.counter >= this.state.answers.length ? null : (
+      //         <MoreAnswers showMoreAnswers={this.showMoreAnswers} />
+      //       )}
+      //     </div>
+      //   </div>
+      // </div>
     );
   }
 }

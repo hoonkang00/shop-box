@@ -4,6 +4,7 @@ import QASet from "./QASet.jsx";
 import MoreQuestions from "./MoreQuestions.jsx";
 import AddQuestion from "./AddQuestion.jsx";
 import axios from "axios";
+import Grid from "@material-ui/core/Grid";
 
 export default function QuestionAnswer(props) {
   const [questions, setQuestions] = useState([]);
@@ -44,16 +45,20 @@ export default function QuestionAnswer(props) {
   }, [props]);
 
   return (
-    <div>
-      <div className="q-and-a">
-        QUESTIONS & ANSWERS
-        <SearchQuestions
-          questions={questions}
-          updateSearchQs={updateSearchQs}
-          setQuestions={setQuestions}
-          getQuestions={getQuestions}
-          productId={props.productInfo.id}
-        />
+    <Grid container spacing={4}>
+      <Grid item xs={12}>
+        <div className="q-and-a">
+          QUESTIONS & ANSWERS
+          <SearchQuestions
+            questions={questions}
+            updateSearchQs={updateSearchQs}
+            setQuestions={setQuestions}
+            getQuestions={getQuestions}
+            productId={props.productInfo.id}
+          />
+        </div>
+      </Grid>
+      <Grid item xs={12}>
         <div className="q-and-a-scroll">
           {questions.slice(0, counter).map(question => {
             return (
@@ -65,8 +70,9 @@ export default function QuestionAnswer(props) {
               />
             );
           })}
-  
         </div>
+      </Grid>
+      <Grid item xs={12}>
         <div className="q-a-buttons">
           {moreQsBtn}
           <AddQuestion
@@ -74,7 +80,40 @@ export default function QuestionAnswer(props) {
             getQuestions={getQuestions}
           />
         </div>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
+
+    // <div>
+    //   <div className="q-and-a">
+    //     QUESTIONS & ANSWERS
+    //     <SearchQuestions
+    //       questions={questions}
+    //       updateSearchQs={updateSearchQs}
+    //       setQuestions={setQuestions}
+    //       getQuestions={getQuestions}
+    //       productId={props.productInfo.id}
+    //     />
+    //     <div className="q-and-a-scroll">
+    //       {questions.slice(0, counter).map(question => {
+    //         return (
+    //           <QASet
+    //             key={question.question_id}
+    //             question={question}
+    //             getQuestions={getQuestions}
+    //             product={props.productInfo}
+    //           />
+    //         );
+    //       })}
+
+    //     </div>
+    //     <div className="q-a-buttons">
+    //       {moreQsBtn}
+    //       <AddQuestion
+    //         product={props.productInfo}
+    //         getQuestions={getQuestions}
+    //       />
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
