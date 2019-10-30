@@ -463,6 +463,14 @@ p.mockup {
   flex-wrap: wrap;
 }
 
+.out-of-stock {
+  height: 200px;
+  min-width: 250px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 290px;
+}
+
 .prod-slogan {
   margin: 0 0 10px;
 }
@@ -561,4 +569,8 @@ p.mockup {
   border: 1px solid white;
   z-index: 53;
   cursor: zoom-out;
+}
+
+#select-quantity {
+  color: rgba(0, 0, 0, 0.55) !important;
 }

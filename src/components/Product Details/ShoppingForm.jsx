@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
     marginLeft: "16px",
-    width: "220px",
+    width: "207px",
     height: "50px",
     border: "1px solid black",
     padding: "13.7px 10px 13.7px 20px",
@@ -41,7 +41,8 @@ const useStyles = makeStyles(theme => ({
     padding: "10px 10px 10px 20px"
   },
   labelInput: {
-    padding: "12px 0 12px 12px"
+    padding: "12px 0 12px 12px",
+    color: "rgba(0, 0, 0, 0.55) !important"
   },
   selectQuantity: {
     margin: theme.spacing(1),
@@ -74,7 +75,7 @@ export default function ShoppingForm({ style, product }) {
     setSize("");
   }, [style_id]);
 
-  const OutOfStockSizeForm = () => <div>TODO - add out of stock size form</div>;
+  const OutOfStockSizeForm = () => <></>;
 
   const inStock = style && Object.keys(style.skus);
   // FIXME: in stock is more complicated
@@ -107,7 +108,11 @@ export default function ShoppingForm({ style, product }) {
               handleChange={handleChange}
               classes={classes}
             />
-            <Button variant="outlined" className={classes.button}>
+            <Button
+              variant="outlined"
+              className={classes.button}
+              aria-label="Add to cart"
+            >
               Add to Cart +
             </Button>
             <ShareButton
@@ -125,6 +130,7 @@ export default function ShoppingForm({ style, product }) {
               variant="outlined"
               className={classes.button}
               disabled={true}
+              aria-label="Add to cart"
             >
               Add to Cart +
             </Button>
@@ -141,9 +147,8 @@ export default function ShoppingForm({ style, product }) {
     );
   } else {
     return (
-      <div>
+      <div className="form-rows out-of-stock">
         <OutOfStockSizeForm />
-        <DisabledQuantitySelector classes={classes} />
         <Button variant="outlined" className={classes.button + " hidden"}>
           Add to Cart +
         </Button>
@@ -153,7 +158,6 @@ export default function ShoppingForm({ style, product }) {
           product={product}
           classes={classes}
         />
-        )}
       </div>
     );
   }

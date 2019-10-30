@@ -17,6 +17,7 @@ const ShareButton = ({ product, share, toggleShare, photo, classes }) => (
       className={classes.shareButton}
       label={"none"}
       onClick={() => toggleShare(!share)}
+      aria-label="share"
     >
       <ShareIcon fontSize={"small"} />
     </Button>
