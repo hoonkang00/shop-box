@@ -5,8 +5,10 @@ import ShoppingForm from "./ShoppingForm.jsx";
 import ProductHeader from "./ProductHeader.jsx";
 import DefaultImageView from "./DefaultImageView.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";
+import StarRatings from "../../components/ReviewsComponents/StarRatings.jsx";
 import { getOrAddSession } from "../../../helpers/getSession.js";
 import convertFeatures from "../../../helpers/convertFeatures.js";
+import calculateAverage from "../../../helpers/calculateAverage.js";
 import "../../styles.css";
 
 const useStyles = makeStyles(theme => ({
@@ -61,7 +63,20 @@ const ProductDetails = props => {
             <DefaultImageView photos={style && style.photos} />
           </Grid>
           <Grid item xs={4} className={classes.defaultRight}>
-            <div className="stars-mockup">stars and reviews link</div>
+            <div className="product-stars-container">
+              <StarRatings
+                className="no-review-text"
+                rating={calculateAverage(props.ratings)}
+              />
+              <p
+                className="review-link"
+                onClick={() =>
+                  document.getElementById("reviews").scrollIntoView(true)
+                }
+              >
+                Read all reviews
+              </p>
+            </div>
             <ProductHeader />
             <StyleBubbleAreaContainer />
             <ShoppingForm style={style} product={props.product} />

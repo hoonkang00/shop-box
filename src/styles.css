@@ -22,6 +22,18 @@
   flex-wrap: nowrap;
 }
 
+.product-stars-container {
+  display: flex;
+  align-items: center;
+}
+
+.review-link {
+  text-decoration: underline;
+  margin-left: 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
 .Review-Rows {
   flex-grow: 1;
 }

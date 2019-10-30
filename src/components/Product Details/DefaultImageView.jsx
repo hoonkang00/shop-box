@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
     zIndex: "51"
   }
 }));
+let aspectRatio = 1;
 
 export default ({ photos }) => {
   if (photos === undefined) {
@@ -56,6 +57,26 @@ export default ({ photos }) => {
   };
   const incrementFirstIndex = e => {
     updateFirstIndex(firstIndex + 1);
+    e.stopPropagation();
+  };
+
+  const setAspectRatio = () => {
+    if (photos) {
+      let aspectImage = new Image();
+      aspectImage.src = photos[selectedIndex].url;
+      aspectImage.onload = () => {
+        aspectRatio = aspectImage.naturalHeight / aspectImage.naturalWidth;
+      };
+    }
+  };
+
+  const incrementSelectedIndex = (e, photoList, index) => {
+    updateSelectedIndex(selectedIndex + 1);
+    e.stopPropagation();
+  };
+
+  const decrementSelectedIndex = e => {
+    updateSelectedIndex(selectedIndex - 1);
     e.stopPropagation();
   };
 
@@ -93,19 +114,13 @@ export default ({ photos }) => {
       {selectedIndex > 0 && (
         <ExpandLessIcon
           className={classes.arrowLeft}
-          onClick={e => {
-            updateSelectedIndex(selectedIndex - 1);
-            e.stopPropagation();
-          }}
+          onClick={decrementSelectedIndex}
         />
       )}
       {selectedIndex < photos.length - 1 && (
         <ExpandLessIcon
           className={classes.arrowRight}
-          onClick={e => {
-            updateSelectedIndex(selectedIndex + 1);
-            e.stopPropagation();
-          }}
+          onClick={incrementSelectedIndex}
         />
       )}
       <img
@@ -114,6 +129,7 @@ export default ({ photos }) => {
         onClick={e => {
           setView("FULL");
           e.stopPropagation();
+          setAspectRatio();
         }}
       ></img>
     </div>
@@ -127,8 +143,16 @@ export default ({ photos }) => {
           "--y": offsetY
         }}
         onMouseMove={e => {
-          setOffsetX(-e.screenX + "px");
-          setOffsetY(-e.screenY + "px");
+          const xPixels =
+            aspectRatio > 1
+              ? -e.screenX + "px"
+              : -e.screenX / aspectRatio / 2 + "px";
+          const yPixels =
+            aspectRatio > 1
+              ? -e.screenY * aspectRatio * 2 + "px"
+              : -e.screenY + "px";
+          setOffsetX(xPixels);
+          setOffsetY(yPixels);
         }}
         onClick={e => {
           setView("EXPANDED");
@@ -137,7 +161,6 @@ export default ({ photos }) => {
         tabIndex={0}
         onKeyDown={e => {
           e.keyCode === 27 && setView("EXPANDED");
-          console.log(e.keyCode);
         }}
       ></div>
     </div>

@@ -24,7 +24,7 @@ export default function ItemList(props) {
 
   return (
     <div style={{ padding: "0 60px", height:375, width: 800, margin: "0 auto" }}>
-      <Typography>Related Items</Typography>
+      <Typography>RELATED ITEMS</Typography>
       <ItemsCarousel
       className={'item-list-carousel'}
         infiniteLoop={false}
