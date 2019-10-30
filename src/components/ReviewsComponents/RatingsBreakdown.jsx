@@ -72,6 +72,7 @@ export default function InputSlider(props) {
           >{`${slider} stars`}</div>
           <Grid item xs className="ratingsBar">
             <Slider value={Number(value)} aria-labelledby="input-slider" />
+            {props.ratings.ratings ? ` (${props.ratings.ratings[slider]})` : ""}
           </Grid>
         </div>
       );

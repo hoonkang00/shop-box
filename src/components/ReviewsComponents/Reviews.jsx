@@ -67,17 +67,16 @@ export default function Reviews(props) {
   };
 
   return (
-    <div className="Ratings-Reviews" id="reviews">
+    <div className="ratings-reviews">
       <h5>{"RATINGS & REVIEWS"}</h5>
-      <Grid container spacing={6} className="hello testing">
-        <Grid item>
+      <div className="ratings-reviews-container">
+        <span className="ratings-container">
           <Ratings />
-        </Grid>
-        <Grid item className="Reviews">
+        </span>
+        <span className="reviews">
           <SearchBar
             placeholder="SEARCH FOR REVIEWS..."
             onChange={event => handleChange(event)}
-            onRequestSearch={() => console.log("onRequestSearch")}
             onCancelSearch={() => {
               cancelSearch();
               handleChange("");
@@ -91,8 +90,8 @@ export default function Reviews(props) {
           <Sort />
           <ReviewList props={reviewList} />
           <AddReview />
-        </Grid>
-      </Grid>
+        </span>
+      </div>
     </div>
   );
 }

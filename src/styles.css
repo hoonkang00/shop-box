@@ -10,16 +10,26 @@
 .MuiDialogContent-root {
   font-family: "Roboto", sans-serif;
 }
-.Reviews {
+
+.ratings-reviews-container {
+  display: inline-flex;
+  flex-direction: row;
+}
+.ratings-container {
+  padding-right: 25px;
+  width: 450px;
+}
+.reviews {
   flex-direction: column;
   align-items: stretch;
+  padding-left: 25px;
+  width: fit-content;
 }
-.hello.MuiGrid-root {
-  width: auto;
-  justify-content: center;
+
+.sorting-section {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .product-stars-container {
@@ -154,8 +164,9 @@ button.MuiButton-root {
 }
 .ratingsValue {
   margin: 8px;
-  font-size: 15px;
+  font-size: 12px;
   align-items: center;
+  cursor: pointer;
   text-decoration: underline;
 }
 span.MuiSlider-track {
@@ -174,21 +185,6 @@ span.MuiSlider-track {
 .response span {
   font-size: 14px;
 }
-/* .app-container {
-  display: grid;
-  grid-template-columns: [col-start] 1fr [start-main] minmax(500px, 1000px) [end-main] 1fr [col-end];
-  grid-template-rows:
-  [nav-row-start] 40px [details-row-start] minmax(100px, max-content)
-  [related-row-start] minmax(100px, max-content) [outfit-row-start] minmax(
-    100px,
-    max-content
-    )
-    [q-and-a-row-start] minmax(100px, max-content)
-    [ratings-reviews-row-start] minmax(100px, max-content)
-    [ratings-reviews-row-end];
-    grid-row-gap: 20px;
-    justify-content: center;
-  } */
 
 .MuiPaper-rounded {
   border-radius: 0px !important;
