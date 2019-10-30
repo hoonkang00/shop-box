@@ -81,25 +81,25 @@ class AddAnswer extends Component {
     if (!this.emailIsValid(this.state.email)) {
       errorMsg.push("Email format is incorrect");
     }
-    if (this.state.photosLoaded)
-      if (errorMsg.length > 0) {
-        alert(errorMsg.join("\n"));
-      } else {
-        axios
-          .post(
-            `http://18.223.1.30/qa/${this.props.questionId}/answers`,
-            answerObj
-          )
-          .then(() => {
-            this.props.getAnswers();
-            this.setState({ photos: [] });
-          })
-          .catch(err => {
-            console.log(err);
-          });
+    // if (this.state.photosLoaded)
+    if (errorMsg.length > 0) {
+      alert(errorMsg.join("\n"));
+    } else {
+      axios
+        .post(
+          `http://18.223.1.30/qa/${this.props.questionId}/answers`,
+          answerObj
+        )
+        .then(() => {
+          this.props.getAnswers();
+          this.setState({ photos: [] });
+        })
+        .catch(err => {
+          console.log(err);
+        });
 
-        this.setState({ open: false });
-      }
+      this.setState({ open: false });
+    }
   }
   img(event) {
     var files = [...event.target.files];
