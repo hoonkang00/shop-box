@@ -24,22 +24,12 @@ test("adds 1+2 to equal to 3", () => {
 //   await browser.close();
 // })();
 
-describe("Questions", () => {
-  // it("should render my component", () => {
-  //   const wrapper = shallow(<QuestionAnswer />);
-  // });
-  it("should render max 2 questions on load", () => {
-    const wrapper = shallow(<QuestionAnswer />);
-    expect(wrapper.find(QASet)).to.be.at.most(2);
-  });
-});
-
-// ,
-//   "jest": {
-//     "snapshotSerializers": [
-//       "enzyme-to-json/serializer"
-//     ],
-//     "setupFiles": [
-//       "./test/questions.test.js"
-//     ]
-//   }
+// describe("Questions", () => {
+//   // it("should render my component", () => {
+//   //   const wrapper = shallow(<QuestionAnswer />);
+//   // });
+//   it("should render max 2 questions on load", () => {
+//     const wrapper = shallow(<QuestionAnswer />);
+//     expect(wrapper.find(QASet)).to.be.at.most(2);
+//   });
+// });
