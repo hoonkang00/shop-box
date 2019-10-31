@@ -123,6 +123,9 @@ div.expanded-view {
   width: 100%;
   padding: 0;
   word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 svg.recommended-check {
   height: 17px;

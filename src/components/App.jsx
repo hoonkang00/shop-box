@@ -5,6 +5,7 @@ import ReviewsContainer from "../containers/RatingsReviewsContainers/ReviewsCont
 import QAContainer from "../containers/QAContainer.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Nav from "./Nav.jsx";
 import Grid from "@material-ui/core/Grid";
 import {
   BrowserRouter as Router,
@@ -13,24 +14,21 @@ import {
   useLocation
 } from "react-router-dom";
 
-const ScrollToTop = props =>{
+const ScrollToTop = props => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return null
-
-}
-
-
+  return null;
+};
 
 const App = props => {
-
   return (
     <Router>
-      <ScrollToTop/>
+      <ScrollToTop />
       <div className="components">
+        <Nav />
         <Switch>
           <Route path="/products/">
             <Grid container spacing={4}>
