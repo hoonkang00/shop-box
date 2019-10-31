@@ -99,7 +99,12 @@ const ReviewListEntry = ({ review }) => {
             aria-labelledby="scroll-dialog-title"
             key={`modal ${pic.id}`}
           >
-            <img src={pic.url} alt={pic.url} key={`modal-pic ${pic.id}`} />
+            <img
+              src={pic.url}
+              alt={pic.url}
+              key={`modal-pic ${pic.id}`}
+              className="modal-review-img"
+            />
           </Dialog>
         </div>
       );

@@ -2,6 +2,19 @@
   font-family: "Roboto", sans-serif !important;
 }
 
+.nav-bar-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  width: 90%;
+  box-sizing: content-box;
+  margin: auto;
+  height: 80px;
+}
+
+.nav-bar-logo > img {
+  height: 60px;
+}
+
 .components > .MuiGrid-container {
   align-items: center;
   justify-content: center;
@@ -126,6 +139,9 @@ div.expanded-view {
   word-break: break-word;
   -webkit-hyphens: auto;
   hyphens: auto;
+}
+.modal-review-img {
+  height: 600px;
 }
 svg.recommended-check {
   height: 17px;
