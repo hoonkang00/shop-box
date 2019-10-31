@@ -23,7 +23,7 @@ export default function Nav() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} nav-bar-container`}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -34,7 +34,7 @@ export default function Nav() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <img src="images/shopBox-logo.png" />
+            <img src="images/shopBox-logo.png" className="shop-box-logo" />
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

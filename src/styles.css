@@ -2,16 +2,18 @@
   font-family: "Roboto", sans-serif !important;
 }
 
-.nav-bar-container {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  width: 90%;
-  box-sizing: content-box;
-  margin: auto;
-  height: 80px;
+div.nav-bar-container {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 20px;
 }
 
-.nav-bar-logo > img {
+img.shop-box-logo {
+  height: 52px;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: white !important;
   height: 60px;
 }
 
