@@ -49,7 +49,7 @@ export default function Reviews({ rating, handleClick, clear, prodInfo }) {
             prodId={prodInfo}
           />
         </Grid>
-        <Grid item>
+        <Grid item className="characteristics-container">
           <Characteristics values={rating} />
         </Grid>
       </Grid>

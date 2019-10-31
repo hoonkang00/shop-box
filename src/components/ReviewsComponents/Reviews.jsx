@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReviewList from "./ReviewList.jsx";
 import AddReview from "../../containers/RatingsReviewsContainers/ReviewsButtonsContainer.js";
-import Grid from "@material-ui/core/Grid";
 import Ratings from "../../containers/RatingsReviewsContainers/StarsContainer.js";
 import Sort from "../../containers/RatingsReviewsContainers/SortContainer.js";
 import SearchBar from "material-ui-search-bar";
 import getReviews from "../../actions/getNumberOfTotalReviews.js";
-import getReviewList from "../../actions/getReviewList.js";
 
 export default function Reviews(props) {
   const [results, setResults] = useState(props.reviews.results);
@@ -67,32 +65,28 @@ export default function Reviews(props) {
   };
 
   return (
-    <div className="Ratings-Reviews" id="reviews">
+    <div className="ratings-reviews">
       <h5>{"RATINGS & REVIEWS"}</h5>
-      <Grid container spacing={6} className="hello testing">
-        <Grid item>
+      <div className="ratings-reviews-container">
+        <div className="ratings-container">
           <Ratings />
-        </Grid>
-        <Grid item className="Reviews">
+        </div>
+        <div className="reviews">
           <SearchBar
             placeholder="SEARCH FOR REVIEWS..."
             onChange={event => handleChange(event)}
-            onRequestSearch={() => console.log("onRequestSearch")}
             onCancelSearch={() => {
               cancelSearch();
               handleChange("");
             }}
-            style={{
-              margin: "0 auto",
-              maxWidth: 800
-            }}
             value={searchTerm}
+            className="reviews-search-bar"
           />
           <Sort />
           <ReviewList props={reviewList} />
           <AddReview />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Form from "../../containers/RatingsReviewsContainers/AddNewReview.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles(theme => ({
@@ -23,15 +21,38 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
 export default function ReviewButtons(props) {
   const classes = useStyles();
-
   const [page, updatePage] = useState(1);
+  const [more, setMore] = useState(0);
+  const [showMore, setShowMore] = useState(true);
+  const [collapseable, setCollapseable] = useState(false);
+
+  useEffect(() => {
+    setMore(props.numOfReviews);
+    prevNumOfReviews;
+  }, [props.numOfReviews]);
+
+  const prevNumOfReviews = usePrevious(more);
 
   const searchMoreProducts = () => {
     let nextPage = page + 1;
     props.handleClick([nextPage, "UPDATE-REVIEWS", props.productInfo.id]);
     updatePage(page + 1);
+    if (prevNumOfReviews === more || props.numOfReviews === 0) {
+      setShowMore(false);
+    }
+    if (prevNumOfReviews > 0 && prevNumOfReviews === more) {
+      setCollapseable(true);
+    }
   };
 
   const [open, setOpen] = useState(false);
@@ -43,28 +64,52 @@ export default function ReviewButtons(props) {
   };
 
   const handleClose = () => {
+    props.clearReviewForm();
     setOpen(false);
   };
 
   const add = () => {
     props.addNewReview([props.prodMeta.product_id, props.newReview]);
+    props.handleClick([1, "REVIEWS", props.productInfo.id]);
   };
 
-  const MyForm = React.forwardRef((props, ref) => <Form ref={ref} />);
+  const collapse = () => {
+    updatePage(1);
+    setShowMore(true);
+    setCollapseable(false);
+    setMore(0);
+    prevNumOfReviews;
+    props.handleClick([1, "REVIEWS", props.productInfo.id]);
+  };
 
   return (
     <div className="arr">
-      <Button
-        variant="outlined"
-        className={classes.button}
-        onClick={searchMoreProducts}
-      >
-        More Reviews
-      </Button>
+      {showMore ? (
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={searchMoreProducts}
+          aria-label="more-reviews"
+        >
+          More Reviews
+        </Button>
+      ) : collapseable ? (
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={collapse}
+          aria-label="collapse-reviews"
+        >
+          Collapse Reviews
+        </Button>
+      ) : (
+        ""
+      )}
       <Button
         variant="outlined"
         className={classes.button}
         onClick={handleClickOpen("paper")}
+        aria-label="add-reviews"
       >
         Add Review +
       </Button>
@@ -72,13 +117,24 @@ export default function ReviewButtons(props) {
         open={open}
         onClose={handleClose}
         scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
+        aria-label="scroll-dialog-title"
+        className="add-review-modal"
       >
-        <DialogTitle id="scroll-dialog-title">Write Your Review</DialogTitle>
-        <DialogTitle id="scroll-dialog-title">{`About the ${props.productInfo.name}`}</DialogTitle>
+        <DialogTitle id="scroll-dialog-title" className="form-title">
+          Write Your Review
+        </DialogTitle>
+        <DialogTitle
+          id="scroll-dialog-title"
+          className="form-subheading"
+          aria-label="scroll-dialog-title"
+        >{`About the ${props.productInfo.name}`}</DialogTitle>
         <Form />
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={handleClose}
+            color="primary"
+            aria-label="cancel-button"
+          >
             Cancel
           </Button>
           <Button
@@ -86,6 +142,7 @@ export default function ReviewButtons(props) {
               handleClose(), add();
             }}
             color="primary"
+            aria-label="add-review"
           >
             Add Review
           </Button>

@@ -9,6 +9,7 @@ export default function StarRatings({ rating }) {
         value={Number(rating)}
         precision={0.25}
         size="small"
+        readOnly={true}
       />
     </div>
   );
