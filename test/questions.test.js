@@ -18,7 +18,7 @@ import App from "../src/components/App.jsx";
 
 // describe("Questions", () => {
 //   it("should render max 2 questions on load", () => {
-//     const wrapper = shallow(<App />);
+//     const wrapper = shallow(<App productInfo={{ id: 1 }} />);
 //     expect(wrapper)
 //       .exists()
 //       .to.equal(true);
@@ -29,11 +29,19 @@ import App from "../src/components/App.jsx";
 //   //   expect(QAComponent).toMatchSnapshot();
 //   // });
 // });
+
 test("Questions test", () => {
   expect(
-    shallow(<QuestionAnswer />).contains(
-      <div className="testtest">
-        <p>hello</p>
+    shallow(<QuestionAnswer productId={{ id: 1 }} />).contains(
+      <div className="q-and-a">
+        QUESTIONS & ANSWERS
+        <SearchQuestions
+          questions={questions}
+          updateSearchQs={updateSearchQs}
+          setQuestions={setQuestions}
+          getQuestions={getQuestions}
+          productId={props.productInfo.id}
+        />
       </div>
     )
   ).toBe(true);
