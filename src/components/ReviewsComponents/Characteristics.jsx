@@ -17,15 +17,8 @@ const Characteristics = ({ values }) => {
     return results;
   };
   return (
-    <div>
-      <Grid
-        container
-        spacing={2}
-        alignItems="center"
-        className="list-of-character"
-      >
-        <GetCharacteristicBars />
-      </Grid>
+    <div className="list-of-characteristics">
+      <GetCharacteristicBars />
     </div>
   );
 };

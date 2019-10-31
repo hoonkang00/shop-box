@@ -44,7 +44,7 @@ const Sort = ({ sortReviews, productId }) => {
 
   const clearList = () => {
     sortReviews([1, "REVIEWS", productId.id]);
-    document.getElementById("sort-options").value = "relevance";
+    document.getElementById("sort-options").value = "relevant";
     setClear(false);
   };
 
@@ -52,7 +52,7 @@ const Sort = ({ sortReviews, productId }) => {
     <div>
       {numOfReviews !== 0 ? (
         <div className="sorting-section">
-          <div>
+          <div className="sort-options">
             <span>{numOfReviews} reviews, sorted by</span>
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="age-native-simple"></InputLabel>

@@ -7,6 +7,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import ReviewListEntry from "./ReviewListEntry.jsx";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -40,6 +41,7 @@ export default function ReviewButtons(props) {
 
   useEffect(() => {
     setMore(props.numOfReviews);
+    prevNumOfReviews;
   }, [props.numOfReviews]);
 
   const prevNumOfReviews = usePrevious(more);
@@ -70,6 +72,7 @@ export default function ReviewButtons(props) {
 
   const add = () => {
     props.addNewReview([props.prodMeta.product_id, props.newReview]);
+    props.handleClick([1, "REVIEWS", props.productInfo.id]);
   };
 
   const collapse = () => {
@@ -77,6 +80,7 @@ export default function ReviewButtons(props) {
     setShowMore(true);
     setCollapseable(false);
     setMore(0);
+    prevNumOfReviews;
     props.handleClick([1, "REVIEWS", props.productInfo.id]);
   };
 
@@ -115,8 +119,13 @@ export default function ReviewButtons(props) {
         aria-labelledby="scroll-dialog-title"
         className="add-review-modal"
       >
-        <DialogTitle id="scroll-dialog-title">Write Your Review</DialogTitle>
-        <DialogTitle id="scroll-dialog-title">{`About the ${props.productInfo.name}`}</DialogTitle>
+        <DialogTitle id="scroll-dialog-title" className="form-title">
+          Write Your Review
+        </DialogTitle>
+        <DialogTitle
+          id="scroll-dialog-title"
+          className="form-subheading"
+        >{`About the ${props.productInfo.name}`}</DialogTitle>
         <Form />
         <DialogActions>
           <Button onClick={handleClose} color="primary">

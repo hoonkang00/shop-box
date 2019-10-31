@@ -7,7 +7,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
 
 const useStyles = makeStyles({
   root: {
@@ -69,8 +68,10 @@ export default function FormCharacteristic({
     <Paper className={classes.root} className="characteristic-form-entries">
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <TableCell>Characteristic</TableCell>
+          <TableRow className="form-header-row">
+            <TableCell className="form-header-char-name">
+              Characteristic
+            </TableCell>
             <TableCell align="right">1</TableCell>
             <TableCell align="right">2</TableCell>
             <TableCell align="right">3</TableCell>
@@ -91,11 +92,21 @@ export default function FormCharacteristic({
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.value1}</TableCell>
-              <TableCell align="right">{row.value2}</TableCell>
-              <TableCell align="right">{row.value3}</TableCell>
-              <TableCell align="right">{row.value4}</TableCell>
-              <TableCell align="right">{row.value5}</TableCell>
+              <TableCell align="right" className="radio-cell">
+                {row.value1}
+              </TableCell>
+              <TableCell align="right" className="radio-cell">
+                {row.value2}
+              </TableCell>
+              <TableCell align="right" className="radio-cell">
+                {row.value3}
+              </TableCell>
+              <TableCell align="right" className="radio-cell">
+                {row.value4}
+              </TableCell>
+              <TableCell align="right" className="radio-cell">
+                {row.value5}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

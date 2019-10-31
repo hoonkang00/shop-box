@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import ReviewsButtons from "../../components/ReviewsComponents/ReviewButtons.jsx";
 import getReviewList from "../../actions/getReviewList.js";
+import addReview from "../../actions/addReview.js";
 
 const mapStateToProps = store => ({
   productInfo: store.productInfo,

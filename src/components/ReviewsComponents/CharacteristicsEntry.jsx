@@ -42,8 +42,16 @@ const CharacteristicsEntry = ({ characteristicName, characteristicValue }) => {
       label: labels[characteristicName].small
     },
     {
+      value: 33.3,
+      label: ""
+    },
+    {
       value: 50,
       label: labels[characteristicName].mid
+    },
+    {
+      value: 66.6,
+      label: ""
     },
     {
       value: 100,
@@ -51,16 +59,16 @@ const CharacteristicsEntry = ({ characteristicName, characteristicValue }) => {
     }
   ];
   return (
-    <div>
-      <Grid item xs className={`characteristic-${characteristicName}`}>
-        <span className={"characteristic"}>{characteristicName}</span>
-        <Slider
-          value={Number((characteristicValue.value / 5) * 100)}
-          aria-labelledby="input-slider"
-          className="characteristic-slider"
-          marks={marks}
-        />
-      </Grid>
+    <div className="characteristic-entry">
+      <span className={`characteristic-${characteristicName}`}>
+        {characteristicName}
+      </span>
+      <Slider
+        value={Number((characteristicValue.value / 5) * 100)}
+        aria-labelledby="input-slider"
+        className="characteristic-slider"
+        marks={marks}
+      />
     </div>
   );
 };

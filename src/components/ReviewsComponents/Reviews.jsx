@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReviewList from "./ReviewList.jsx";
 import AddReview from "../../containers/RatingsReviewsContainers/ReviewsButtonsContainer.js";
-import Grid from "@material-ui/core/Grid";
 import Ratings from "../../containers/RatingsReviewsContainers/StarsContainer.js";
 import Sort from "../../containers/RatingsReviewsContainers/SortContainer.js";
 import SearchBar from "material-ui-search-bar";
 import getReviews from "../../actions/getNumberOfTotalReviews.js";
-import getReviewList from "../../actions/getReviewList.js";
 
 export default function Reviews(props) {
   const [results, setResults] = useState(props.reviews.results);
@@ -70,10 +68,10 @@ export default function Reviews(props) {
     <div className="ratings-reviews">
       <h5>{"RATINGS & REVIEWS"}</h5>
       <div className="ratings-reviews-container">
-        <span className="ratings-container">
+        <div className="ratings-container">
           <Ratings />
-        </span>
-        <span className="reviews">
+        </div>
+        <div className="reviews">
           <SearchBar
             placeholder="SEARCH FOR REVIEWS..."
             onChange={event => handleChange(event)}
@@ -81,16 +79,13 @@ export default function Reviews(props) {
               cancelSearch();
               handleChange("");
             }}
-            style={{
-              margin: "0 auto",
-              maxWidth: 800
-            }}
             value={searchTerm}
+            className="reviews-search-bar"
           />
           <Sort />
           <ReviewList props={reviewList} />
           <AddReview />
-        </span>
+        </div>
       </div>
     </div>
   );
