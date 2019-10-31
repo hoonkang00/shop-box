@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
 import DialogContent from "@material-ui/core/DialogContent";
 import Radio from "@material-ui/core/Radio";
 import FormCharacteristics from "./FormCharacteristics.jsx";
