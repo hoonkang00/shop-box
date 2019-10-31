@@ -124,7 +124,7 @@ class AddQuestion extends Component {
               label="Input question here"
               multiline
               rowsMax="4"
-              maxLength="1000"
+              inputProps={{ maxLength: 1000 }}
               value={this.state.answer}
               onChange={e => {
                 this.handleChange(e);

@@ -2,10 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  }
+}));
+
 const Sort = ({ sortReviews, productId }) => {
+  const classes = useStyles();
   const [numOfReviews, setNumber] = useState(0);
   const [clear, setClear] = useState(false);
 
@@ -28,6 +43,7 @@ const Sort = ({ sortReviews, productId }) => {
 
   const clearList = () => {
     sortReviews([1, "REVIEWS", productId.id]);
+    document.getElementById("sort-options").value = "relevant";
     setClear(false);
   };
 
@@ -35,22 +51,27 @@ const Sort = ({ sortReviews, productId }) => {
     <div>
       {numOfReviews !== 0 ? (
         <div className="sorting-section">
-          <div>
+          <div className="sort-options">
             <span>{numOfReviews} reviews, sorted by</span>
-            <select
-              onChange={event => {
-                event.persist();
-                sort(event);
-              }}
-            >
-              <option value="relevance">relevance</option>
-              <option value="newest">newest</option>
-              <option value="helpfulness">helpfulness</option>
-            </select>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="age-native-simple"></InputLabel>
+              <Select
+                native
+                onChange={event => {
+                  event.persist();
+                  sort(event);
+                }}
+                id="sort-options"
+              >
+                <option value="relevant">relevance</option>
+                <option value="newest">newest</option>
+                <option value="helpful">helpfulness</option>
+              </Select>
+            </FormControl>
           </div>
           {clear === true ? (
             <h6 className="clear" onClick={clearList}>
-              clear filters
+              Remove all filters
             </h6>
           ) : (
             ""
@@ -64,23 +85,3 @@ const Sort = ({ sortReviews, productId }) => {
 };
 
 export default Sort;
-
-// export default function SimpleSelect() {
-//   const classes = useStyles();
-//   const [values, setValues] = React.useState({
-//     age: '',
-//     name: 'hai',
-//   })
-
-//   const inputLabel = React.useRef(null);
-//   const [labelWidth, setLabelWidth] = React.useState(0);
-//   React.useEffect(() => {
-//     setLabelWidth(inputLabel.current.offsetWidth);
-//   }, []);
-
-//   const handleChange = event => {
-//     setValues(oldValues => ({
-//       ...oldValues,
-//       [event.target.name]: event.target.value,
-//     }));
-//   };

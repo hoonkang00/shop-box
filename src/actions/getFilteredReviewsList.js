@@ -6,17 +6,27 @@ const getFilteredReviewsList = ([rating, actionType, productID]) => {
       .get(`http://18.223.1.30/reviews/${productID}/list?count=10000`)
       .then(({ data }) => {
         let filteredList = [];
-        data.results.forEach(review => {
-          if (Number(review.rating) === Number(rating)) {
-            filteredList.push(review);
-          }
-        });
+        if (Array.isArray(rating)) {
+          rating.map(ratingNum => {
+            data.results.forEach(review => {
+              if (Number(review.rating) === Number(ratingNum)) {
+                filteredList.push(review);
+              }
+            });
+          });
+        } else {
+          data.results.forEach(review => {
+            if (Number(review.rating) === Number(rating)) {
+              filteredList.push(review);
+            }
+          });
+        }
         data.results = filteredList;
         return data;
       })
       .then(data => {
         dispatch({
-          type: actionType === "REVIEWS" ? "REVIEWS" : "UPDATE-REVIEWS",
+          type: actionType,
           payload: data
         });
       })

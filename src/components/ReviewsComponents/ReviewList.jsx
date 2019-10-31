@@ -1,15 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { FixedSizeList } from "react-window";
 import ReviewListEntry from "./ReviewListEntry.jsx";
+import Divider from "@material-ui/core/Divider";
 
 function Row(props) {
-  const { index, data } = props;
-  return (
-    <div className="review-list-entry">
-      <ReviewListEntry review={data[index]} />
-    </div>
-  );
+  return props.rows.map((data, index) => {
+    return (
+      <div className="review-list-entry" key={index}>
+        <ReviewListEntry review={data} />
+        <Divider className="review-divider" />
+      </div>
+    );
+  });
 }
 
 /* TODO: ===Infinite Scroll Functionality====
@@ -28,18 +29,8 @@ function onScroll({ scrollDirection, scrollUpdateWasRequested }) {
 const ReviewList = ({ props }) => {
   const arr = props === undefined ? [] : props;
   return (
-    <div className="Review-Rows">
-      <FixedSizeList
-        height={400}
-        width={500}
-        itemSize={175}
-        itemCount={arr.length}
-        itemData={arr}
-        useIsScrolling
-        className="rows"
-      >
-        {Row}
-      </FixedSizeList>
+    <div className="Review-Rows" id="shopBox-reviews">
+      {props !== undefined ? <Row rows={props} /> : ""}
     </div>
   );
 };
