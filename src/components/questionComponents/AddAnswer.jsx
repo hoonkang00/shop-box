@@ -81,7 +81,6 @@ class AddAnswer extends Component {
     if (!this.emailIsValid(this.state.email)) {
       errorMsg.push("Email format is incorrect");
     }
-    // if (this.state.photosLoaded)
     if (errorMsg.length > 0) {
       alert(errorMsg.join("\n"));
     } else {

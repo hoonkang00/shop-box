@@ -82,38 +82,5 @@ export default function QuestionAnswer(props) {
         </div>
       </Grid>
     </Grid>
-
-    // <div>
-    //   <div className="q-and-a">
-    //     QUESTIONS & ANSWERS
-    //     <SearchQuestions
-    //       questions={questions}
-    //       updateSearchQs={updateSearchQs}
-    //       setQuestions={setQuestions}
-    //       getQuestions={getQuestions}
-    //       productId={props.productInfo.id}
-    //     />
-    //     <div className="q-and-a-scroll">
-    //       {questions.slice(0, counter).map(question => {
-    //         return (
-    //           <QASet
-    //             key={question.question_id}
-    //             question={question}
-    //             getQuestions={getQuestions}
-    //             product={props.productInfo}
-    //           />
-    //         );
-    //       })}
-
-    //     </div>
-    //     <div className="q-a-buttons">
-    //       {moreQsBtn}
-    //       <AddQuestion
-    //         product={props.productInfo}
-    //         getQuestions={getQuestions}
-    //       />
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
