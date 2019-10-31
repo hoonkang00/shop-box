@@ -75,7 +75,7 @@ export default function ItemCard(props) {
 
           <CardContent>
             <Typography> {props.relatedProduct.category}</Typography>
-            <Typography id={'related-product-card-description'}> {props.relatedProduct.name}</Typography>
+            <Typography className={'related-product-card-description'}> {props.relatedProduct.name}</Typography>
             <Typography> ${props.relatedProduct.default_price}</Typography>
             {averageReview === 0 ? (
             <Typography className='no-review-text'>No reviews</Typography>
