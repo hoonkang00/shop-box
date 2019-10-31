@@ -67,6 +67,7 @@ export default function PopOut(props) {
       <IconButton
         aria-describedby={id}
         variant="contained"
+        aria-label="popOut"
         onClick={handleClick}
       >
         <StarBorderIcon htmlColor="blanchedalmond" />

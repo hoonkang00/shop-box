@@ -13,7 +13,6 @@ export default function ItemList(props) {
   let getData = async id => {
     let data;
     data = await getRelatedItems(id); 
-    console.log(data, id)
     data.filter(item=> item.id!==id)
     setRelatedProducts( data.filter(item=> item.id!==id));
   };
