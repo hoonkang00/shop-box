@@ -73,6 +73,13 @@
     "setupFilesAfterEnv": [
       "jest-enzyme"
     ],
-    "testEnvironment": "enzyme"
-  }
+    "testEnvironment": "enzyme",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ]
 }
