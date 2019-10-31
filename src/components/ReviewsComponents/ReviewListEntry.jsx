@@ -120,7 +120,7 @@ const ReviewListEntry = ({ review }) => {
       <Grid container>
         <div className="stars-and-date">
           <Stars rating={review.rating} />
-          <div>{`${review.reviewer_name},  ${month} ${day}, ${year}`}</div>
+          <div className="review-list-date">{`${review.reviewer_name},  ${month} ${day}, ${year}`}</div>
         </div>
         <ExpansionPanel
           expanded={expanded === "panel1"}

@@ -64,6 +64,7 @@ export default function ReviewButtons(props) {
   };
 
   const handleClose = () => {
+    props.clearReviewForm();
     setOpen(false);
   };
 
@@ -88,6 +89,7 @@ export default function ReviewButtons(props) {
           variant="outlined"
           className={classes.button}
           onClick={searchMoreProducts}
+          aria-label="more-reviews"
         >
           More Reviews
         </Button>
@@ -96,6 +98,7 @@ export default function ReviewButtons(props) {
           variant="outlined"
           className={classes.button}
           onClick={collapse}
+          aria-label="collapse-reviews"
         >
           Collapse Reviews
         </Button>
@@ -106,6 +109,7 @@ export default function ReviewButtons(props) {
         variant="outlined"
         className={classes.button}
         onClick={handleClickOpen("paper")}
+        aria-label="add-reviews"
       >
         Add Review +
       </Button>
@@ -113,7 +117,7 @@ export default function ReviewButtons(props) {
         open={open}
         onClose={handleClose}
         scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
+        aria-label="scroll-dialog-title"
         className="add-review-modal"
       >
         <DialogTitle id="scroll-dialog-title" className="form-title">
@@ -122,10 +126,15 @@ export default function ReviewButtons(props) {
         <DialogTitle
           id="scroll-dialog-title"
           className="form-subheading"
+          aria-label="scroll-dialog-title"
         >{`About the ${props.productInfo.name}`}</DialogTitle>
         <Form />
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={handleClose}
+            color="primary"
+            aria-label="cancel-button"
+          >
             Cancel
           </Button>
           <Button
@@ -133,6 +142,7 @@ export default function ReviewButtons(props) {
               handleClose(), add();
             }}
             color="primary"
+            aria-label="add-review"
           >
             Add Review
           </Button>

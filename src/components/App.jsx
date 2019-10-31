@@ -3,9 +3,7 @@ import ProductDetailsContainer from "../containers/ProductDetailsContainer.js";
 import RelatedItems from "./RelatedItemsComponents/RelatedItems.jsx";
 import ReviewsContainer from "../containers/RatingsReviewsContainers/ReviewsContainer.js";
 import QAContainer from "../containers/QAContainer.js";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Nav from "./Nav.jsx";
+// import Nav from "./Nav.jsx";
 import Grid from "@material-ui/core/Grid";
 import {
   BrowserRouter as Router,
@@ -28,7 +26,7 @@ const App = props => {
     <Router>
       <ScrollToTop />
       <div className="components">
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           <Route path="/products/">
             <Grid container spacing={4}>

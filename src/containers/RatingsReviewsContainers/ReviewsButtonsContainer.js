@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import ReviewsButtons from "../../components/ReviewsComponents/ReviewButtons.jsx";
 import getReviewList from "../../actions/getReviewList.js";
 import addReview from "../../actions/addReview.js";
+import clearForm from "../../actions/clearForm.js";
 
 const mapStateToProps = store => ({
   productInfo: store.productInfo,
@@ -16,6 +17,9 @@ const mapDispatchToProps = dispatch => {
     },
     addNewReview: review => {
       dispatch(addReview(review));
+    },
+    clearReviewForm: () => {
+      dispatch(clearForm());
     }
   };
 };

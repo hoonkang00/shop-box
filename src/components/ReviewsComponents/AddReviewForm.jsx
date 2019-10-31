@@ -82,7 +82,7 @@ export default function AddReview({ prodMeta, newReview }) {
             <Typography component="legend">
               Overall Rating (mandatory)
             </Typography>
-            <div>
+            <div className="form-rating-container">
               <Rating
                 name="rating"
                 value={value}
@@ -95,7 +95,7 @@ export default function AddReview({ prodMeta, newReview }) {
                   setValue(hover);
                   updateReview(event);
                 }}
-                className="review-form-field"
+                className="review-form-field star-rating-review-form"
               />
               <Box ml={2}>{labels[value !== 0 ? value : hover]}</Box>
             </div>
@@ -133,7 +133,7 @@ export default function AddReview({ prodMeta, newReview }) {
             <div className="review-form-field">
               <label>Summary</label>
               <TextField
-                required
+                autoFocus
                 id="standard-error"
                 name="summary"
                 margin="normal"
@@ -142,6 +142,7 @@ export default function AddReview({ prodMeta, newReview }) {
                   updateReview(event);
                 }}
                 className="review-form-textfield"
+                label="Example: Best purchase ever!"
               />
             </div>
             <div className="review-form-field">
@@ -160,9 +161,10 @@ export default function AddReview({ prodMeta, newReview }) {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                className="review-form-textfield"
+                label="Why did you like the product or not?"
               />
             </div>
-            {/* TODO: Add materialui image button*/}
             <div className="review-form-field">
               <input
                 type="file"
@@ -180,23 +182,29 @@ export default function AddReview({ prodMeta, newReview }) {
                 type="text"
                 name="name"
                 id=""
+                autoFocus
                 required
                 maxLength="60"
                 onChange={event => {
                   updateReview(event);
                 }}
+                label="Example: jackson11!"
+                helperText="For privacy reasons, do not use your full name or email address"
                 className="review-form-textfield"
               />
             </div>
             <div className="review-form-field">
-              <label>Email</label>
+              Email
+              <br />
               <TextField
                 type="text"
                 name="email"
                 id=""
+                autoFocus
                 required
                 maxLength="60"
-                placeholder="Example: jackson11@email.com"
+                label="Example: jackson11@email.com"
+                helperText="For authentication reasons, you will not be emailed"
                 onChange={event => {
                   updateReview(event);
                 }}

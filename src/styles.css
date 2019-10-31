@@ -47,6 +47,11 @@ div.reviews-search-bar {
   width: fit-content;
 }
 
+div.review-list-date {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
 .MuiSvgIcon-root.loading {
   animation: rotation 2s infinite linear;
   height: 17px;
@@ -174,7 +179,7 @@ hr.review-divider {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 20px;
+  height: 80px;
 }
 .form-recommend-radio-buttons {
   display: inline-flex;
@@ -207,12 +212,46 @@ div.MuiExpansionPanelSummary-expandIcon.Mui-expanded {
 td.radio-cell {
   padding-right: 0;
 }
+
+td.MuiTableCell-alignRight {
+  text-align: center;
+}
+
+th.MuiTableCell-alignRight {
+  text-align: center;
+}
+
+label.table-radio-cell-label {
+  margin-left: -11px;
+}
+
+span.MuiFormControlLabel-label {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.54);
+}
 .review-form-field {
   padding: 15px 0 15px 0;
+}
+span.MuiRating-iconHover {
+  display: inline-flex;
+}
+.star-rating-review-form {
+  display: flex;
+  align-items: center;
+}
+
+.form-rating-container {
+  display: flex;
+  width: 120px;
+  align-items: center;
 }
 
 div.review-form-textfield {
   width: 100%;
+  top: 5px;
+}
+div.review-form-field .review-form-textfield .MuiInputLabel-outlined {
+  left: 22px !important;
 }
 
 .add-review-modal .MuiDialog-paperWidthSm {
@@ -253,6 +292,12 @@ div.review-form-textfield {
 .ratingsBar span span.MuiSlider-thumb {
   width: 0;
   height: 0;
+}
+.ratingsBar span span.MuiSlider-rail {
+  height: 7px;
+}
+.ratingsBar span span.MuiSlider-track {
+  height: 7px;
 }
 .characteristic-slider span.MuiSlider-thumbColorPrimary {
   width: 0;

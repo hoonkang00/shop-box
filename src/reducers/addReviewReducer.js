@@ -12,6 +12,8 @@ const addReviewReducer = (state = newReview, action) => {
   switch (action.type) {
     case "ADD-REVIEW":
       return state;
+    case "CLEAR-REVIEW":
+      return action.payload;
     default:
       return state;
   }
