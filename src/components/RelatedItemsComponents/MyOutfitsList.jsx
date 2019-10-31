@@ -94,7 +94,7 @@ export default function MyOutfitsList(props) {
         leftChevron={<NavigateBeforeIcon />}
       >
         {
-          !isItInMyOutfit && <AddOutfitCardButton add = {addToOufits}/>
+          !isItInMyOutfit?(<AddOutfitCardButton add = {addToOufits}/>):(null)
         }
         
         

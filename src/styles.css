@@ -1,3 +1,7 @@
+#app {
+  font-family: "Roboto", sans-serif !important;
+}
+
 .components > .MuiGrid-container {
   align-items: center;
   justify-content: center;
@@ -410,7 +414,7 @@ span.MuiSlider-track {
 }
 .question {
   position: relative;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .question-title {
   position: absolute;
@@ -449,8 +453,8 @@ span.MuiSlider-track {
 .answer-detail {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.54);
-  margin-top: 5px;
-  margin-bottom: 15px;
+  /* margin-top: 5px; */
+  margin-bottom: 5px;
 }
 .q-a-set {
   padding: 2px;
@@ -642,6 +646,14 @@ p.mockup {
   flex-wrap: wrap;
 }
 
+.out-of-stock {
+  height: 200px;
+  min-width: 250px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 290px;
+}
+
 .prod-slogan {
   margin: 0 0 10px;
 }
@@ -740,4 +752,8 @@ p.mockup {
   border: 1px solid white;
   z-index: 53;
   cursor: zoom-out;
+}
+
+#select-quantity {
+  color: rgba(0, 0, 0, 0.55) !important;
 }

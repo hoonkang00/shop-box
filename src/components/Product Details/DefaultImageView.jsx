@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 }));
 let aspectRatio = 1;
 
-export default ({ photos }) => {
+export default ({ photos, styleId }) => {
   if (photos === undefined) {
     return <></>;
   }
@@ -50,6 +50,11 @@ export default ({ photos }) => {
   const [view, setView] = useState("DEFAULT");
   const [offsetX, setOffsetX] = useState("0px");
   const [offsetY, setOffsetY] = useState("0px");
+
+  useEffect(() => {
+    updateFirstIndex(0);
+    updateSelectedIndex(0);
+  }, [styleId]);
 
   const decrementFirstIndex = e => {
     updateFirstIndex(firstIndex - 1);
@@ -94,11 +99,12 @@ export default ({ photos }) => {
     document.addEventListener("keydown", escFunction, true);
   }, [view]);
 
-  let mainPhoto = photos ? photos[selectedIndex].url : "";
+  let mainPhoto =
+    photos && photos[selectedIndex] ? photos[selectedIndex].url : "";
   let displayedPhotos = [];
   for (let i = 0; i < photos.length; i++) {
     if (i >= firstIndex && i < firstIndex + 5) {
-      displayedPhotos.push([photos[i].url, i]);
+      displayedPhotos.push([photos[i].thumbnail_url, i]);
     }
   }
   const classes = useStyles();
@@ -126,6 +132,7 @@ export default ({ photos }) => {
       <img
         className="image-expanded"
         src={mainPhoto}
+        alt=""
         onClick={e => {
           setView("FULL");
           e.stopPropagation();
@@ -143,14 +150,16 @@ export default ({ photos }) => {
           "--y": offsetY
         }}
         onMouseMove={e => {
+          // proprietary solution... totally works?
+          const viewPortRatio = window.innerHeight / window.innerWidth;
           const xPixels =
             aspectRatio > 1
-              ? -e.screenX + "px"
-              : -e.screenX / aspectRatio / 2 + "px";
+              ? -e.screenX * aspectRatio + "px"
+              : -e.screenX / aspectRatio + "px";
           const yPixels =
             aspectRatio > 1
-              ? -e.screenY * aspectRatio * 2 + "px"
-              : -e.screenY + "px";
+              ? (-e.screenY / viewPortRatio) * aspectRatio * 1.7 + "px"
+              : (-e.screenY / viewPortRatio) * aspectRatio * 1.2 + "px";
           setOffsetX(xPixels);
           setOffsetY(yPixels);
         }}
