@@ -12,7 +12,7 @@ export default class SearchQuestions extends Component {
     this.setState({ searchTerm: e });
     if (e.length >= 3) {
       let searchQs = this.props.questions.filter(question => {
-        return question.question_body.includes(e);
+        return question.question_body.toUpperCase().includes(e.toUpperCase());
       });
 
       this.props.setQuestions(searchQs);
@@ -35,7 +35,6 @@ export default class SearchQuestions extends Component {
         }}
         style={{
           margin: "10px auto"
-          // maxWidth: 800
         }}
         value={this.state.searchTerm}
       />
