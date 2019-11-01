@@ -26,7 +26,9 @@ export default class SearchQuestions extends Component {
   render() {
     return (
       <SearchBar
-        aria-label="search"
+        buttonProps={{
+          "aria-label": "search"
+        }}
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={e => this.handleChange(e)}
         onRequestSearch={() => console.log("onRequestSearch")}

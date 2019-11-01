@@ -34,7 +34,7 @@ export default function Nav() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <img src="images/shopBox-logo.png" className="shop-box-logo" />
+            <img src="images/shopBox-logo.png" className="shop-box-logo" alt="shopbox logo"/>
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
