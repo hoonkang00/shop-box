@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test that style bubble is connected to store Displays 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Memo(Connect(StyleBubble))
+    style={
+      Object {
+        "photos": Array [
+          Object {
+            "thumbnail_url": "",
+          },
+        ],
+      }
+    }
+  />
+</Provider>
+`;

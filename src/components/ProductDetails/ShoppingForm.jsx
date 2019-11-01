@@ -5,6 +5,7 @@ import EnabledQuantitySelector from "./EnabledQuantitySelector.jsx";
 import DisabledQuantitySelector from "./DisabledQuantitySelector.jsx";
 import InStockSizeForm from "./InStockSizeForm.jsx";
 import ShareButton from "./ShareButton.jsx";
+import trackElement from "../../../api/trackElement";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -112,6 +113,7 @@ export default function ShoppingForm({ style, product }) {
               variant="outlined"
               className={classes.button}
               aria-label="Add to cart"
+              onClick={trackElement}
             >
               Add to Cart +
             </Button>

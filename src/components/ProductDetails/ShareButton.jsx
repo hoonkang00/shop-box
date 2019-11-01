@@ -1,4 +1,5 @@
 import React from "react";
+import trackElement from "../../../api/trackElement";
 import Button from "@material-ui/core/Button";
 import ShareIcon from "@material-ui/icons/Share";
 import {
@@ -16,7 +17,10 @@ const ShareButton = ({ product, share, toggleShare, photo, classes }) => (
       variant="outlined"
       className={classes.shareButton}
       label={"none"}
-      onClick={() => toggleShare(!share)}
+      onClick={e => {
+        trackElement(e);
+        toggleShare(!share);
+      }}
       aria-label="share"
     >
       <ShareIcon fontSize={"small"} />
@@ -26,6 +30,7 @@ const ShareButton = ({ product, share, toggleShare, photo, classes }) => (
         url={window.location.href}
         title={`Check out this cool ${product.name} on ShopBox. #ShopBox #${product.category}`}
         className="share-button"
+        onClick={trackElement}
       >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
@@ -33,6 +38,7 @@ const ShareButton = ({ product, share, toggleShare, photo, classes }) => (
         url={window.location.href}
         quote={`Check out this cool ${product.name} on ShopBox. #ShopBox #${product.category}`}
         className="share-button"
+        onClick={trackElement}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
@@ -42,6 +48,7 @@ const ShareButton = ({ product, share, toggleShare, photo, classes }) => (
         windowWidth={1000}
         windowHeight={730}
         className="share-button"
+        onClick={trackElement}
       >
         <PinterestIcon size={32} round />
       </PinterestShareButton>

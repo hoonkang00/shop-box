@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test that MyOutfitsListlooks like the latest commmit Displays 1`] = `
+<div
+  style={
+    Object {
+      "height": 375,
+      "margin": "0 auto",
+      "padding": "0 60px",
+      "width": 800,
+    }
+  }
+>
+  <WithStyles(ForwardRef(Typography))>
+    MY OUTFITS
+  </WithStyles(ForwardRef(Typography))>
+  <r
+    activeItemIndex={0}
+    activePosition="center"
+    alwaysShowChevrons={false}
+    calculateActualTranslateX={[Function]}
+    chevronWidth={70}
+    classes={Object {}}
+    disableSwipe={false}
+    enablePlaceholder={false}
+    firstAndLastGutter={true}
+    gutter={30}
+    infiniteLoop={false}
+    leftChevron={<Memo(NavigateBeforeIcon) />}
+    numberOfCards={3}
+    numberOfPlaceholderItems={0}
+    onActiveStateChange={null}
+    outsideChevron={true}
+    placeholderItem={null}
+    requestToChangeActive={[Function]}
+    rightChevron={<Memo(NavigateNextIcon) />}
+    showSlither={true}
+    slidesToScroll={1}
+  >
+    <AddOutfitCardButton
+      add={[Function]}
+    />
+  </r>
+</div>
+`;
+
+exports[`test that PopOut like the latest commmit Matches the snapshot 1`] = `
+<div
+  className="PopOut"
+>
+  <WithStyles(ForwardRef(IconButton))
+    aria-label="popOut"
+    onClick={[Function]}
+    variant="contained"
+  >
+    <StarBorderIcon
+      htmlColor="blanchedalmond"
+    />
+  </WithStyles(ForwardRef(IconButton))>
+  <WithStyles(ForwardRef(Popover))
+    anchorEl={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "bottom",
+      }
+    }
+    onClose={[Function]}
+    open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Paper))>
+      <WithStyles(ForwardRef(Typography))>
+        COMPARING
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Table))>
+        <WithStyles(ForwardRef(TableHead))>
+          <WithStyles(ForwardRef(TableRow))>
+            <WithStyles(ForwardRef(TableCell))
+              align="left"
+            >
+              test123
+            </WithStyles(ForwardRef(TableCell))>
+            <WithStyles(ForwardRef(TableCell))
+              align="center"
+            >
+              FEATURES
+            </WithStyles(ForwardRef(TableCell))>
+            <WithStyles(ForwardRef(TableCell))
+              align="right"
+            >
+              test123
+            </WithStyles(ForwardRef(TableCell))>
+          </WithStyles(ForwardRef(TableRow))>
+        </WithStyles(ForwardRef(TableHead))>
+        <WithStyles(ForwardRef(TableBody)) />
+      </WithStyles(ForwardRef(Table))>
+    </WithStyles(ForwardRef(Paper))>
+  </WithStyles(ForwardRef(Popover))>
+</div>
+`;
+
+exports[`test that itemlist looks like the latest commmit Displays 1`] = `
+<div
+  style={
+    Object {
+      "height": 375,
+      "margin": "0 auto",
+      "padding": "0 60px",
+      "width": 800,
+    }
+  }
+>
+  <WithStyles(ForwardRef(Typography))>
+    RELATED ITEMS
+  </WithStyles(ForwardRef(Typography))>
+  <r
+    activeItemIndex={0}
+    activePosition="center"
+    alwaysShowChevrons={false}
+    calculateActualTranslateX={[Function]}
+    chevronWidth={70}
+    className="item-list-carousel"
+    classes={Object {}}
+    disableSwipe={false}
+    enablePlaceholder={false}
+    firstAndLastGutter={true}
+    gutter={30}
+    infiniteLoop={false}
+    leftChevron={<Memo(NavigateBeforeIcon) />}
+    numberOfCards={3}
+    numberOfPlaceholderItems={0}
+    onActiveStateChange={null}
+    outsideChevron={true}
+    placeholderItem={null}
+    requestToChangeActive={[Function]}
+    rightChevron={<Memo(NavigateNextIcon) />}
+    showSlither={true}
+    slidesToScroll={1}
+  />
+</div>
+`;

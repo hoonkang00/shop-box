@@ -3,6 +3,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import trackElement from "../../../api/trackElement";
 
 export default ({ size, handleChange, style, classes }) => (
   <FormControl className={classes.formControl}>
@@ -13,6 +14,7 @@ export default ({ size, handleChange, style, classes }) => (
       disableUnderline={true}
       value={size}
       onChange={handleChange}
+      onClick={trackElement}
       name="size"
       inputProps={{
         name: "size",

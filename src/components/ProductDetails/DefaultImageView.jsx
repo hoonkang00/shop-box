@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import trackElement from "../../../api/trackElement";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -135,6 +136,7 @@ export default ({ photos, styleId }) => {
         alt=""
         onClick={e => {
           setView("FULL");
+          trackElement(e);
           e.stopPropagation();
           setAspectRatio();
         }}
@@ -177,7 +179,10 @@ export default ({ photos, styleId }) => {
     <div
       className="main-img"
       style={{ backgroundImage: `url(${mainPhoto})` }}
-      onClick={() => setView("EXPANDED")}
+      onClick={e => {
+        trackElement(e);
+        setView("EXPANDED");
+      }}
     >
       <div className={classes.root}>
         {firstIndex > 0 && (
@@ -196,6 +201,7 @@ export default ({ photos, styleId }) => {
           style={{ backgroundImage: `url(${imgUrl})` }}
           onClick={e => {
             updateSelectedIndex(index);
+            trackElement(e);
             e.stopPropagation();
           }}
         ></div>
