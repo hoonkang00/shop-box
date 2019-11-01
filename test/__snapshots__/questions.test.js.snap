@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test that QA Component is connected to store Displays 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <QuestionAnswer
+    props={
+      Object {
+        "productInfo": Object {
+          "id": 1,
+        },
+      }
+    }
+  />
+</Provider>
+`;
+
+exports[`test that style bubble is connected to store Displays 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <QuestionAnswer
+    props={
+      Object {
+        "productInfo": Object {
+          "id": 1,
+        },
+      }
+    }
+  />
+</Provider>
+`;

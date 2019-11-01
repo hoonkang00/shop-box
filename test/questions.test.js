@@ -1,12 +1,10 @@
 import React from "react";
-import { mount, shallow, configure } from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-// import "babel-polyfill";
-// configure({ adapter: new Adapter() });
+import { shallow } from "enzyme";
 
 import QuestionAnswer from "../src/components/questionComponents/QuestionAnswer.jsx";
 import QASet from "../src/components/questionComponents/QASet.jsx";
-import App from "../src/components/App.jsx";
+import store from "../src/store/store.js";
+import { Provider } from "react-redux";
 
 let samplet2 = (a, b) => {
   return a + b;
@@ -16,33 +14,41 @@ test("adds 1+2 to equal to 3", () => {
   expect(samplet2(1, 5)).toBe(6);
 });
 
-// describe("Questions", () => {
-//   it("should render max 2 questions on load", () => {
-//     const wrapper = shallow(<App productInfo={{ id: 1 }} />);
-//     expect(wrapper)
-//       .exists()
-//       .to.equal(true);
-//   });
+describe("test that QA Component is connected to store", () => {
+  test("Displays", () => {
+    const propsMockup = {
+      productInfo: {
+        id: 1
+      }
+    };
+    const wrapper = (
+      <Provider store={store}>
+        <QuestionAnswer props={propsMockup} />
+      </Provider>
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 
-//   // it("render correctly text component", () => {
-//   //   const QAComponent = renderer.create(<QuestionAnswer />).toJSON();
-//   //   expect(QAComponent).toMatchSnapshot();
-//   // });
-// });
+  // test("renders properly", () => {
+  //   const wrapper = (
+  //     <Provider store={store}>
+  //       <QuestionAnswer props={propsMockup} />
+  //     </Provider>
+  //   );
+  //   expect(wrapper.containsMatchingElement(<QASet />)).toBeTruthy();
+  // });
+  // test("renders two Questions on initial load", () => {
+  //   const propsMockup = {
+  //     id: 1,
+  //     question_body: "test"
+  //   };
 
-// test("Questions test", () => {
-//   expect(
-//     shallow(<QuestionAnswer productId={{ id: 1 }} />).contains(
-//       <div className="q-and-a">
-//         QUESTIONS & ANSWERS
-//         <SearchQuestions
-//           questions={questions}
-//           updateSearchQs={updateSearchQs}
-//           setQuestions={setQuestions}
-//           getQuestions={getQuestions}
-//           productId={props.productInfo.id}
-//         />
-//       </div>
-//     )
-//   ).toBe(true);
-// });
+  //   const wrapper = shallow(<QuestionAnswer productInfo={propsMockup} />);
+  //   // const wrapper2 = shallow(<QASet question={propsMockup} />);
+
+  //   // console.log("checking", wrapper.find(QASet).debug());
+  //   // expect(wrapper.find(wrapper2)).toHaveLength(2);
+  //   expect(wrapper.find(<QASet />)).toHaveLength(1);
+  //   // expect(wrapper.contains(<QASet />)).toBe(true);
+  // });
+});
