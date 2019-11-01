@@ -77,9 +77,9 @@ export default function InputSlider(props) {
             <Slider value={Number(value)} aria-labelledby="input-slider" />
             &nbsp;
             {props.ratings.ratings ? (
-              <span className="number-of-ratings">
+              <div className="number-of-ratings">
                 ({props.ratings.ratings[slider] || 0})
-              </span>
+              </div>
             ) : (
               ""
             )}
@@ -91,7 +91,7 @@ export default function InputSlider(props) {
   };
 
   return (
-    <div>
+    <div className="ratings-right-container">
       {Object.keys(ratingsDisplayed).length > 0 ? (
         <h6 className="clear" onClick={clearList}>
           Remove all filters

@@ -3,9 +3,12 @@ import Form from "../../containers/RatingsReviewsContainers/AddNewReview.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import Box from "@material-ui/core/Box";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import validateForm from "../../lib/validateFormHelper.js";
+import { DialogContent } from "@material-ui/core";
+import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -150,15 +153,28 @@ export default function ReviewButtons(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      {reviewSentModal ? (
-        <div className="review-sent-modal">
-          <div classname="review-sent-dialog">
-            <p classname="review-sent-text">Review Sent!</p>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+      <Dialog open={reviewSentModal}>
+        <DialogContent
+          className="review-sent-dialog-content"
+          aria-label="dialog-rev-sent"
+        >
+          <Box
+            component="fieldset"
+            mb={3}
+            borderColor="transparent"
+            className="review-sent-container"
+            aria-label="revsent-container"
+          >
+            <CheckCircleTwoToneIcon
+              className="review-sent-checkmark"
+              aria-label="checkmark"
+            />
+            <span className="review-sent-text" aria-label="rev sent">
+              Review Sent!
+            </span>
+          </Box>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
