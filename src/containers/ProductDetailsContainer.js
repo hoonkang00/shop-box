@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import getProductInfo from "../actions/getProductInfo.js";
-import ProductDetails from "../components/Product Details/ProductDetails.jsx";
+import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
 import getProductStyles from "../actions/getProductStyles.js";
 import getReviewMetaData from "../actions/getReviewMetaData.js";
 
