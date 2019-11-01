@@ -4,7 +4,10 @@ import Typography from "@material-ui/core/Typography";
 import getRelatedItems from "../src/lib//relatedItemsHelpers/relatedItemsApiCall.js";
 import ItemList from "../src/components/RelatedItemsComponents/ItemList.jsx";
 import AddToMyOutfitCardButton from "../src/components/RelatedItemsComponents/AddOutfitCardButton.jsx";
-import { it } from "date-fns/locale";
+import store from "../src/store/store.js";
+import { Provider } from "react-redux";
+import MyOutfitsList from "../src/components/RelatedItemsComponents/MyOutfitsList.jsx";
+import PopOut from "../src/components/RelatedItemsComponents/PopOut.jsx";
 
 let sampletTest = (a, b) => {
   return a + b;
@@ -20,19 +23,6 @@ const samepleProductInfo = {
   default_price: "450"
 };
 
-const Test = () => {
-  return (
-    <div className="testtest">
-      <p>hello</p>
-    </div>
-  );
-};
-
-// test("checks if the api call that gets all the info on all related items to given product id works", () => {
-//   let data = getRelatedItems(1);
-//   expect(data).toBe("123");
-// });
-
 describe("AddToMyOutfitCardButton test", () => {
   test("Has Typography ADD TO MY OUTFITS", () => {
     expect(
@@ -43,12 +33,57 @@ describe("AddToMyOutfitCardButton test", () => {
   });
 });
 
-describe("ItemList test", () => {
+describe("test that itemlist looks like the latest commmit", () => {
+  test("Displays", () => {
+    const wrapper = shallow(<ItemList productInfo={samepleProductInfo} />);
+    expect(wrapper).toMatchSnapshot();
+  });
   test("renders out a div n", () => {
     expect(
       shallow(<ItemList productInfo={samepleProductInfo} />).contains(
         <Typography>RELATED ITEMS</Typography>
       )
+    ).toBe(true);
+  });
+});
+
+describe("test that MyOutfitsListlooks like the latest commmit", () => {
+  test("Displays", () => {
+    const wrapper = shallow(<MyOutfitsList productInfo={samepleProductInfo} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe("test that PopOut like the latest commmit", () => {
+  const currentProduct = {
+    name: "test123",
+    features: []
+  };
+
+  const relatedProduct = {
+    name: "test123",
+    features: []
+  };
+  test("Matches the snapshot", () => {
+    const wrapper = shallow(
+      <PopOut
+        productInfo={samepleProductInfo}
+        currentProduct={currentProduct}
+        relatedProduct={relatedProduct}
+      />
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test("Has Typography ADD TO MY OUTFITS", () => {
+    expect(
+      shallow(
+        <PopOut
+          productInfo={samepleProductInfo}
+          currentProduct={currentProduct}
+          relatedProduct={relatedProduct}
+        />
+      ).contains(<Typography>COMPARING</Typography>)
     ).toBe(true);
   });
 });
