@@ -3,8 +3,12 @@ import Form from "../../containers/RatingsReviewsContainers/AddNewReview.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import Box from "@material-ui/core/Box";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import validateForm from "../../lib/validateFormHelper.js";
+import { DialogContent } from "@material-ui/core";
+import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -21,27 +25,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-
 export default function ReviewButtons(props) {
   const classes = useStyles();
   const [page, updatePage] = useState(1);
   const [more, setMore] = useState(0);
   const [showMore, setShowMore] = useState(true);
   const [collapseable, setCollapseable] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState("paper");
+  const [reviewSentModal, setReviewSentModal] = useState(false);
 
   useEffect(() => {
     setMore(props.numOfReviews);
-    prevNumOfReviews;
   }, [props.numOfReviews]);
 
-  const prevNumOfReviews = usePrevious(more);
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = more;
+  });
+
+  const prevNumOfReviews = ref.current;
 
   const searchMoreProducts = () => {
     let nextPage = page + 1;
@@ -55,9 +58,6 @@ export default function ReviewButtons(props) {
     }
   };
 
-  const [open, setOpen] = useState(false);
-  const [scroll, setScroll] = useState("paper");
-
   const handleClickOpen = scrollType => () => {
     setOpen(true);
     setScroll(scrollType);
@@ -69,16 +69,21 @@ export default function ReviewButtons(props) {
   };
 
   const add = () => {
-    props.addNewReview([props.prodMeta.product_id, props.newReview]);
-    props.handleClick([1, "REVIEWS", props.productInfo.id]);
+    if (validateForm(props.newReview, props.prodMeta)) {
+      props.addNewReview([props.prodMeta.product_id, props.newReview]);
+      props.handleClick([1, "REVIEWS", props.productInfo.id]);
+      setReviewSentModal(true);
+      handleClose();
+      setTimeout(() => {
+        setReviewSentModal(false);
+      }, 3000);
+    }
   };
 
   const collapse = () => {
     updatePage(1);
     setShowMore(true);
     setCollapseable(false);
-    setMore(0);
-    prevNumOfReviews;
     props.handleClick([1, "REVIEWS", props.productInfo.id]);
   };
 
@@ -139,7 +144,7 @@ export default function ReviewButtons(props) {
           </Button>
           <Button
             onClick={() => {
-              handleClose(), add();
+              add();
             }}
             color="primary"
             aria-label="add-review"
@@ -147,6 +152,28 @@ export default function ReviewButtons(props) {
             Add Review
           </Button>
         </DialogActions>
+      </Dialog>
+      <Dialog open={reviewSentModal}>
+        <DialogContent
+          className="review-sent-dialog-content"
+          aria-label="dialog-rev-sent"
+        >
+          <Box
+            component="fieldset"
+            mb={3}
+            borderColor="transparent"
+            className="review-sent-container"
+            aria-label="revsent-container"
+          >
+            <CheckCircleTwoToneIcon
+              className="review-sent-checkmark"
+              aria-label="checkmark"
+            />
+            <span className="review-sent-text" aria-label="rev sent">
+              Review Sent!
+            </span>
+          </Box>
+        </DialogContent>
       </Dialog>
     </div>
   );

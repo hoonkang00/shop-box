@@ -4,7 +4,7 @@ import Slider from "@material-ui/core/Slider";
 
 export default function InputSlider(props) {
   const [clicked, setClick] = useState(false);
-  const [ratingsDisplayed, setRatingsDisplayed] = useState([]);
+  const [ratingsDisplayed, setRatingsDisplayed] = useState({});
 
   const ratingSliderValues = value => {
     let ratings = props.ratings.ratings;
@@ -22,8 +22,8 @@ export default function InputSlider(props) {
   };
 
   const filterList = event => {
-    if (!ratingsDisplayed.includes(event.target.id)) {
-      setRatingsDisplayed([...ratingsDisplayed, event.target.id]);
+    if (ratingsDisplayed[event.target.id] === undefined) {
+      setRatingsDisplayed({ ...ratingsDisplayed, [event.target.id]: true });
       if (clicked === false) {
         props.onClick([event.target.id, "REVIEWS", props.prodId.id]);
         setClick(true);
@@ -31,11 +31,14 @@ export default function InputSlider(props) {
         props.onClick([event.target.id, "UPDATE-REVIEWS", props.prodId.id]);
       }
     } else {
-      let temp = [...ratingsDisplayed];
-      temp.splice(temp.indexOf(event.target.id), 1);
-      setRatingsDisplayed(temp);
-      props.onClick([ratingsDisplayed, "REMOVE-FILTERS", props.prodId.id]);
-      if (ratingsDisplayed.length === 0) {
+      delete ratingsDisplayed[event.target.id];
+      setRatingsDisplayed({ ...ratingsDisplayed });
+      props.onClick([
+        Object.keys(ratingsDisplayed),
+        "REMOVE-FILTERS",
+        props.prodId.id
+      ]);
+      if (Object.keys(ratingsDisplayed).length === 0) {
         props.clear([1, "REVIEWS", props.prodId.id]);
       }
     }
@@ -48,7 +51,7 @@ export default function InputSlider(props) {
   };
 
   const FilteredRatingSelectedNum = () => {
-    return ratingsDisplayed.map(ratingNum => {
+    return Object.keys(ratingsDisplayed).map(ratingNum => {
       return (
         <span
           key={ratingNum}
@@ -74,9 +77,9 @@ export default function InputSlider(props) {
             <Slider value={Number(value)} aria-labelledby="input-slider" />
             &nbsp;
             {props.ratings.ratings ? (
-              <span className="number-of-ratings">
+              <div className="number-of-ratings">
                 ({props.ratings.ratings[slider] || 0})
-              </span>
+              </div>
             ) : (
               ""
             )}
@@ -88,15 +91,17 @@ export default function InputSlider(props) {
   };
 
   return (
-    <div>
-      {ratingsDisplayed.length > 0 ? (
+    <div className="ratings-right-container">
+      {Object.keys(ratingsDisplayed).length > 0 ? (
         <h6 className="clear" onClick={clearList}>
           Remove all filters
         </h6>
       ) : (
         ""
       )}
-      <FilteredRatingSelectedNum />
+      <div className="filtered-ratings-container">
+        <FilteredRatingSelectedNum />
+      </div>
       <Grid
         container
         spacing={2}

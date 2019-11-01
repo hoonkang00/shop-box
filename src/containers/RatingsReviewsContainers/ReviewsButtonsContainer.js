@@ -3,6 +3,7 @@ import ReviewsButtons from "../../components/ReviewsComponents/ReviewButtons.jsx
 import getReviewList from "../../actions/getReviewList.js";
 import addReview from "../../actions/addReview.js";
 import clearForm from "../../actions/clearForm.js";
+import validateForm from "../../lib/validateFormHelper.js";
 
 const mapStateToProps = store => ({
   productInfo: store.productInfo,

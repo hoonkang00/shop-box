@@ -65,8 +65,8 @@ export default function Reviews(props) {
   };
 
   return (
-    <div id="reviews" className="ratings-reviews">
-      <h5>{"RATINGS & REVIEWS"}</h5>
+    <div className="ratings-reviews">
+      <h5 className="ratings-reviews-heading">{"RATINGS & REVIEWS"}</h5>
       <div className="ratings-reviews-container">
         <div className="ratings-container">
           <Ratings />
