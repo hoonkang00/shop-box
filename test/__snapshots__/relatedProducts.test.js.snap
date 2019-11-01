@@ -2,134 +2,106 @@
 
 exports[`test that MyOutfitsListlooks like the latest commmit Displays 1`] = `
 <div
-  style="padding:0 60px;height:375px;width:800px;margin:0 auto"
+  style={
+    Object {
+      "height": 375,
+      "margin": "0 auto",
+      "padding": "0 60px",
+      "width": 800,
+    }
+  }
 >
-  <p
-    class="MuiTypography-root MuiTypography-body1"
-  >
+  <WithStyles(ForwardRef(Typography))>
     MY OUTFITS
-  </p>
-  <div
-    class="sc-bdVaJa imYUvI"
+  </WithStyles(ForwardRef(Typography))>
+  <r
+    activeItemIndex={0}
+    activePosition="center"
+    alwaysShowChevrons={false}
+    calculateActualTranslateX={[Function]}
+    chevronWidth={70}
+    classes={Object {}}
+    disableSwipe={false}
+    enablePlaceholder={false}
+    firstAndLastGutter={true}
+    gutter={30}
+    infiniteLoop={false}
+    leftChevron={<Memo(NavigateBeforeIcon) />}
+    numberOfCards={3}
+    numberOfPlaceholderItems={0}
+    onActiveStateChange={null}
+    outsideChevron={true}
+    placeholderItem={null}
+    requestToChangeActive={[Function]}
+    rightChevron={<Memo(NavigateNextIcon) />}
+    showSlither={true}
+    slidesToScroll={1}
   >
-    <div
-      class="sc-bwzfXH gwZiig"
-    >
-      <div
-        class="sc-htpNat grBOFc"
-        style="transform:translateX(0px)"
-      >
-        <div
-          class="sc-bxivhb gbgaCl"
-          width="-60"
-        >
-          <div
-            class="MuiPaper-root MuiPaper-elevation1 MuiCard-root item-card-box makeStyles-cardSpecial-1 MuiPaper-rounded"
-            id="addOutfit-card-box"
-          >
-            <button
-              class="MuiButtonBase-root MuiCardActionArea-root item-card-box-action-area"
-              tabindex="0"
-              type="button"
-            >
-              <div
-                class="MuiCardContent-root makeStyles-content-3"
-                id="addOutfit-card-content"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-icon-4 MuiSvgIcon-fontSizeLarge"
-                  color="black"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                </svg>
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-icon-4 MuiSvgIcon-fontSizeLarge"
-                  color="black"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                </svg>
-                <h4
-                  class="MuiTypography-root MuiTypography-h4"
-                >
-                   ADD TO MY OUTFITS
-                </h4>
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-icon-4 MuiSvgIcon-fontSizeLarge"
-                  color="black"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                </svg>
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-icon-4 MuiSvgIcon-fontSizeLarge"
-                  color="black"
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                  />
-                </svg>
-              </div>
-              <span
-                class="MuiCardActionArea-focusHighlight"
-              />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <AddOutfitCardButton
+      add={[Function]}
+    />
+  </r>
 </div>
 `;
 
 exports[`test that PopOut like the latest commmit Matches the snapshot 1`] = `
 <div
-  class="PopOut"
+  className="PopOut"
 >
-  <button
+  <WithStyles(ForwardRef(IconButton))
     aria-label="popOut"
-    class="MuiButtonBase-root MuiIconButton-root"
-    tabindex="0"
-    type="button"
+    onClick={[Function]}
     variant="contained"
   >
-    <span
-      class="MuiIconButton-label"
-    >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root"
-        color="blanchedalmond"
-        focusable="false"
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"
-        />
-      </svg>
-    </span>
-  </button>
+    <StarBorderIcon
+      htmlColor="blanchedalmond"
+    />
+  </WithStyles(ForwardRef(IconButton))>
+  <WithStyles(ForwardRef(Popover))
+    anchorEl={null}
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "bottom",
+      }
+    }
+    onClose={[Function]}
+    open={false}
+    transformOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Paper))>
+      <WithStyles(ForwardRef(Typography))>
+        COMPARING
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Table))>
+        <WithStyles(ForwardRef(TableHead))>
+          <WithStyles(ForwardRef(TableRow))>
+            <WithStyles(ForwardRef(TableCell))
+              align="left"
+            >
+              test123
+            </WithStyles(ForwardRef(TableCell))>
+            <WithStyles(ForwardRef(TableCell))
+              align="center"
+            >
+              FEATURES
+            </WithStyles(ForwardRef(TableCell))>
+            <WithStyles(ForwardRef(TableCell))
+              align="right"
+            >
+              test123
+            </WithStyles(ForwardRef(TableCell))>
+          </WithStyles(ForwardRef(TableRow))>
+        </WithStyles(ForwardRef(TableHead))>
+        <WithStyles(ForwardRef(TableBody)) />
+      </WithStyles(ForwardRef(Table))>
+    </WithStyles(ForwardRef(Paper))>
+  </WithStyles(ForwardRef(Popover))>
 </div>
 `;
 
