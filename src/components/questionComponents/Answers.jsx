@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Answers({ answer, getAnswers }) {
-  let d = new Date(answer.date);
+  let d = new Date(answer.date.replace(/-/g, "/").replace(/T.+/, ""));
   const months = [
     "January",
     "February",
@@ -21,6 +21,10 @@ export default function Answers({ answer, getAnswers }) {
   let month = months[d.getMonth()];
   let day = d.getDate();
   const [helpful, updateHelpful] = useState(false);
+  // console.log("full date", answer.date);
+  // console.log("hellooo");
+  // console.log("full month", month);
+  // console.log("full day", day);
 
   const markAnswerHelpful = () => {
     axios
