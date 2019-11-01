@@ -22,6 +22,8 @@ export default function AddReview({ prodMeta, newReview }) {
   const [value, setValue] = useState(0);
   const [recommended, setRecommended] = useState(0);
   const [imageLoading, setImageLoading] = useState(false);
+  const [scroll, setScroll] = useState("paper");
+  const [bodyCount, setBodyCount] = useState(0);
 
   const updateReview = event => {
     if (event.target.name === "recommend") {
@@ -35,7 +37,6 @@ export default function AddReview({ prodMeta, newReview }) {
       newReview[event.target.name] = event.target.value;
     }
   };
-  const [scroll, setScroll] = useState("paper");
 
   const img = event => {
     setImageLoading(true);
@@ -156,11 +157,17 @@ export default function AddReview({ prodMeta, newReview }) {
                 inputProps={{ minLength: 50, maxLength: 1000 }}
                 onChange={event => {
                   updateReview(event);
+                  setBodyCount(event.target.value.length);
                 }}
                 name="body"
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                helperText={
+                  bodyCount < 50
+                    ? `Minimum required characters left: [${bodyCount}]`
+                    : "Minimum Reached"
+                }
                 className="review-form-textfield"
                 label="Why did you like the product or not?"
               />
