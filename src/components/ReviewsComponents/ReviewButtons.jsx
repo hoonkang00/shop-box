@@ -150,11 +150,15 @@ export default function ReviewButtons(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={reviewSentModal} className="review-sent-modal">
-        <div classname="review-sent-dialog">
-          <div classname="review-sent-text">Review Sent!</div>
+      {reviewSentModal ? (
+        <div className="review-sent-modal">
+          <div classname="review-sent-dialog">
+            <p classname="review-sent-text">Review Sent!</p>
+          </div>
         </div>
-      </Dialog>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

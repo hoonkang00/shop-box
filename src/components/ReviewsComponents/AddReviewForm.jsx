@@ -165,7 +165,7 @@ export default function AddReview({ prodMeta, newReview }) {
                 fullWidth
                 helperText={
                   bodyCount < 50
-                    ? `Minimum required characters left: [${bodyCount}]`
+                    ? `Minimum required characters left: [${50 - bodyCount}]`
                     : "Minimum Reached"
                 }
                 className="review-form-textfield"
