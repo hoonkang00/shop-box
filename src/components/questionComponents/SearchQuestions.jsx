@@ -26,7 +26,7 @@ export default class SearchQuestions extends Component {
   render() {
     return (
       <SearchBar
-        giaria-label="search"
+        aria-label="search"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={e => this.handleChange(e)}
         onRequestSearch={() => console.log("onRequestSearch")}
