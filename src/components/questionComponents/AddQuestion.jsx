@@ -68,17 +68,13 @@ class AddQuestion extends Component {
       email: this.state.email
     };
     let errorMsg = [];
-    if (this.state.question === "" || this.state.question == null) {
-      errorMsg.push("Question is required");
-    }
-    if (this.state.nickname === "" || this.state.nickname == null) {
-      errorMsg.push("Name is required");
-    }
-    if (this.state.email === "" || this.state.email == null) {
-      errorMsg.push("Email is required");
-    }
-    if (!this.emailIsValid(this.state.email)) {
-      errorMsg.push("Email format is incorrect");
+    for (let key in questionObj) {
+      if (questionObj[key] === "" || questionObj[key] === "") {
+        errorMsg.push(`${key} is required`);
+      }
+      if (key === "email" && !this.emailIsValid(this.state.email)) {
+        errorMsg.push("Email format is incorrect");
+      }
     }
     if (errorMsg.length > 0) {
       alert(errorMsg.join("\n"));
