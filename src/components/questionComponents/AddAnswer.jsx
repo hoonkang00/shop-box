@@ -69,17 +69,13 @@ class AddAnswer extends Component {
       photos: this.state.photos
     };
     let errorMsg = [];
-    if (this.state.answer === "" || this.state.answer == null) {
-      errorMsg.push("Answer is required");
-    }
-    if (this.state.nickname === "" || this.state.nickname == null) {
-      errorMsg.push("Name is required");
-    }
-    if (this.state.email === "" || this.state.email == null) {
-      errorMsg.push("Email is required");
-    }
-    if (!this.emailIsValid(this.state.email)) {
-      errorMsg.push("Email format is incorrect");
+    for (let key in answerObj) {
+      if (answerObj[key] === "" || answerObj[key] === "") {
+        errorMsg.push(`${key} is required`);
+      }
+      if (key === "email" && !this.emailIsValid(this.state.email)) {
+        errorMsg.push("Email format is incorrect");
+      }
     }
     if (errorMsg.length > 0) {
       alert(errorMsg.join("\n"));
