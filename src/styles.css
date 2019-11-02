@@ -26,9 +26,7 @@ img.shop-box-logo {
 .MuiGrid-grid-xs-11 {
   width: 70%;
 }
-.MuiDialogContent-root {
-  font-family: "Roboto", sans-serif;
-}
+
 div.reviews-search-bar {
   margin: 0;
   width: 100%;
@@ -441,7 +439,6 @@ span.MuiSlider-track {
   grid-row-end: related-row-start;
   grid-column-start: start-main;
   grid-column-end: end-main;
-  font-family: "Roboto", sans-serif;
 }
 
 .related-products {
@@ -463,27 +460,13 @@ span.MuiSlider-track {
   grid-row-end: ratings-reviews-row-start;
   grid-column-start: start-main;
   grid-column-end: end-main;
-
-  font-family: "Roboto", sans-serif;
   display: inline-block;
   width: 100%;
-  /* vertical-align: top; */
 }
 
 .q-and-a-scroll {
   max-height: 350px;
   overflow: auto;
-}
-
-.q-a-button {
-  border-radius: 0;
-}
-.question {
-  position: relative;
-  /* margin-bottom: 10px; */
-}
-.question-title {
-  position: absolute;
 }
 
 .question-block {
@@ -508,10 +491,6 @@ span.MuiSlider-track {
   position: absolute;
 }
 
-.answer-block {
-  position: relative;
-  left: 25px;
-}
 .answer-photo {
   border: solid 1px;
   margin: 5px;
@@ -519,13 +498,7 @@ span.MuiSlider-track {
 .answer-detail {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.54);
-  /* margin-top: 5px; */
   margin-bottom: 5px;
-}
-.q-a-set {
-  padding: 2px;
-  margin: 5px;
-  width: 100%;
 }
 .add-answer {
   display: inline;
