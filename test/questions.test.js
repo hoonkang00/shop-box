@@ -13,7 +13,10 @@ const width = 1920;
 const height = 1080;
 
 beforeAll(async () => {
-  browser = await puppeteer.launch();
+  browser = await puppeteer.launch({
+    headless: false,
+    slowMo: 80
+  });
   page = await browser.newPage();
   await page.setViewport({ isMobile: false, width, height });
 });
