@@ -138,11 +138,12 @@ class AddAnswer extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="answer-detail add-answer">
-        <span className="yes-button" onClick={this.handleClickOpen}>
+      <div className="answer-detail">
+        <span className="yes-button add-answer" onClick={this.handleClickOpen}>
           Add Answer
         </span>
         <Dialog
+          className="answer-dialog"
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"

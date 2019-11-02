@@ -99,7 +99,7 @@ class AddQuestion extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className="add-q-btn">
         <Button
           variant="outlined"
           className={classes.button}
@@ -108,6 +108,7 @@ class AddQuestion extends Component {
           Add A Question +
         </Button>
         <Dialog
+          className="question-dialog"
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"

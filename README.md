@@ -1,5 +1,25 @@
 # ShopBox App
 
+## Technologies Used
+
+###Development Libraries/ Frameworks
+React with React Hooks
+Redux
+Material UI
+
+###Testing
+Jest
+Enzyme
+Puppeteer
+
+###Deployment
+Continuous Integration with CircleCI
+AWS- EC2
+
+##Other
+gZip compression
+Click tracking
+
 ## Building and running on localhost
 
 First install dependencies:

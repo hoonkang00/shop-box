@@ -70,9 +70,7 @@ export default class QASet extends Component {
     return (
       <Grid container spacing={4}>
         <Grid item xs={1}>
-          <div className="question">
-            <div className="question-title">Q:</div>
-          </div>
+          <div className="question-title">Q:</div>
         </Grid>
         <Grid item xs={7}>
           {this.props.question.question_body}
