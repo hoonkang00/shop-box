@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import StyleBubbleArea from "../components/ProductDetails/StyleBubbleArea.jsx";
+import StyleBubbleArea from "../components/MainOverview/StyleBubbleArea.jsx";
 
 export default connect(
   state => ({
