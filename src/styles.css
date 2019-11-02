@@ -7,7 +7,9 @@ div.nav-bar-container {
   margin-right: 40px;
   margin-bottom: 20px;
 }
-
+.ratings-reviews-heading {
+  font-size: 16px;
+}
 img.shop-box-logo {
   height: 52px;
 }
@@ -75,6 +77,7 @@ div.review-list-date {
 .sort-options {
   display: inline-flex;
   align-items: baseline;
+  text-align-last: center;
 }
 .clear {
   box-sizing: content-box;
@@ -136,12 +139,31 @@ div.expanded-container {
   cursor: default;
   display: contents;
 }
+
+span.review-sent-text {
+  font-size: 35px;
+  text-align: center;
+}
+
+fieldset.review-sent-container {
+  align-self: center;
+  width: 100%;
+  padding: 0;
+  flex-direction: row;
+  display: flex;
+}
+
+svg.review-sent-checkmark {
+  width: 300px;
+  height: 100px;
+  fill: green;
+}
+
 div.expanded-view {
   box-sizing: content-box;
   width: 100%;
   padding: 0;
   word-break: break-all;
-  word-break: break-word;
   -webkit-hyphens: auto;
   hyphens: auto;
 }
@@ -200,6 +222,33 @@ th.form-header-char-name.MuiTableCell-root.MuiTableCell-head {
 .form-content3 {
   display: flex;
   flex-direction: column;
+}
+div.review-sent-modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+div.review-sent-dialog {
+  position: relative;
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+  z-index: 2;
+}
+p.review-sent-text {
+  font-size: 40px;
+  font-weight: bolder;
 }
 div.MuiExpansionPanelSummary-expandIcon.Mui-expanded {
   transform: none;
@@ -283,6 +332,20 @@ div.review-form-field .review-form-textfield .MuiInputLabel-outlined {
   justify-content: center;
   flex-direction: column;
 }
+
+span.filtered-ratings-num {
+  font-size: 10px;
+  border: 1px solid black;
+  background-color: #e2e2e2c7;
+  border-radius: 4px;
+  padding: 1px;
+  display: inline-flex;
+  margin: 3px;
+}
+.filtered-ratings-container {
+  display: flex;
+  flex-direction: row;
+}
 .list-of-ratings {
   width: 400px;
   flex-wrap: nowrap;
@@ -338,6 +401,8 @@ span.MuiSlider-markLabel[style*="left: 0%;"] {
 }
 span.MuiSlider-markLabel[style*="left: 100%;"] {
   transform: none;
+  left: 0% !important;
+  margin-left: 95% !important;
 }
 
 span.MuiSlider-mark[style*="left: 100%;"] {
@@ -380,9 +445,21 @@ span.MuiSlider-root.characteristic-slider {
   width: 200px;
   cursor: default;
 }
+div.ratings-slider-container {
+  display: grid;
+  grid-template-columns: 20% 70% 10%;
+  padding: 8px 16px 22px 0 !important;
+}
+
+div.ratings-right-container {
+  width: max-content;
+}
+
 .number-of-ratings {
-  padding: 10px;
+  padding: 1px;
   font-size: 12px;
+  width: 10px;
+  display: inline-block;
 }
 span.MuiSlider-rail {
   height: 5px;
@@ -414,12 +491,20 @@ span.MuiSlider-track {
 .response {
   background-color: lightgray;
   padding: 30px;
+  width: 400px;
+}
+
+div.response-container {
+  margin-left: 40px;
+  display: flex;
 }
 
 .response span {
   font-size: 14px;
 }
-
+.review-list-entry {
+  overflow-x: visible;
+}
 .MuiPaper-rounded {
   border-radius: 0px !important;
 }

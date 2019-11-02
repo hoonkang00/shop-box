@@ -5,7 +5,7 @@ import MyOutfitsListContainer from "../../containers/RelatedItemsContainers/MyOu
 export default function RelatedItems(props) {
   return (
     <React.Fragment>
-      <ItemListContainer />
+      <ItemListContainer/>
       <br></br>
       <MyOutfitsListContainer />
     </React.Fragment>

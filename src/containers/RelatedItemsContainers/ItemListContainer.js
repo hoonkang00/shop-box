@@ -1,12 +1,10 @@
 import { connect } from "react-redux";
 import ItemList from "../../components/RelatedItemsComponents/ItemList.jsx";
 import getProductInfo from "../../actions/getProductInfo.js";
-import getReviewMetaData from "../../actions/getReviewMetaData.js";
 
-const mapStateToProps = (store, oldProps) => {
+const mapStateToProps = (store, ownProps) => {
   return {
-    productInfo: store.productInfo,
-    oldProductInfo: oldProps.productInfo
+    productInfo: store.productInfo
   };
 };
 

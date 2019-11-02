@@ -7,6 +7,25 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import AddOutfitCardButton from "./AddOutfitCardButton.jsx"
 
+
+const checkInOutfit = (inputArr, id) => {
+  return inputArr.reduce((acc, cur) => {
+    if (acc) {
+      return true;
+    } else {
+      return cur.id === id ? true : false;
+    }
+  }, false);
+};
+
+
+const addToLocalStorage = myOutfits => {
+  let stringStringString = JSON.stringify(myOutfits);
+  window.localStorage.setItem("Shop-Box-My-Outfits", stringStringString);
+};
+
+
+
 export default function MyOutfitsList(props) {
   if (!window.localStorage.getItem("Shop-Box-My-Outfits")) {
     window.localStorage.setItem("Shop-Box-My-Outfits", "[]");
@@ -16,23 +35,13 @@ export default function MyOutfitsList(props) {
   const [myOutfits, setmyOutfits] = useState(
     JSON.parse(window.localStorage.getItem("Shop-Box-My-Outfits"))
   );
-
   const [isItInMyOutfit, setisItInMyOutfit] = useState(false)
-  
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
-  const checkInOutfit = id => {
-    return myOutfits.reduce((acc, cur) => {
-      if (acc) {
-        return true;
-      } else {
-        return cur.id === id ? true : false;
-      }
-    }, false);
-  };
 
 
-  const removeFromOutfits=(index)=>{
+
+  const removeFromOutfits=(currentOutfit, index)=>{
     let removed = myOutfits.slice()
     removed.splice(index,1)
     addToLocalStorage(removed)
@@ -56,10 +65,7 @@ export default function MyOutfitsList(props) {
     }
   };
 
-  const addToLocalStorage = myOutfits => {
-    let stringStringString = JSON.stringify(myOutfits);
-    window.localStorage.setItem("Shop-Box-My-Outfits", stringStringString);
-  };
+  
 
   useEffect(() => {
     return () => {
@@ -68,7 +74,7 @@ export default function MyOutfitsList(props) {
   }, []);
 
   useEffect(()=>{
-    setisItInMyOutfit(checkInOutfit(props.productInfo.id))
+    setisItInMyOutfit(checkInOutfit(myOutfits, props.productInfo.id))
   }, [props.productInfo.id])
 
   return (

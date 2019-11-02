@@ -41,7 +41,7 @@ export default function Reviews({ rating, handleClick, clear, prodInfo }) {
           <Stars average={average} />
         </Grid>
         <h5>{`${recommend}% of reviews recommend this product`}</h5>
-        <Grid item>
+        <Grid item className="ratings-slider-container">
           <RatingsBreakdown
             ratings={rating}
             onClick={handleClick}

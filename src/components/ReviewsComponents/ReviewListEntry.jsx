@@ -33,8 +33,13 @@ const ReviewListEntry = ({ review }) => {
   const [helpfulnessNum, setHelpfulnessNum] = useState(0);
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  console.log("testing");
-  let d = new Date(review.date.substr(0, 10));
+
+  let d = new Date(
+    review.date
+      .substr(0, 10)
+      .replace(/-/g, "/")
+      .replace(/T.+/, "")
+  );
   const months = [
     "January",
     "February",

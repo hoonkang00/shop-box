@@ -20,10 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function RemoveMyOutfit(props) {
   const classes = useStyles();
-
-
   const removeFromLocalStorage = ()=>{
-    console.log(props.index)
     props.removeFromOutfits(props.index)
     props.setisItInMyOutfit(false)
   }
