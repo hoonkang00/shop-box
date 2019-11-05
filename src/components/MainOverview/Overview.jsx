@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import ShoppingForm from "./ShoppingForm.jsx";
+import ShoppingForm from "./Selectors/ShoppingForm.jsx";
 import ProductHeader from "./ProductHeader.jsx";
 import DefaultImageView from "./DefaultImageView.jsx";
 import StyleBubbleAreaContainer from "../../containers/StyleBubblesContainer";

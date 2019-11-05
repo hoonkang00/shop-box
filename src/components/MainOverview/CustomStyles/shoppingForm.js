@@ -38,12 +38,27 @@ export default makeStyles(theme => ({
     padding: "12px 0 12px 12px",
     color: "rgba(0, 0, 0, 0.55) !important"
   },
+  disabledSize: {
+    margin: theme.spacing(1),
+    width: "170px",
+    height: "50px",
+    border: "1px solid rgba(0, 0, 0, 0.26)",
+    padding: "10px 10px 10px 20px"
+  },
   selectQuantity: {
     margin: theme.spacing(1),
     marginLeft: 0,
     width: "100px",
     height: "50px",
     border: "1px solid black",
-    padding: "10px;"
+    padding: "10px"
+  },
+  disabledQuantity: {
+    margin: theme.spacing(1),
+    marginLeft: 0,
+    width: "100px",
+    height: "50px",
+    border: "1px solid rgba(0, 0, 0, 0.26)",
+    padding: "10px"
   }
 }));
