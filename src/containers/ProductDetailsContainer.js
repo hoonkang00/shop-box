@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import getProductInfo from "../actions/getProductInfo.js";
-import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
+import Overview from "../components/MainOverview/Overview.jsx";
 import getProductStyles from "../actions/getProductStyles.js";
 import getReviewMetaData from "../actions/getReviewMetaData.js";
 
@@ -16,4 +16,4 @@ export default connect(
     handleLoadStyles: id => dispatch(getProductStyles(id)),
     handleLoadMetadata: id => dispatch(getReviewMetaData(id))
   })
-)(ProductDetails);
+)(Overview);

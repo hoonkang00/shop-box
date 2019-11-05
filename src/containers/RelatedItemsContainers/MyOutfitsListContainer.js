@@ -3,7 +3,7 @@ import MyOutfitsList from "../../components/RelatedItemsComponents/MyOutfitsList
 import getProductInfo from "../../actions/getProductInfo.js";
 import getReviewMetaData from "../../actions/getReviewMetaData.js";
 
-const mapStateToProps = (store, oldProps) => {
+const mapStateToProps = (store, ownProps) => {
   return {
     productInfo: store.productInfo,
     productStyles: store.productStyles,

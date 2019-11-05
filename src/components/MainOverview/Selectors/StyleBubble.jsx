@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import selectStyle from "../../actions/selectStyle";
-import trackElement from "../../../api/trackElement";
+import selectStyle from "../../../actions/selectStyle";
+import trackElement from "../../../../api/trackElement";
 
 const StyleBubble = ({ index, style, selected, useStyle, handleSelect }) => (
   <div className={useStyle ? "selected-bubble-hack" : ""}>

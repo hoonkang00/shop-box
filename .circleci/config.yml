@@ -40,4 +40,4 @@ jobs:
       # run tests!
       - run:
           name: Jest Test
-          command: npm run test
+          command: npm test -- -u
