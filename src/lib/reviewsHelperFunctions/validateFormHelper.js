@@ -1,10 +1,8 @@
 const validateFormHelper = (form, meta) => {
-  console.log("maybe");
+  let errorMsg = [];
   const emailIsValid = email => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
-
-  let errorMsg = [];
   if (form.rating === 0 || form.rating == null) {
     errorMsg.push("Overall Rating is required");
   }

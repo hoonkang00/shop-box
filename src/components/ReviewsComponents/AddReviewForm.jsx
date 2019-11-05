@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Rating from "@material-ui/lab/Rating";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import DialogContent from "@material-ui/core/DialogContent";
 import Radio from "@material-ui/core/Radio";
-import FormCharacteristics from "./FormCharacteristics.jsx";
 import TextField from "@material-ui/core/TextField";
 import LoopOutlinedIcon from "@material-ui/icons/LoopOutlined";
+import FormCharacteristics from "./FormCharacteristics.jsx";
 import axios from "axios";
+import updateReview from "../../lib/reviewsHelperFunctions/updateReviews.js";
 
 const labels = {
   1: "Poor",
@@ -24,19 +24,6 @@ export default function AddReview({ prodMeta, newReview }) {
   const [imageLoading, setImageLoading] = useState(false);
   const [scroll, setScroll] = useState("paper");
   const [bodyCount, setBodyCount] = useState(0);
-
-  const updateReview = event => {
-    if (event.target.name === "recommend") {
-      setRecommended(event.target.value);
-      if (event.target.value === "true") {
-        newReview[event.target.name] = true;
-      } else {
-        newReview[event.target.name] = false;
-      }
-    } else {
-      newReview[event.target.name] = event.target.value;
-    }
-  };
 
   const img = event => {
     setImageLoading(true);
@@ -80,9 +67,7 @@ export default function AddReview({ prodMeta, newReview }) {
       <DialogContent dividers={scroll === "paper"}>
         <Box component="fieldset" mb={3} borderColor="transparent">
           <div className="form-overall-rating">
-            <Typography component="legend">
-              Overall Rating (mandatory)
-            </Typography>
+            <label component="legend">Overall Rating *</label>
             <div className="form-rating-container">
               <Rating
                 name="rating"
@@ -94,7 +79,7 @@ export default function AddReview({ prodMeta, newReview }) {
                 onClickCapture={event => {
                   event.persist();
                   setValue(hover);
-                  updateReview(event);
+                  updateReview(event, newReview);
                 }}
                 className="review-form-field star-rating-review-form"
               />
@@ -102,14 +87,15 @@ export default function AddReview({ prodMeta, newReview }) {
             </div>
           </div>
           <div className="form-recommend-radio-buttons">
-            <label>Recommend</label>
+            <label>Recommend *</label>
             <Radio
               name="recommend"
               value="true"
               label="Yes"
               checked={recommended === "true"}
               onChange={event => {
-                updateReview(event);
+                setRecommended(event.target.value);
+                updateReview(event, newReview);
               }}
               className="review-form-field"
             />
@@ -120,7 +106,8 @@ export default function AddReview({ prodMeta, newReview }) {
               label="No"
               checked={recommended === "false"}
               onChange={event => {
-                updateReview(event);
+                setRecommended(event.target.value);
+                updateReview(event, newReview);
               }}
               className="review-form-field"
             />
@@ -132,7 +119,7 @@ export default function AddReview({ prodMeta, newReview }) {
           />
           <form className="form-content3" autoComplete="off">
             <div className="review-form-field">
-              <label>Summary</label>
+              <label>Summary *</label>
               <TextField
                 autoFocus
                 id="standard-error"
@@ -140,14 +127,14 @@ export default function AddReview({ prodMeta, newReview }) {
                 margin="normal"
                 inputProps={{ maxLength: 60 }}
                 onChange={event => {
-                  updateReview(event);
+                  updateReview(event, newReview);
                 }}
                 className="review-form-textfield"
                 label="Example: Best purchase ever!"
               />
             </div>
             <div className="review-form-field">
-              <label>Body</label>
+              <label>Body *</label>
               <TextField
                 required
                 id="outlined-multiline-flexible"
@@ -156,7 +143,7 @@ export default function AddReview({ prodMeta, newReview }) {
                 rowsMax="4"
                 inputProps={{ minLength: 50, maxLength: 1000 }}
                 onChange={event => {
-                  updateReview(event);
+                  updateReview(event, newReview);
                   setBodyCount(event.target.value.length);
                 }}
                 name="body"
@@ -184,7 +171,7 @@ export default function AddReview({ prodMeta, newReview }) {
               {imageLoading ? <LoopOutlinedIcon className="loading" /> : ""}
             </div>
             <div className="review-form-field">
-              <label>Nickname</label>
+              <label>Nickname *</label>
               <TextField
                 type="text"
                 name="name"
@@ -193,7 +180,7 @@ export default function AddReview({ prodMeta, newReview }) {
                 required
                 maxLength="60"
                 onChange={event => {
-                  updateReview(event);
+                  updateReview(event, newReview);
                 }}
                 label="Example: jackson11!"
                 helperText="For privacy reasons, do not use your full name or email address"
@@ -201,7 +188,7 @@ export default function AddReview({ prodMeta, newReview }) {
               />
             </div>
             <div className="review-form-field">
-              Email
+              Email *
               <br />
               <TextField
                 type="text"
@@ -213,7 +200,7 @@ export default function AddReview({ prodMeta, newReview }) {
                 label="Example: jackson11@email.com"
                 helperText="For authentication reasons, you will not be emailed"
                 onChange={event => {
-                  updateReview(event);
+                  updateReview(event, newReview);
                 }}
                 className="review-form-textfield"
               />

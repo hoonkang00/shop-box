@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "../../containers/RatingsReviewsContainers/AddNewReview.js";
+import validateForm from "../../lib/reviewsHelperFunctions/validateFormHelper.js";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import Box from "@material-ui/core/Box";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import validateForm from "../../lib/validateFormHelper.js";
-import { DialogContent } from "@material-ui/core";
 import CheckCircleTwoToneIcon from "@material-ui/icons/CheckCircleTwoTone";
+import {
+  DialogContent,
+  Button,
+  Dialog,
+  Box,
+  DialogActions,
+  DialogTitle
+} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -29,6 +31,7 @@ export default function ReviewButtons(props) {
   const classes = useStyles();
   const [page, updatePage] = useState(1);
   const [more, setMore] = useState(0);
+  const [prevNumOfReviews, setPreviousNumOfReviews] = useState(0);
   const [showMore, setShowMore] = useState(true);
   const [collapseable, setCollapseable] = useState(false);
   const [open, setOpen] = useState(false);
@@ -39,23 +42,21 @@ export default function ReviewButtons(props) {
     setMore(props.numOfReviews);
   }, [props.numOfReviews]);
 
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = more;
-  });
-
-  const prevNumOfReviews = ref.current;
-
-  const searchMoreProducts = () => {
-    let nextPage = page + 1;
-    props.handleClick([nextPage, "UPDATE-REVIEWS", props.productInfo.id]);
-    updatePage(page + 1);
+  const checkCollapseable = () => {
     if (prevNumOfReviews === more || props.numOfReviews === 0) {
       setShowMore(false);
     }
     if (prevNumOfReviews > 0 && prevNumOfReviews === more) {
       setCollapseable(true);
     }
+  };
+
+  const searchMoreProducts = () => {
+    let nextPage = page + 1;
+    setPreviousNumOfReviews(more);
+    props.handleClick([nextPage, "UPDATE-REVIEWS", props.productInfo.id]);
+    updatePage(page + 1);
+    checkCollapseable();
   };
 
   const handleClickOpen = scrollType => () => {
@@ -169,9 +170,9 @@ export default function ReviewButtons(props) {
               className="review-sent-checkmark"
               aria-label="checkmark"
             />
-            <span className="review-sent-text" aria-label="rev sent">
+            <p className="review-sent-text" aria-label="rev sent">
               Review Sent!
-            </span>
+            </p>
           </Box>
         </DialogContent>
       </Dialog>
