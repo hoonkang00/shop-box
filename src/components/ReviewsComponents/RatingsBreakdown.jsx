@@ -38,7 +38,7 @@ export default function InputSlider(props) {
         "REMOVE-FILTERS",
         props.prodId.id
       ]);
-      if (Object.keys(ratingsDisplayed).length === 0) {
+      if (Object.keys(ratingsDisplayed).length <= 0) {
         props.clear([1, "REVIEWS", props.prodId.id]);
       }
     }

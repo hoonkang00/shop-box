@@ -26,6 +26,14 @@ To run Jest unit tests:
 npm run test
 ```
 
+## Frameworks
+
+```sh
+React with React Hooks
+Redux
+Material UI
+```
+
 ## Running
 
 Open the file `dist/index.html` in your browser
