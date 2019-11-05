@@ -39,7 +39,7 @@ const App = props => {
               <Grid item xs={11}>
                 <QAContainer />
               </Grid>
-              <Grid item xs={11}>
+              <Grid item xs={11} id="reviews">
                 <ReviewsContainer />
               </Grid>
             </Grid>
