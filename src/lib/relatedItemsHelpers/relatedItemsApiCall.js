@@ -8,7 +8,7 @@ const getRelatedItems = async productID => {
   let myData, relatedItems;
   try {
     let { data } = await axios.get(
-      `http://18.223.1.30/products/${productID}/related`
+      `http://3.134.102.30/products/${productID}/related`
     );
     relatedItems = data;
   } catch (err) {
@@ -18,15 +18,15 @@ const getRelatedItems = async productID => {
   let relatedReviews = relatedItems.slice();
   //returns an array of the product ids
   let productInfos = relatedItems.map(id => {
-    return axios.get(`http://18.223.1.30/products/${id}`);
+    return axios.get(`http://3.134.102.30/products/${id}`);
   });
 
   let productReviews = relatedReviews.map(id => {
-    return axios.get(`http://18.223.1.30/reviews/${id}/meta`);
+    return axios.get(`http://3.134.102.30/reviews/${id}/meta`);
   });
 
   let productStyles = relatedReviews.map(id => {
-    return axios.get(`http://18.223.1.30/products/${id}/styles`);
+    return axios.get(`http://3.134.102.30/products/${id}/styles`);
   });
 
   let doItAllAtOnce = [
