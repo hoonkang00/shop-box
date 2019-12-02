@@ -84,7 +84,7 @@ class AddQuestion extends Component {
       alert(errorMsg.join("\n"));
     } else {
       axios
-        .post(`http://18.223.1.30/qa/${this.props.product.id}`, questionObj)
+        .post(`http://3.134.102.30/qa/${this.props.product.id}`, questionObj)
         .then(() => {
           this.props.getQuestions(this.props.product.id);
         })

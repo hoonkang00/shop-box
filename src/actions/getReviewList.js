@@ -10,7 +10,7 @@ const getReviewList = ([
   return dispatch => {
     return axios
       .get(
-        `http://18.223.1.30/reviews/${productID}/list?count=${count}&page=${page}&sort=${sort}`
+        `http://3.134.102.30/reviews/${productID}/list?count=${count}&page=${page}&sort=${sort}`
       )
       .then(({ data }) => {
         dispatch({

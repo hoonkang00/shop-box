@@ -5,7 +5,7 @@ let getReviewMetaData = productID => {
 
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${productID}/meta`)
+      .get(`http://3.134.102.30/reviews/${productID}/meta`)
       .then(({ data }) => {
         dispatch({
           type: "UPDATE_REVIEW_METADATA",

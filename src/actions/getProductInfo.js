@@ -11,7 +11,7 @@ let getProductInfo = (productID)=>{
 
     return (dispatch)=>{
         return (
-            axios.get(`http://18.223.1.30/products/${productID}`)
+            axios.get(`http://3.134.102.30/products/${productID}`)
             .then(({data})=>{
                 dispatch({
                     type:"UPDATE_CURRENT_PRODUCT",

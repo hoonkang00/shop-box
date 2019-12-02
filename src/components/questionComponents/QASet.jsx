@@ -25,7 +25,7 @@ export default class QASet extends Component {
   getAnswers() {
     axios
       .get(
-        `http://18.223.1.30/qa/${this.props.question.question_id}/answers/?count=1000`
+        `http://3.134.102.30/qa/${this.props.question.question_id}/answers/?count=1000`
       )
       .then(({ data }) => {
         this.setState({ answers: data.results });
@@ -37,7 +37,7 @@ export default class QASet extends Component {
   markQuestionHelpful() {
     axios
       .put(
-        `http://18.223.1.30/qa/question/${this.props.question.question_id}/helpful`
+        `http://3.134.102.30/qa/question/${this.props.question.question_id}/helpful`
       )
       .then(() => {
         this.props.getQuestions(this.props.product.id);
@@ -50,7 +50,7 @@ export default class QASet extends Component {
     if (!this.state.reported) {
       axios
         .put(
-          `http://18.223.1.30/qa/question/${this.props.question.question_id}/report`
+          `http://3.134.102.30/qa/question/${this.props.question.question_id}/report`
         )
         .then(() => {
           this.setState({ reported: true });

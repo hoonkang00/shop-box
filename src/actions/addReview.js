@@ -4,7 +4,7 @@ import getReviewList from "./getReviewList.js";
 const addReview = ([productId, newReview]) => {
   return dispatch => {
     return axios
-      .post(`http://18.223.1.30/reviews/${productId}`, newReview)
+      .post(`http://3.134.102.30/reviews/${productId}`, newReview)
       .then(() => {
         getReviewList([1, "Reviews", productId]);
       })

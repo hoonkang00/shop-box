@@ -3,7 +3,7 @@ import axios from "axios";
 const getFilteredReviewsList = ([rating, actionType, productID]) => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${productID}/list?count=10000`)
+      .get(`http://3.134.102.30/reviews/${productID}/list?count=10000`)
       .then(({ data }) => {
         let filteredList = [];
         if (Array.isArray(rating)) {
