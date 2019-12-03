@@ -26,7 +26,7 @@ const Sort = ({ sortReviews, productId }) => {
 
   useEffect(() => {
     axios
-      .get(`http://18.223.1.30/reviews/${productId.id}/list?count=100000`)
+      .get(`http://3.134.102.30/reviews/${productId.id}/list?count=100000`)
       .then(({ data }) => {
         setNumber(data.results.length);
       })

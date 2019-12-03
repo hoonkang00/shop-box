@@ -86,7 +86,7 @@ class AddAnswer extends Component {
     } else {
       axios
         .post(
-          `http://18.223.1.30/qa/${this.props.questionId}/answers`,
+          `http://3.134.102.30/qa/${this.props.questionId}/answers`,
           answerObj
         )
         .then(() => {

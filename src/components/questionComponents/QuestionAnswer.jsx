@@ -11,7 +11,7 @@ export default function QuestionAnswer(props) {
   const [counter, setCounter] = useState(2);
   let getQuestions = id => {
     axios
-      .get(`http://18.223.1.30/qa/${id}/?count=1000`)
+      .get(`http://3.134.102.30/qa/${id}/?count=1000`)
       .then(({ data }) => {
         setQuestions(data.results);
       })
